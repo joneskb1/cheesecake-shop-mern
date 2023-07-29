@@ -25,8 +25,8 @@ dist-ssr
 
 .env
 
-descriptions.text
+descriptions.txt
 paths.txt 
-screens-and-components-txt 
+screens-and-components.txt 
 cheesecake-descriptions
 cheesecake-images
