@@ -1,0 +1,32 @@
+.aboutContainer {
+  width: 335px;
+  height: 745px;
+  margin: 0 auto;
+  background: var(--light-pink-cream-gradient);
+  border-radius: 5px;
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.aboutHeading {
+  font-family: var(--fancy-font);
+  font-size: 26px;
+  color: var(--blue);
+}
+
+.aboutImg {
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+}
+
+.aboutTextContainer {
+  background-color: var(--blue);
+  border-radius: 5px;
+  margin-top: 1rem;
+  color: white;
+  font-size: 14px;
+  height: 375px;
+  padding: 1rem 2rem;
+}

@@ -1,0 +1,138 @@
+HomeScreen
+-Nav
+  -Logo
+  -NavMenu
+-CtaCard
+-FeaturedCheesecakesHeader
+-Carousel
+  -CarouselTextCard
+  -CarouselImg
+-About 
+-BendyHeader 
+-Spinny Cake 
+-Footer 
+  -BusinessDetails
+  -FooterMenu 
+  -SocialIcons 
+  -FooterShopBtn  
+HomeMobile
+-Hamburger
+-NavModal
+
+ALL HAVE NAV & FOOTER EXCEPT ADMIN (Hamburger
+& NavModal on mobile)
+
+ShopScreen
+-ShopBanner
+-ShopHeader
+-SearchBar 
+-CakeCard 
+
+ShopMobile 
+-SearchIcon
+-SearchModal
+
+CakeScreen
+  -BackBtn
+  -Title 
+  -Image 
+  -CakeDetailsCard 
+    -CakeDetails
+    -Price
+    -CakeSizeSelect
+    -CakeQtySelect
+    -AddToCartBtn
+  -Marquee
+  -YouMayLikeHeader
+  -CakeCard
+
+CartSlideOutScreen
+-OrderHeader
+-OrderCard
+  -CakeCard 
+  -CakeQtySelect
+  -CakeSizeSelect
+  -GarbageBin
+-CartSlideOutFooter
+  -Details 
+  -CartSlideOutCheckoutBtn 
+
+CartScreen 
+-OrderHeader
+-OrderCard
+  -CakeCard 
+  -CakeQtySelect
+  -CakeSizeSelect
+  -GarbageBin
+-Summary
+  -SummaryHeader
+  -SummaryDetails
+  -SummaryCheckoutBtn
+
+CheckoutScreen
+-CheckoutForm
+  -Summary
+    -SummaryHeader
+    -SummaryDetails
+    -SummaryCheckoutBtn
+-OrderHeader
+-OrderCard
+  -CakeCard 
+  -CakeQtySelect
+  -CakeSizeSelect
+  -GarbageBin
+
+ContactScreen
+-ContactHeader
+-ContactInfo
+-ContactForm
+
+AuthScreen
+  -Login
+  -ForgotPassword
+  -ResetPassword
+  -CreateAccount
+
+AccountScreen
+-UpdateInfoForms
+  -UpdateAccountForm
+  -UpdatePasswordForm
+-Orders
+  -Order
+    -OrderInfo
+    -OrderHeader
+    -OrderHistoryCard
+      -CakeCard  
+    -OrderSummary
+    -OrderDetails
+
+
+AdminProductsScreen
+-AddProductBtn
+-ProductHeader
+-ProductPreview
+  -CakeCard
+  -EditProduct
+  -GarbageBin
+
+AdminEditProductScreen
+-EditProductForm
+
+AdminCreateProductScreen
+-CreateProductForm
+
+AdminOrderScreen
+-AdminOrderPreviewTable
+  
+
+AdminOrderDetailsScreen
+-Order
+  -OrderInfo
+  -OrderHeader
+  -OrderHistoryCard
+    -CakeCard  
+  -OrderSummary
+  -OrderDetails
+
+
+

@@ -1,0 +1,12 @@
+home: /
+shop: /cheesecakes
+individual: /cheesecakes/:id
+cart, checkout, contact, my-account
+login, sign-up, forgot-password, reset-password
+
+ADMIN: 
+/products
+/products/:id 
+/products/create
+/orders
+/orders/id

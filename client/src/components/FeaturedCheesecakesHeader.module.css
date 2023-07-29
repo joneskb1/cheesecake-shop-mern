@@ -1,0 +1,21 @@
+.featuredHeaderContainer {
+  width: 375px;
+  margin: 0 auto 1rem auto;
+  padding-top: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.chefIcon {
+  position: absolute;
+  top: 44%;
+  left: 17%;
+}
+
+.featuredText {
+  font-family: var(--fancy-font);
+  color: var(--purple);
+  font-size: 26px;
+  display: inline-block;
+  text-align: center;
+}

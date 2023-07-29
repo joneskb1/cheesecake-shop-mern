@@ -1,0 +1,39 @@
+.ctaCard {
+  width: 220px;
+  height: 142px;
+  margin: 0 auto;
+  margin-top: 8rem;
+  margin-bottom: 12rem;
+  /* background: var(--blue); */
+  background: var(--transparent-blue);
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 5px;
+}
+
+.ctaText {
+  color: white;
+  font-size: 20px;
+  font-family: var(--header-title-font-regular);
+}
+
+.ctaBtn {
+  text-decoration: none;
+  border: none;
+  margin-top: 0.4rem;
+  border-radius: 12px;
+  /* background-color: var(--blue); */
+  background-image: linear-gradient(
+    to right,
+    #b87bc5,
+    #c598d6,
+    #d3b5e5,
+    #e3d1f3,
+    #f5edff
+  );
+  color: var(--blue);
+  width: 98px;
+  height: 29px;
+  font-family: var(--header-title-font-medium);
+  font-size: 15px;
+}

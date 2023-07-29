@@ -1,0 +1,9 @@
+.heroContainer {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  height: 460px;
+  width: 100vw;
+  background: url('../assets/images/hero-959w.jpg') no-repeat;
+  background-position: 50%;
+}
