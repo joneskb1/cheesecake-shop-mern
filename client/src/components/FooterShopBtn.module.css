@@ -1,0 +1,21 @@
+.footerShopBtn {
+  position: relative;
+  width: 334px;
+  height: 57px;
+  background: var(--purple);
+  font-size: 14px;
+  color: white;
+  margin: 0 auto 1rem;
+}
+
+.footerShopBtn::before {
+  content: '';
+  position: absolute;
+  left: 24%;
+  top: 25%;
+  width: 25px;
+  height: 25px;
+  background-image: url('../assets/icons/chef-icon.png');
+  background-size: cover;
+  z-index: 1000;
+}

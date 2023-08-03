@@ -1,10 +1,9 @@
 import { NavLink } from 'react-router-dom';
-// import ChefIcon from './ChefIcon';
 
-import styles from './Dialog.module.css';
+import styles from './NavDialog.module.css';
 import closeX from '../assets/icons/close-x.svg';
 
-export default function Dialog({ dialogRef }) {
+export default function NavDialog({ dialogRef }) {
   const handleCloseDialog = function () {
     dialogRef.current.close();
   };

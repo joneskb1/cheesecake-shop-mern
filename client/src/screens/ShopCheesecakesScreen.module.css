@@ -1,0 +1,14 @@
+.shopWrap {
+  position: relative;
+}
+
+.searchBtn {
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: 120px;
+  display: inline;
+  height: 24px;
+  width: 24px;
+}

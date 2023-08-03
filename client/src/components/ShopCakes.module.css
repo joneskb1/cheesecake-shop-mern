@@ -1,0 +1,22 @@
+.shop {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  width: 90%;
+  margin: 0 auto 3rem;
+}
+
+.noResultsMsg {
+  text-align: center;
+}
+
+.showAllResultsBtn {
+  display: inline-block;
+  width: 100px;
+  margin: 1rem auto;
+  background: none;
+}
+
+.showAllResultsBtn:hover {
+  text-decoration: underline;
+}

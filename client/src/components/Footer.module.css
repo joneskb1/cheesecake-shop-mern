@@ -1,0 +1,9 @@
+.footerWrap {
+  background: var(--transparent-blue);
+  padding: 2rem 1rem 1rem;
+}
+
+.innerFooterWrap {
+  max-width: 334px;
+  margin: 0 auto;
+}

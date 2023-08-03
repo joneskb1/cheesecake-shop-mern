@@ -1,9 +1,18 @@
+.homeScreenWrap {
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
 .heroContainer {
   position: absolute;
   top: 60px;
   left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   height: 460px;
-  width: 100vw;
+  width: 100%;
   background: url('../assets/images/hero-959w.jpg') no-repeat;
-  background-position: 50%;
+  background-position: center;
 }

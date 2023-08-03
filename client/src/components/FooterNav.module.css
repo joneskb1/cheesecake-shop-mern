@@ -1,0 +1,12 @@
+.footerNav {
+  margin-bottom: 1rem;
+}
+
+.footerLink {
+  color: white;
+}
+
+.footerLink:hover,
+.footerLink.active {
+  text-decoration: underline;
+}

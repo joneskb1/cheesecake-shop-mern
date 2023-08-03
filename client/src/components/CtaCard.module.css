@@ -17,12 +17,14 @@
   font-family: var(--header-title-font-regular);
 }
 
-.ctaBtn {
+.ctaNavLink {
   text-decoration: none;
+}
+
+.ctaBtn {
   border: none;
-  margin-top: 0.4rem;
+  margin: 0.4rem auto 0;
   border-radius: 12px;
-  /* background-color: var(--blue); */
   background-image: linear-gradient(
     to right,
     #b87bc5,
@@ -36,4 +38,9 @@
   height: 29px;
   font-family: var(--header-title-font-medium);
   font-size: 15px;
+}
+
+.ctaBtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

@@ -1,11 +1,12 @@
 import { useRef } from 'react';
 import styles from './MobileNav.module.css';
 
-import Dialog from './Dialog';
+import NavDialog from './NavDialog';
 import hamburger from '../assets/icons/hamburger.svg';
 
 export default function MobileNav() {
   const dialogRef = useRef(null);
+
   return (
     <>
       <img
@@ -14,7 +15,7 @@ export default function MobileNav() {
         alt='navigation open icon'
         onClick={() => dialogRef.current.showModal()}
       />
-      <Dialog dialogRef={dialogRef} />
+      <NavDialog dialogRef={dialogRef} />
     </>
   );
 }

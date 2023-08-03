@@ -1,0 +1,52 @@
+.searchDialog {
+  margin: 15rem auto;
+  width: 350px;
+  height: 110px;
+  border: none;
+  border-radius: 5px;
+  /* animation */
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.searchDialog[open] {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.innerSearchDialog {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--light-purple);
+}
+
+.searchLabel {
+  margin-left: 3rem;
+  margin-right: 0.3rem;
+}
+
+.searchWrap {
+  position: relative;
+  margin-top: 40px;
+}
+
+.searchInput {
+  height: 30px;
+  display: inline;
+  padding-left: 0.5rem;
+}
+
+.submitSearchBtn {
+  position: absolute;
+  margin-left: 3px;
+  height: 30px;
+  width: 30px;
+}
+
+.searchIcon {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+}

@@ -214,21 +214,6 @@ export default function Carousel({
             </li>
           );
         })}
-        {/* <li ref={pushRef} className={styles.slide} data-slide-num={'slide-0'}>
-          2
-        </li>
-        <li ref={pushRef} className={styles.slide} data-slide-num={'slide-1'}>
-          0
-        </li>
-        <li ref={pushRef} className={styles.slide} data-slide-num={'slide-2'}>
-          1
-        </li>
-        <li ref={pushRef} className={styles.slide} data-slide-num={'slide-3'}>
-          2
-        </li>
-        <li ref={pushRef} className={styles.slide} data-slide-num={'slide-4'}>
-          0
-        </li> */}
       </ul>
       <button
         className={styles.changeSlideBtn}

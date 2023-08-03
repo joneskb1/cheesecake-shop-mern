@@ -1,0 +1,6 @@
+.header {
+  font-family: var(--header-title-font-regular);
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 2rem;
+}

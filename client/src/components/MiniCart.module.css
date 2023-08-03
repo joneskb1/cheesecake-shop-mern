@@ -1,0 +1,26 @@
+.miniCart {
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+  border: 1px solid black;
+  height: 70vh;
+  width: 70vw;
+  transform: translateX(150%);
+  transition: transform 1s ease-in-out;
+  z-index: 2;
+  background: white;
+}
+
+.miniCart[open] {
+  transform: translateX(0);
+}
+
+.miniCartOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}

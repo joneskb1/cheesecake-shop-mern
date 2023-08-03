@@ -5,7 +5,7 @@ export default function CarouselTextCard({ name, description }) {
     <div className={styles.carouselTextContainer}>
       <h3 className={styles.carouselHeading}>{name}</h3>
       <p className={styles.carouselDescription}> {description}</p>
-      <button className={styles.carouselCartBtn}>Add To Cart</button>
+      <button className={styles.carouselCartBtn}>See Details</button>
     </div>
   );
 }

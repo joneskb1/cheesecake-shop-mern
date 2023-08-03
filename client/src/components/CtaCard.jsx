@@ -7,7 +7,7 @@ export default function CtaCard() {
       <h1 className={`${styles.ctaText}`}>
         Savor the moment,<br></br> taste the cake.
       </h1>
-      <NavLink to='/cheesecakes'>
+      <NavLink className={styles.ctaNavLink} to='/cheesecakes'>
         <button className={styles.ctaBtn}>Shop</button>
       </NavLink>
     </div>
