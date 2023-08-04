@@ -3,13 +3,15 @@
   right: 0;
   top: 0;
   text-align: center;
-  border: 1px solid black;
-  height: 70vh;
-  width: 70vw;
+  height: calc(100vh - 60px);
+  width: 300px;
+  border: 1px solid var(--blue);
   transform: translateX(150%);
   transition: transform 1s ease-in-out;
   z-index: 2;
   background: white;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .miniCart[open] {
@@ -23,4 +25,9 @@
   left: 0;
   right: 0;
   z-index: 1;
+}
+
+.orderCardContainer {
+  height: calc(100vh - 120px - 210px);
+  overflow: scroll;
 }

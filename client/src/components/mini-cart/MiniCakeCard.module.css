@@ -1,0 +1,6 @@
+.miniCakeCardName {
+  font-size: 12px;
+  text-align: center;
+  font-family: var(--header-title-font-regular);
+  color: var(--black);
+}

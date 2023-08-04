@@ -1,0 +1,10 @@
+.sizeSelect {
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: var(--header-title-font-regular);
+  text-align: center;
+  width: 45px;
+  height: 25px;
+  color: var(--black);
+}
