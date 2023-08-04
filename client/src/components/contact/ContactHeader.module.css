@@ -1,0 +1,16 @@
+.contactTextContainer {
+  text-align: center;
+  padding: 2rem;
+}
+
+.contactHeader {
+  font-family: var(--header-title-font-regular);
+  font-size: 20px;
+  color: var(--blue);
+  margin: 1rem;
+}
+
+.contactText {
+  color: var(--black);
+  font-size: 14px;
+}
