@@ -1,0 +1,30 @@
+.shippingInputWrap {
+  position: relative;
+}
+
+.shippingInput {
+  appearance: none;
+  position: absolute;
+  top: 6px;
+  left: 2px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.shippingLabel {
+  font-family: var(--header-title-font-medium);
+  font-size: 14px;
+  margin-left: 1.5rem;
+  cursor: pointer;
+}
+
+input[type='radio']:checked {
+  background: var(--transparent-blue);
+}
+
+.shippingInputWrap:last-child {
+  margin-bottom: 2rem;
+}
