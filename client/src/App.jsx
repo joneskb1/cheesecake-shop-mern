@@ -69,7 +69,7 @@ const cakeCards = [
     img: chocolate,
     name: 'Chocolate',
     description:
-      'Embark on a chocolate lover&apos;s dream with a velvety, chocolaty oreo cheesecake that will satisfy even the most intense cocoa cravings.',
+      "Embark on a chocolate lover's dream with a velvety, chocolaty oreo cheesecake that will satisfy even the most intense cocoa cravings.",
     prices: {
       small: 14.99,
       large: 19.49,

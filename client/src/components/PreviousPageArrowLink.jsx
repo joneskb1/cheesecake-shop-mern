@@ -5,7 +5,7 @@ import returnArrow from '../assets/icons/return-arrow.svg';
 
 export default function PreviousPageArrowLink() {
   return (
-    <Link to='/cheesecakes' className={styles.link}>
+    <Link to='/cheesecakes' className={styles.backArrowLink}>
       <div className={styles.previousPageArrowWrap}>
         <img
           src={returnArrow}

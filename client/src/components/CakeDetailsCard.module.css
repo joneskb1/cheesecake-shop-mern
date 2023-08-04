@@ -1,0 +1,55 @@
+.cakeDetailsCard {
+  width: 265px;
+  height: auto;
+  margin: 0 auto 3rem;
+  padding: 1rem;
+  color: var(--blue);
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #090446;
+  box-shadow: 3px 3px 8px 0px rgba(9, 4, 70, 0.95);
+}
+
+.cakeDetailsCardHeader {
+  font-family: var(--header-title-font-medium);
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.select {
+  width: 54px;
+  height: 30px;
+  margin: 0 0 5px 10px;
+  padding-left: 5px;
+  border: 1px solid var(--blue);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.select:last-of-type {
+  margin-bottom: 15px;
+}
+
+.addToCartBtn {
+  display: block;
+  width: 108px;
+  height: 30px;
+  margin: 0 auto;
+  font-family: var(--header-title-font-medium);
+  font-size: 14px;
+  background: var(--blue);
+  color: white;
+}

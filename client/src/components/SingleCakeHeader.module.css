@@ -1,0 +1,7 @@
+.cakeHeader {
+  text-align: center;
+  font-family: var(--fancy-font);
+  font-size: 26px;
+  color: var(--purple);
+  margin-bottom: 0.5rem;
+}

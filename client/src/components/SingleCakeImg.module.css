@@ -1,0 +1,9 @@
+.cakeImage {
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+  width: 265px;
+  height: 175px;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0px 4px 5px 0px rgba(9, 4, 70, 0.58);
+}

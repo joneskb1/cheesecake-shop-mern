@@ -19,7 +19,7 @@
   color: var(--black);
 }
 
-.link {
+.backArrowLink {
   display: inline-block;
   width: 155px;
   height: 20px;

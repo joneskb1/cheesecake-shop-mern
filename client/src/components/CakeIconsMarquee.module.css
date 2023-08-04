@@ -1,0 +1,52 @@
+.marqueeItemWrap {
+  position: relative;
+  height: 50px;
+  width: 60px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  /* border: 1px solid black; */
+}
+
+.marqueeIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.greenCakeIcon {
+  top: 8px;
+  left: 10px;
+  width: 40px;
+  height: 44px;
+}
+
+.blueCakeIcon {
+  width: 55px;
+  height: 50px;
+  top: -2px;
+  left: 2px;
+}
+
+.purpleCakeIcon {
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 4px;
+}
+
+.magentaCakeIcon {
+  width: 37px;
+  height: 37px;
+  top: 4px;
+  left: 10px;
+}
+
+.pinkCakeIcon {
+  width: 42px;
+  height: 42px;
+  top: 0px;
+  left: 8px;
+}

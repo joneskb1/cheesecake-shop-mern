@@ -1,20 +1,30 @@
 import { useParams } from 'react-router-dom';
-import PreviousPageArrowLink from '../components/PreviousPageArrowLink';
 
-import styles from './CheesecakeScreen.module.css';
+// import styles from './CheesecakeScreen.module.css';
+
+import PreviousPageArrowLink from '../components/PreviousPageArrowLink';
+import SingleCakeHeader from '../components/SingleCakeHeader';
+import SingleCakeImg from '../components/SingleCakeImg';
+import CakeDetailsCard from '../components/CakeDetailsCard';
+import CakeIconsMarquee from '../components/CakeIconsMarquee';
+import YouMayLike from '../components/YouMayLike';
 
 export default function CheesecakeScreen({ cakeCards }) {
   const params = useParams();
-  const cakeName = params.id.split('-').join(' ');
+  const paramsCakeName = params.id.split('-').join(' ');
 
   const cake = cakeCards.find(
-    (cakeCard) => cakeCard.name.toLowerCase() === cakeName
+    (cakeCard) => cakeCard.name.toLowerCase() === paramsCakeName
   );
 
   return (
     <>
       <PreviousPageArrowLink />
-      <h1 className={styles.cakeHeader}>{cake.name}</h1>
+      <SingleCakeHeader name={cake.name} />
+      <SingleCakeImg cake={cake} />
+      <CakeDetailsCard cake={cake} />
+      <CakeIconsMarquee />
+      <YouMayLike cakeCards={cakeCards} cake={cake} />
     </>
   );
 }
