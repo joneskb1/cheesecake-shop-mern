@@ -1,0 +1,16 @@
+.footerContainer {
+  background-color: var(--blue);
+  height: 210px;
+  padding: 1rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.shipping {
+  font-size: 12px;
+  text-align: center;
+  color: white;
+  font-family: var(--header-title-font-regular);
+}

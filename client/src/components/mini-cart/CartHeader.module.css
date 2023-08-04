@@ -1,0 +1,16 @@
+.cartHeaderContainer {
+  background-color: var(--light-purple);
+  height: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: 0.5rem;
+  align-items: center;
+  justify-items: center;
+  border-radius: 5px;
+}
+
+.cartHeader {
+  font-family: var(--header-title-font-medium);
+  font-size: 14px;
+  color: var(--black);
+}

@@ -1,0 +1,14 @@
+.checkoutLink {
+  display: block;
+  margin: 1rem auto;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 0.5rem;
+  width: 155px;
+  height: 40px;
+  background-color: var(--purple);
+  color: white;
+  font-size: 14px;
+  font-family: var(--header-title-font-medium);
+}

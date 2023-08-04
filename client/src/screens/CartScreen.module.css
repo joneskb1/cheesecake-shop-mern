@@ -1,5 +1,29 @@
 .cartScreen {
   position: relative;
-  height: 1000px;
   overflow: hidden;
+}
+
+.cartHeader {
+  margin: 2rem auto 2rem;
+  font-size: 20px;
+  text-align: center;
+  font-family: var(--header-title-font-regular);
+  color: var(--blue);
+}
+
+.OrdersContainer {
+  width: 335px;
+  margin: 2rem auto 9rem;
+}
+
+.topCake {
+  position: absolute;
+  top: -15%;
+  left: 75%;
+}
+
+.bottomCake {
+  position: absolute;
+  bottom: -10%;
+  right: 75%;
 }

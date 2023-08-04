@@ -1,0 +1,17 @@
+.detailsContainer {
+  color: white;
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 77.5px 77.5px;
+  justify-content: center;
+  font-family: var(--header-title-font-regular);
+  gap: 10px;
+}
+
+.label {
+  justify-self: start;
+}
+
+.number {
+  justify-self: end;
+}
