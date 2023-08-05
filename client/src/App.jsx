@@ -8,11 +8,12 @@ import CartScreen from './screens/CartScreen';
 import CheckoutScreen from './screens/CheckoutScreen';
 import ContactScreen from './screens/ContactScreen';
 import MyAccountScreen from './screens/MyAccountScreen';
-import LoginScreen from './screens/LoginScreen';
-import SignUpScreen from './screens/SignUpScreen';
-import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
-import ResetPasswordScreen from './screens/ResetPasswordScreen';
 import HomeScreen from './screens/HomeScreen';
+import AuthScreen from './screens/AuthScreen';
+import Login from './components/Login';
+import ForgotPassword from './components/ForgotPassword';
+import CreateAccount from './components/CreateAccount';
+import ResetPassword from './components/ResetPassword';
 
 import blueberry from './assets/images/mobile-cakes-265w/blueberry-265w.jpg';
 import caramelCookie from './assets/images/mobile-cakes-265w/caramel-cookie-265w.jpg';
@@ -174,20 +175,14 @@ const router = createBrowserRouter([
         element: <MyAccountScreen />,
       },
       {
-        path: 'login',
-        element: <LoginScreen />,
-      },
-      {
-        path: 'sign-up',
-        element: <SignUpScreen />,
-      },
-      {
-        path: 'forgot-password',
-        element: <ForgotPasswordScreen />,
-      },
-      {
-        path: 'reset-password',
-        element: <ResetPasswordScreen />,
+        path: 'auth',
+        element: <AuthScreen />,
+        children: [
+          { path: 'login', element: <Login /> },
+          { path: 'forgot-password', element: <ForgotPassword /> },
+          { path: 'create-account', element: <CreateAccount /> },
+          { path: 'reset-password', element: <ResetPassword /> },
+        ],
       },
     ],
   },

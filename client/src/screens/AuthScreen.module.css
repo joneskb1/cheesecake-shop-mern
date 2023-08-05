@@ -1,0 +1,7 @@
+.auth {
+  min-height: 70vh;
+  background: url('../assets/images/auth-cake-723w.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 3rem;
+}
