@@ -1,9 +1,13 @@
-import { useState } from 'react';
-import styles from './CakeDetailsCard.module.css';
+import { useState } from "react";
+import styles from "./CakeDetailsCard.module.css";
 
-export default function CakeDetailsCard({ cake }) {
-  const [size, setSize] = useState('small');
+export default function CakeDetailsCard({ cake, setIsMiniCartOpen }) {
+  const [size, setSize] = useState("small");
   const [quantity, setQuantity] = useState(1);
+
+  const openMiniCart = function () {
+    setIsMiniCartOpen(true);
+  };
 
   const options = Array.from({ length: 10 }, (_, i) => i + 1);
 
@@ -20,26 +24,26 @@ export default function CakeDetailsCard({ cake }) {
       <h3 className={styles.cakeDetailsCardHeader}>{cake.name}</h3>
       <p className={styles.description}>{cake.description}</p>
       <p className={styles.price}>Price: ${cake.prices[size]}</p>
-      <label htmlFor='size' className={styles.label}>
+      <label htmlFor="size" className={styles.label}>
         Size:
       </label>
       <select
-        name='size'
-        id='size'
+        name="size"
+        id="size"
         className={styles.select}
         onChange={handleSizeChange}
         value={size}
       >
-        <option value='small'>6&quot;</option>
-        <option value='large'>12&quot;</option>
+        <option value="small">6&quot;</option>
+        <option value="large">12&quot;</option>
       </select>
       <br />
-      <label htmlFor='quantity' className={styles.label}>
+      <label htmlFor="quantity" className={styles.label}>
         Qty:
       </label>
       <select
-        name='size'
-        id='size'
+        name="size"
+        id="size"
         className={styles.select}
         onChange={handleQtyChange}
         value={quantity}
@@ -49,7 +53,9 @@ export default function CakeDetailsCard({ cake }) {
         ))}
       </select>
 
-      <button className={styles.addToCartBtn}>Add To Cart</button>
+      <button className={styles.addToCartBtn} onClick={openMiniCart}>
+        Add To Cart
+      </button>
     </div>
   );
 }

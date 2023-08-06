@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
-import styles from './ShopCakeCard.module.css';
+import styles from "./ShopCakeCard.module.css";
 
 export default function ShopCakeCard({ src, children }) {
-  const id = children.split(' ').join('-').toLowerCase();
+  const id = children.split(" ").join("-").toLowerCase();
+
   return (
     <div className={styles.cakeWrap}>
       <NavLink to={`/cheesecake/${id}`} className={styles.navLinkImg}>

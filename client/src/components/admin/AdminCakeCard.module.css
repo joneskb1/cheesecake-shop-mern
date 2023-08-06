@@ -1,0 +1,11 @@
+.cakeName {
+  font-size: 14px;
+  font-family: var(--header-title-font-regular);
+  color: var(--black);
+}
+
+@media screen and (min-width: 750px) {
+  .cakeName {
+    display: none;
+  }
+}
