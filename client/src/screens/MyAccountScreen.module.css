@@ -1,0 +1,32 @@
+.accountScreen {
+  position: relative;
+  padding-top: 2.5rem;
+}
+
+.backgroundCake1 {
+  position: absolute;
+  top: -80px;
+  left: -100px;
+  z-index: -1;
+}
+
+.backgroundCake2 {
+  position: absolute;
+  bottom: -200px;
+  right: -100px;
+  z-index: -1;
+}
+
+.accountHeader {
+  font-family: var(--header-title-font-regular);
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.accountSectionHeader {
+  font-family: var(--header-title-font-regular);
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 1rem;
+}

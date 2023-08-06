@@ -1,0 +1,18 @@
+.orderInfoWrap {
+  margin-bottom: 1rem;
+}
+.sectionHeader {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.orderInfo {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.orderInfoP {
+  margin-bottom: 0.2rem;
+}

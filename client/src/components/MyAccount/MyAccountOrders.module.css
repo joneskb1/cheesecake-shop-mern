@@ -1,0 +1,10 @@
+.section {
+  font-family: var(--header-title-font-regular);
+  width: 85vw;
+  max-width: 737px;
+  margin: 0 auto 7rem;
+  padding-top: 0.5rem;
+  border: 1px solid var(--blue);
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.16);
+}
