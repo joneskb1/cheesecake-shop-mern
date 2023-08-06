@@ -14,6 +14,7 @@ import Login from './components/Login';
 import ForgotPassword from './components/ForgotPassword';
 import CreateAccount from './components/CreateAccount';
 import ResetPassword from './components/ResetPassword';
+import AdminProducts from './screens/Admin/AdminProducts';
 
 import blueberry from './assets/images/mobile-cakes-265w/blueberry-265w.jpg';
 import caramelCookie from './assets/images/mobile-cakes-265w/caramel-cookie-265w.jpg';
@@ -173,6 +174,10 @@ const router = createBrowserRouter([
       {
         path: 'my-account',
         element: <MyAccountScreen />,
+      },
+      {
+        path: 'admin-products',
+        element: <AdminProducts />,
       },
       {
         path: 'auth',
