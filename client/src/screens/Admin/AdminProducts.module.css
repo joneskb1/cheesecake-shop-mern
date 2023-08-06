@@ -1,0 +1,26 @@
+.pageContainer {
+  margin: 2rem 1rem;
+}
+
+.headingContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header {
+  font-size: 20px;
+  font-family: var(--header-title-font-regular);
+  color: var(--blue);
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  font-family: var(--header-title-font-regular);
+  font-size: 14px;
+  background-color: var(--purple);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}

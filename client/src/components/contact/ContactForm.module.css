@@ -15,10 +15,11 @@
 }
 
 .input {
-  height: 40px;
+  padding-left: 10px;
+  height: 35px;
   min-width: 335px;
   border-radius: 5px;
-  border: 1px solid var(--blue);
+  border: 1px solid var(--black);
   margin-bottom: 1rem;
 }
 

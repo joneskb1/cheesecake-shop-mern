@@ -1,17 +1,21 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 
-// import styles from './CheesecakeScreen.module.css';
+import styles from "./CheesecakeScreen.module.css";
 
-import PreviousPageArrowLink from '../components/PreviousPageArrowLink';
-import SingleCakeHeader from '../components/SingleCakeHeader';
-import SingleCakeImg from '../components/SingleCakeImg';
-import CakeDetailsCard from '../components/CakeDetailsCard';
-import CakeIconsMarquee from '../components/CakeIconsMarquee';
-import YouMayLike from '../components/YouMayLike';
+import PreviousPageArrowLink from "../components/PreviousPageArrowLink";
+import SingleCakeHeader from "../components/SingleCakeHeader";
+import SingleCakeImg from "../components/SingleCakeImg";
+import CakeDetailsCard from "../components/CakeDetailsCard";
+import CakeIconsMarquee from "../components/CakeIconsMarquee";
+import YouMayLike from "../components/YouMayLike";
+import MiniCart from "../components/mini-cart/MiniCart";
 
 export default function CheesecakeScreen({ cakeCards }) {
+  const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
+
   const params = useParams();
-  const paramsCakeName = params.id.split('-').join(' ');
+  const paramsCakeName = params.id.split("-").join(" ");
 
   const cake = cakeCards.find(
     (cakeCard) => cakeCard.name.toLowerCase() === paramsCakeName
@@ -19,12 +23,22 @@ export default function CheesecakeScreen({ cakeCards }) {
 
   return (
     <>
-      <PreviousPageArrowLink />
-      <SingleCakeHeader name={cake.name} />
-      <SingleCakeImg cake={cake} />
-      <CakeDetailsCard cake={cake} />
-      <CakeIconsMarquee />
-      <YouMayLike cakeCards={cakeCards} cake={cake} />
+      <div className={styles.container}>
+        <PreviousPageArrowLink />
+        <SingleCakeHeader name={cake.name} />
+        <SingleCakeImg cake={cake} />
+        <CakeDetailsCard
+          cake={cake}
+          isMiniCartOpen={isMiniCartOpen}
+          setIsMiniCartOpen={setIsMiniCartOpen}
+        />
+        <CakeIconsMarquee />
+        <YouMayLike cakeCards={cakeCards} cake={cake} />
+        <MiniCart
+          isMiniCartOpen={isMiniCartOpen}
+          setIsMiniCartOpen={setIsMiniCartOpen}
+        />
+      </div>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import styles from "./MiniCart.module.css";
-import CartHeader from "./cartHeader";
+import CartHeader from "./CartHeader";
 import OrderCard from "./OrderCard";
 import MiniCartFooter from "./MiniCartFooter";
 
@@ -26,8 +26,7 @@ export default function MiniCart({ isMiniCartOpen, setIsMiniCartOpen }) {
           <OrderCard />
         </div>
 
-        <MiniCartFooter />
-        {/* <button onClick={closeMiniCart}>Close Mini Cart</button> */}
+        <MiniCartFooter closeMiniCart={closeMiniCart} />
       </div>
 
       {isMiniCartOpen && (
