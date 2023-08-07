@@ -1,0 +1,17 @@
+.orderContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.header {
+  justify-self: start;
+  font-family: var(--header-title-font-bold);
+  font-size: 14px;
+  text-align: left;
+}
+
+.text {
+  justify-self: end;
+  font-size: 14px;
+  text-align: right;
+}

@@ -1,6 +1,6 @@
 import styles from "./SummaryPlaceOrder.module.css";
 import CheckoutBtn from "./mini-cart/CheckoutBtn";
-export default function SummaryPlaceOrder() {
+export default function SummaryPlaceOrder({ placeOrderBtn = true }) {
   return (
     <div className={`${styles.summaryContainer}`}>
       <h2 className={styles.summaryHeading}>Summary</h2>
@@ -16,7 +16,7 @@ export default function SummaryPlaceOrder() {
         <p className={styles.left}>Payment Method</p>
         <p className={styles.right}>Paypal</p>
       </div>
-      <CheckoutBtn>Place Order</CheckoutBtn>
+      {placeOrderBtn && <CheckoutBtn>Place Order</CheckoutBtn>}
     </div>
   );
 }
