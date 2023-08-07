@@ -2,6 +2,7 @@
   font-size: 14px;
   font-family: var(--header-title-font-regular);
   color: var(--black);
+  text-align: center;
 }
 
 @media screen and (min-width: 750px) {

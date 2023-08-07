@@ -14,7 +14,11 @@ import Login from './components/Login';
 import ForgotPassword from './components/ForgotPassword';
 import CreateAccount from './components/CreateAccount';
 import ResetPassword from './components/ResetPassword';
-import AdminProducts from './screens/Admin/AdminProducts';
+import AdminProductsScreen from './screens/Admin/AdminProductsScreen';
+import AdminProductScreen from './screens/Admin/AdminProductScreen';
+import AdminOrderScreen from './screens/Admin/AdminOrderScreen';
+import AdminProductCreateScreen from './screens/Admin/AdminProductCreateScreen';
+import AdminOrdersScreen from './screens/Admin/AdminOrdersScreen';
 
 import blueberry from './assets/images/mobile-cakes-265w/blueberry-265w.jpg';
 import caramelCookie from './assets/images/mobile-cakes-265w/caramel-cookie-265w.jpg';
@@ -177,7 +181,23 @@ const router = createBrowserRouter([
       },
       {
         path: 'admin-products',
-        element: <AdminProducts />,
+        element: <AdminProductsScreen />,
+      },
+      {
+        path: 'admin-products/:id',
+        element: <AdminProductScreen />,
+      },
+      {
+        path: 'admin-create-product',
+        element: <AdminProductCreateScreen />,
+      },
+      {
+        path: 'admin-orders',
+        element: <AdminOrdersScreen />,
+      },
+      {
+        path: 'admin-orders/:id',
+        element: <AdminOrderScreen />,
       },
       {
         path: 'auth',
