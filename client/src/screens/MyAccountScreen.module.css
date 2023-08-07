@@ -1,6 +1,7 @@
 .accountScreen {
   position: relative;
   padding-top: 2.5rem;
+  overflow: hidden;
 }
 
 .backgroundCake1 {

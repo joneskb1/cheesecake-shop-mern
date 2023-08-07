@@ -1,12 +1,20 @@
-import styles from './MyAccountOrders.module.css';
+import styles from "./MyAccountOrders.module.css";
 
-import MyAccountOrdersInfo from './MyAccountOrdersInfo';
-import MyAccountDetails from './MyAccountDetails';
+import MyAccountOrdersInfo from "./MyAccountOrdersInfo";
+import MyAccountDetails from "./MyAccountDetails";
+import SummaryPlaceOrder from "../SummaryPlaceOrder";
+import ProductCard from "./ProductCard";
 
 export default function MyAccountOrders() {
   return (
     <section className={styles.section}>
       <MyAccountOrdersInfo />
+      <div className={styles.orderSummaryContainer}>
+        <h2 className={styles.header}>Items</h2>
+        <hr></hr>
+        <ProductCard />
+        <SummaryPlaceOrder placeOrderBtn={false} />
+      </div>
       <MyAccountDetails />
     </section>
   );
