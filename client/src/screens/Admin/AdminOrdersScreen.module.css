@@ -1,0 +1,12 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 20px;
+  font-family: var(--header-title-font-regular);
+  text-align: center;
+  margin: 1rem;
+  color: var(--blue);
+}

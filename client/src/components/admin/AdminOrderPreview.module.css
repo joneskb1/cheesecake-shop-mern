@@ -1,0 +1,37 @@
+.container {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  border: 1px solid var(--black);
+  margin: 1rem auto;
+  max-width: 600px;
+  padding-top: 1rem;
+}
+
+.itemsHeader {
+  font-family: var(--header-title-font-regular);
+  margin: 0 auto;
+  width: 90%;
+}
+.productWrap {
+  margin: 1rem auto;
+  width: 90%;
+}
+
+.line {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.btn {
+  background-color: var(--purple);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--header-title-font-regular);
+  text-align: center;
+  display: block;
+  width: 100px;
+  margin: 1rem auto;
+}

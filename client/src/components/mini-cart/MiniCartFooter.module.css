@@ -20,8 +20,9 @@
   background: none;
   font-size: 12px;
   color: white;
-}
-
-.closeBtn:hover {
   text-decoration: underline;
 }
+
+/* .closeBtn:hover {
+  text-decoration: underline;
+} */

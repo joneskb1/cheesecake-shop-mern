@@ -1,0 +1,6 @@
+.heading {
+  font-family: var(--header-title-font-regular);
+  text-align: center;
+  margin: 1rem auto;
+  font-size: 20px;
+}

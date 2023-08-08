@@ -10,6 +10,7 @@ export default function CartScreen() {
       <img className={styles.topCake} src={cake1} alt="berry cheesecake" />
       <h1 className={styles.cartHeader}>Cart</h1>
       <SummaryCart />
+      <h2 className={styles.itemsHeader}>Items</h2>
       <div className={styles.OrdersContainer}>
         <CartHeader />
         <OrderCard />
