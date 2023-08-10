@@ -1,5 +1,5 @@
 import styles from './About.module.css';
-import cake from '../assets/images/about-cake-245w.jpg';
+import cake from '../assets/images/mobile/about-cake-245w.jpg';
 
 export default function About() {
   return (

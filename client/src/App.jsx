@@ -20,15 +20,15 @@ import AdminOrderScreen from './screens/Admin/AdminOrderScreen';
 import AdminCreateProductScreen from './screens/Admin/AdminCreateProductScreen';
 import AdminOrdersScreen from './screens/Admin/AdminOrdersScreen';
 
-import blueberry from './assets/images/mobile-cakes-265w/blueberry-265w.jpg';
-import caramelCookie from './assets/images/mobile-cakes-265w/caramel-cookie-265w.jpg';
-import caramelTurtle from './assets/images/mobile-cakes-265w/caramel-turtle-265w.jpg';
-import cherry from './assets/images/mobile-cakes-265w/cherry-265w.jpg';
-import chocolate from './assets/images/mobile-cakes-265w/chocolate-265w.jpg';
-import lemon from './assets/images/mobile-cakes-265w/lemon-265w.jpg';
-import raspberry from './assets/images/mobile-cakes-265w/raspberry-265w.jpg';
-import redVelvet from './assets/images/mobile-cakes-265w/red-velvet-265w.jpg';
-import strawberry from './assets/images/mobile-cakes-265w/strawberry-265w.jpg';
+import blueberry from './assets/images/mobile/mobile-cakes-265w/blueberry-265w.jpg';
+import caramelCookie from './assets/images/mobile/mobile-cakes-265w/caramel-cookie-265w.jpg';
+import caramelTurtle from './assets/images/mobile/mobile-cakes-265w/caramel-turtle-265w.jpg';
+import cherry from './assets/images/mobile/mobile-cakes-265w/cherry-265w.jpg';
+import chocolate from './assets/images/mobile/mobile-cakes-265w/chocolate-265w.jpg';
+import lemon from './assets/images/mobile/mobile-cakes-265w/lemon-265w.jpg';
+import raspberry from './assets/images/mobile/mobile-cakes-265w/raspberry-265w.jpg';
+import redVelvet from './assets/images/mobile/mobile-cakes-265w/red-velvet-265w.jpg';
+import strawberry from './assets/images/mobile/mobile-cakes-265w/strawberry-265w.jpg';
 
 const cakeCards = [
   {

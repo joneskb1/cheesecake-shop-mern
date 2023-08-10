@@ -2,7 +2,7 @@ import styles from './AdminProductPreview.module.css';
 import edit from '../../assets/icons/edit.svg';
 import trash from '../../assets/icons/trash.svg';
 import AdminCakeCard from './AdminCakeCard';
-import cake from '../../assets/images/mobile-cakes-75w/blueberry-75w.jpg';
+import cake from '../../assets/images/mobile/mobile-cakes-75w/blueberry-75w.jpg';
 
 export default function AdminProductPreview() {
   return (

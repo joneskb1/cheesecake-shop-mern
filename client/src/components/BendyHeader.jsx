@@ -1,4 +1,4 @@
-import bendyHeaderMobile from '../assets/images/bent-text.png';
+import bendyHeaderMobile from '../assets/images/mobile/bent-text.png';
 import styles from './BendyHeader.module.css';
 
 export default function BendyHeader() {

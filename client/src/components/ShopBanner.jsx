@@ -1,7 +1,7 @@
 import styles from './ShopBanner.module.css';
 
-import smallCake from '../assets/images/banner-small-cake-99w.png';
-import largeCake from '../assets/images/banner-large-cake-139w.png';
+import smallCake from '../assets/images/mobile/banner-small-cake-99w.png';
+import largeCake from '../assets/images/mobile/banner-large-cake-139w.png';
 
 export default function ShopBanner() {
   return (
