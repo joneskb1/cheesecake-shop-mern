@@ -1,0 +1,26 @@
+.variantWrap {
+  width: 90vw;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.variant {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--header-title-font-medium);
+  padding: 0.5rem 1rem;
+  background: var(--light-purple);
+  border-radius: 5px;
+}
+
+.trashIcon {
+  width: 16px;
+  height: 18px;
+}
+
+.editIcon {
+  width: 16px;
+  height: 16px;
+}
