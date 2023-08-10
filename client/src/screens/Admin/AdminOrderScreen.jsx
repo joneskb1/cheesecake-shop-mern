@@ -1,5 +1,10 @@
-import React from 'react';
-
+import styles from "./AdminOrderScreen.module.css";
+import MyAccountOrders from "../../components/MyAccount/MyAccountOrders";
 export default function AdminOrderScreen() {
-  return <div>AdminOrderScreen</div>;
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.heading}>Order Details</h1>
+      <MyAccountOrders />
+    </div>
+  );
 }
