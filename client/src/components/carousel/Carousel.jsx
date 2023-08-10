@@ -9,11 +9,11 @@ import {
 import styles from './Carousel.module.css';
 import CarouselImg from './CarouselImg';
 import CarouselTextCard from './CarouselTextCard';
-import cherry from '../assets/images/mobile/carousel-cherry-335w.jpg';
-import chocolate from '../assets/images/mobile/carousel-chocolate-335w.jpg';
-import redVelvet from '../assets/images/mobile/carousel-red-velvet-335w.jpg';
-import arrowLeftMobile from '../assets/icons/carousel-arrow-left-mobile.svg';
-import arrowRightMobile from '../assets/icons/carousel-arrow-right-mobile.svg';
+import cherry from '../../assets/images/mobile/carousel-cherry-335w.jpg';
+import chocolate from '../../assets/images/mobile/carousel-chocolate-335w.jpg';
+import redVelvet from '../../assets/images/mobile/carousel-red-velvet-335w.jpg';
+import arrowLeftMobile from '../../assets/icons/carousel-arrow-left-mobile.svg';
+import arrowRightMobile from '../../assets/icons/carousel-arrow-right-mobile.svg';
 
 const carouselCards = [
   {

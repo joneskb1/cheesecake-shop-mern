@@ -1,5 +1,6 @@
-import styles from "./SummaryPlaceOrder.module.css";
-import CheckoutBtn from "./mini-cart/CheckoutBtn";
+import styles from './SummaryPlaceOrder.module.css';
+import CheckoutBtn from '../mini-cart/CheckoutBtn';
+
 export default function SummaryPlaceOrder({ placeOrderBtn = true }) {
   return (
     <div className={`${styles.summaryContainer}`}>

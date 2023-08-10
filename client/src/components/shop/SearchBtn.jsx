@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 
-import shopScreenStyles from '../screens/ShopCheesecakesScreen.module.css';
+import shopScreenStyles from '../../screens/ShopCheesecakesScreen.module.css';
 import styles from './SearchBtn.module.css';
 
-import searchIcon from '../assets/icons/search.svg';
+import searchIcon from '../../assets/icons/search.svg';
 import SearchDialog from './SearchDialog';
 
 export default function SearchBtn({
