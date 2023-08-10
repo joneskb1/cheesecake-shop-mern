@@ -1,0 +1,41 @@
+.textInputLabel {
+  font-family: var(--header-title-font-medium);
+  display: block;
+  font-size: 18px;
+}
+
+.textInput {
+  width: 100%;
+  height: 35px;
+  padding-left: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.adminProductDescription {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.upLoadImageBtn {
+  position: relative;
+  display: inline-block;
+  color: white;
+  background: var(--blue);
+  padding: 0.4rem 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.uploadIcon {
+  display: inline-block;
+  padding-top: 0.3rem;
+}

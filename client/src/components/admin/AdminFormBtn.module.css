@@ -1,0 +1,12 @@
+.adminFormBtn {
+  display: block;
+  /* width: 100%; */
+  width: 158px;
+  height: 43px;
+  padding: 0.6rem 1rem;
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 1rem;
+  background: var(--purple);
+}

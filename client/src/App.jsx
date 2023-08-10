@@ -17,7 +17,7 @@ import ResetPassword from './components/ResetPassword';
 import AdminProductsScreen from './screens/Admin/AdminProductsScreen';
 import AdminProductScreen from './screens/Admin/AdminProductScreen';
 import AdminOrderScreen from './screens/Admin/AdminOrderScreen';
-import AdminProductCreateScreen from './screens/Admin/AdminProductCreateScreen';
+import AdminCreateProductScreen from './screens/Admin/AdminCreateProductScreen';
 import AdminOrdersScreen from './screens/Admin/AdminOrdersScreen';
 
 import blueberry from './assets/images/mobile-cakes-265w/blueberry-265w.jpg';
@@ -189,7 +189,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'admin-create-product',
-        element: <AdminProductCreateScreen />,
+        element: <AdminCreateProductScreen />,
       },
       {
         path: 'admin-orders',
