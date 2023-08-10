@@ -1,4 +1,4 @@
-import spinnyCake from '../assets/images/mobile/spinny-cake-260w.png';
+import spinnyCake from '../../assets/images/mobile/spinny-cake-260w.png';
 import styles from './SpinnyCake.module.css';
 
 export default function SpinnyCake({ deg }) {

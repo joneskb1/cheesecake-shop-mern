@@ -1,11 +1,11 @@
 import Marquee from 'react-fast-marquee';
 import styles from './CakeIconsMarquee.module.css';
 
-import purpleCakeIcon from '../assets/icons/purple-cake.svg';
-import pinkCakeIcon from '../assets/icons/pink-cake.svg';
-import greenCakeIcon from '../assets/icons/green-cake.svg';
-import magentaCakeIcon from '../assets/icons/magenta-cake.svg';
-import blueCakeIcon from '../assets/icons/blue-cake.svg';
+import purpleCakeIcon from '../../assets/icons/purple-cake.svg';
+import pinkCakeIcon from '../../assets/icons/pink-cake.svg';
+import greenCakeIcon from '../../assets/icons/green-cake.svg';
+import magentaCakeIcon from '../../assets/icons/magenta-cake.svg';
+import blueCakeIcon from '../../assets/icons/blue-cake.svg';
 
 export default function CakeIconsMarquee() {
   return (

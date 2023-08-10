@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import styles from './NavDialog.module.css';
-import closeX from '../assets/icons/close-x.svg';
+import closeX from '../../assets/icons/close-x.svg';
 
 export default function NavDialog({ dialogRef }) {
   const handleCloseDialog = function () {

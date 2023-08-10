@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './PreviousPageArrowLink.module.css';
 
-import returnArrow from '../assets/icons/return-arrow.svg';
+import returnArrow from '../../assets/icons/return-arrow.svg';
 
 export default function PreviousPageArrowLink() {
   return (

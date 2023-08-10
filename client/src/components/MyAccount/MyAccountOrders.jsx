@@ -1,9 +1,9 @@
-import styles from "./MyAccountOrders.module.css";
+import styles from './MyAccountOrders.module.css';
 
-import MyAccountOrdersInfo from "./MyAccountOrdersInfo";
-import MyAccountDetails from "./MyAccountDetails";
-import SummaryPlaceOrder from "../SummaryPlaceOrder";
-import ProductCard from "./ProductCard";
+import MyAccountOrdersInfo from './MyAccountOrdersInfo';
+import MyAccountDetails from './MyAccountDetails';
+import SummaryPlaceOrder from '../checkout/SummaryPlaceOrder';
+import ProductCard from './ProductCard';
 
 export default function MyAccountOrders() {
   return (

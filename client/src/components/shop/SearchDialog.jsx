@@ -1,6 +1,6 @@
 import styles from './SearchDialog.module.css';
 
-import searchIcon from '../assets/icons/search.svg';
+import searchIcon from '../../assets/icons/search.svg';
 
 export default function SearchDialog({
   searchDialogRef,

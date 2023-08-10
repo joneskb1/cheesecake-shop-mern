@@ -1,5 +1,4 @@
 import styles from './Footer.module.css';
-
 import FooterShopBtn from './FooterShopBtn';
 import FooterNav from './FooterNav';
 import FooterInfo from './FooterInfo';

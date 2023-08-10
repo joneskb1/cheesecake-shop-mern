@@ -1,5 +1,5 @@
 import styles from './FeaturedCheesecakesHeader.module.css';
-import chef from '../assets/icons/chef-icon-31w.png';
+import chef from '../../assets/icons/chef-icon-31w.png';
 
 export default function FeaturedCheesecakesHeader() {
   return (

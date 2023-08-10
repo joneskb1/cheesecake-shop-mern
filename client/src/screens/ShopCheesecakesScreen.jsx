@@ -2,10 +2,10 @@ import { useState } from 'react';
 
 import styles from './ShopCheesecakesScreen.module.css';
 
-import ShopBanner from '../components/ShopBanner';
-import ShopCheesecakesHeader from '../components/ShopCheesecakesHeader';
-import SearchBtn from '../components/SearchBtn';
-import ShopCakes from '../components/ShopCakes';
+import ShopBanner from '../components/shop/ShopBanner';
+import ShopCheesecakesHeader from '../components/shop/ShopCheesecakesHeader';
+import SearchBtn from '../components/shop/SearchBtn';
+import ShopCakes from '../components/shop/ShopCakes';
 
 export default function ShopheesecakesScreen({ cakeCards, searchMap }) {
   const [cakes, setCakes] = useState(cakeCards);

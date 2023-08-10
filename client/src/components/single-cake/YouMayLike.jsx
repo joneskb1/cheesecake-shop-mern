@@ -1,7 +1,7 @@
-import styles from "./YouMayLike.module.css";
+import styles from './YouMayLike.module.css';
 
-import ShopCakeCard from "./ShopCakeCard";
-import { useEffect, useCallback, useState } from "react";
+import ShopCakeCard from '../shop/ShopCakeCard';
+import { useEffect, useCallback, useState } from 'react';
 
 export default function YouMayLike({ cakeCards, cake }) {
   const [theRandomCakes, setTheRandomCakes] = useState([]);

@@ -1,7 +1,7 @@
 import styles from './CartScreen.module.css';
 import cake1 from '../assets/images/mobile/cart-cake.png';
 import cake2 from '../assets/images/mobile/cart-cake-2.png';
-import SummaryCart from '../components/SummaryCart';
+import SummaryCart from '../components/cart/SummaryCart';
 import CartHeader from '../components/mini-cart/CartHeader';
 import OrderCard from '../components/mini-cart/OrderCard';
 export default function CartScreen() {
