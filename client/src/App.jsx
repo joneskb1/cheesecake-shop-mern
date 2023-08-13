@@ -30,9 +30,20 @@ import raspberry from './assets/images/mobile/mobile-cakes-265w/raspberry-265w.j
 import redVelvet from './assets/images/mobile/mobile-cakes-265w/red-velvet-265w.jpg';
 import strawberry from './assets/images/mobile/mobile-cakes-265w/strawberry-265w.jpg';
 
+import blueberryTablet from './assets/images/tablet/cakes-354w/blueberry-354w.jpg';
+import caramelCookieTablet from './assets/images/tablet/cakes-354w/caramel-cookie-354w.jpg';
+import caramelTurtleTablet from './assets/images/tablet/cakes-354w/caramel-turtle-354w.jpg';
+import cherryTablet from './assets/images/tablet/cakes-354w/cherry-354w.jpg';
+import chocolateTablet from './assets/images/tablet/cakes-354w/chocolate-354w.jpg';
+import lemonTablet from './assets/images/tablet/cakes-354w/lemon-354w.jpg';
+import raspberryTablet from './assets/images/tablet/cakes-354w/raspberry-354w.jpg';
+import redVelvetTablet from './assets/images/tablet/cakes-354w/red-velvet-354w.jpg';
+import strawberryTablet from './assets/images/tablet/cakes-354w/strawberry-354w.jpg';
+
 const cakeCards = [
   {
     img: blueberry,
+    imgTablet: blueberryTablet,
     name: 'Blueberry',
     description:
       'A delectable combination of smooth, creamy cheesecake complemented by the burst of juicy, ripe blueberries for a perfect balance of sweet and tangy flavors.',
@@ -43,6 +54,7 @@ const cakeCards = [
   },
   {
     img: caramelTurtle,
+    imgTablet: caramelTurtleTablet,
     name: 'Caramel Turtle',
     description:
       'Dive into layers of rich caramel, toasted pecans, and velvety chocolate ganache atop a velvety cheesecake, creating a heavenly turtle-inspired treat.',
@@ -53,6 +65,7 @@ const cakeCards = [
   },
   {
     img: caramelCookie,
+    imgTablet: caramelCookieTablet,
     name: 'Caramel Cookie',
     description:
       'Immerse yourself in velvety cheesecake infused with rich caramel swirls and crushed cookie pieces that add a delightful crunch to every heavenly bite.',
@@ -63,6 +76,7 @@ const cakeCards = [
   },
   {
     img: cherry,
+    imgTablet: cherryTablet,
     name: 'Cherry',
     description:
       'Indulge in a luscious cheesecake crowned with a layer of sweet, succulent cherries, providing a delightful contrast of creamy and fruity goodness.',
@@ -73,6 +87,8 @@ const cakeCards = [
   },
   {
     img: chocolate,
+    imgTablet: chocolateTablet,
+
     name: 'Chocolate',
     description:
       "Embark on a chocolate lover's dream with a velvety, chocolaty oreo cheesecake that will satisfy even the most intense cocoa cravings.",
@@ -83,6 +99,8 @@ const cakeCards = [
   },
   {
     img: lemon,
+    imgTablet: lemonTablet,
+
     name: 'Lemon',
     prices: {
       small: 12.99,
@@ -93,6 +111,8 @@ const cakeCards = [
   },
   {
     img: raspberry,
+    imgTablet: raspberryTablet,
+
     name: 'Raspberry',
     description:
       'Revel in the sweet and tart allure of ripe raspberries topping a velvety cheesecake, offering a delightful symphony of fruity and creamy flavors.',
@@ -104,6 +124,8 @@ const cakeCards = [
 
   {
     img: redVelvet,
+    imgTablet: redVelvetTablet,
+
     name: 'Red Velvet',
     description:
       'Experience the ultimate indulgence with a sumptuous, red velvet-inspired cheesecake, boasting a velvety texture and a hint of cocoa richness.',
@@ -114,6 +136,7 @@ const cakeCards = [
   },
   {
     img: strawberry,
+    imgTablet: strawberryTablet,
     name: 'Strawberry',
     description:
       'Savor the taste of summer with a creamy cheesecake adorned with plump, juicy strawberries, the sweetest match made in dessert heaven.',
@@ -143,8 +166,6 @@ allHitTerms.forEach((term) => {
   });
   searchMap.set(term, hits);
 });
-
-console.log(searchMap);
 
 const router = createBrowserRouter([
   {

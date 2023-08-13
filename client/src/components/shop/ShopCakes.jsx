@@ -32,7 +32,7 @@ export default function ShopCakes({
 
       {cakes &&
         cakes.map((card, index) => (
-          <ShopCakeCard src={card.img} key={index}>
+          <ShopCakeCard cake={card} key={index}>
             {card.name}
           </ShopCakeCard>
         ))}

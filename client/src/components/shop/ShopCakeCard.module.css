@@ -36,3 +36,32 @@
 .navLinkImg {
   display: inline-block;
 }
+
+@media screen and (min-width: 744px) {
+  .cakeWrap {
+    grid-column: auto;
+  }
+
+  .cakeTitle {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .cakeWrap {
+    height: 240px;
+    width: 265px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .cakeWrap {
+    height: 345px;
+    width: 354px;
+    margin-bottom: 0rem;
+  }
+
+  .cakeTitle {
+    font-size: 26px;
+  }
+}
