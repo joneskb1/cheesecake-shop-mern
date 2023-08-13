@@ -17,7 +17,7 @@
 }
 
 .description {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .price {
@@ -47,9 +47,57 @@
   display: block;
   width: 108px;
   height: 30px;
-  margin: 0 auto;
+  margin: 0.5rem auto 0;
   font-family: var(--header-title-font-medium);
   font-size: 14px;
   background: var(--blue);
   color: white;
+}
+
+@media screen and (min-width: 744px) {
+  .cakeDetailsCard {
+    width: 436px;
+    padding: 2rem 3rem;
+  }
+
+  .cakeDetailsCardHeader {
+    font-size: 26px;
+  }
+  .label,
+  .price {
+    font-size: 16px;
+  }
+
+  .addToCartBtn {
+    width: 168px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cakeDetailsCard {
+    width: 522px;
+    height: 484px;
+    margin: 0;
+  }
+
+  .cakeDetailsCardHeader {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .label,
+  .price {
+    font-size: 18px;
+  }
+
+  .addToCartBtn {
+    width: 245px;
+    height: 55px;
+    font-size: 24px;
+  }
 }

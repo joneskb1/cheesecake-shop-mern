@@ -1,7 +1,7 @@
 .cakeWrap {
   grid-column: 1/-1;
   width: 100%;
-  height: 235px;
+  height: 100%;
   margin-bottom: 3rem;
   text-align: center;
 }
@@ -63,5 +63,22 @@
 
   .cakeTitle {
     font-size: 26px;
+  }
+}
+
+/* you may like section */
+.youMayLikeCard,
+.youMayLikeWrap {
+  width: 100%;
+  height: 100%;
+}
+
+.youMayLikeWrap {
+  margin-bottom: 3rem;
+}
+
+@media screen and (min-width: 1440px) {
+  .youMayLikeWrap {
+    width: 354px;
   }
 }

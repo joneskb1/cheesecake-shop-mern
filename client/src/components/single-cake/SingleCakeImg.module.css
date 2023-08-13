@@ -7,3 +7,18 @@
   margin: 0 auto 1.5rem;
   box-shadow: 0px 4px 5px 0px rgba(9, 4, 70, 0.58);
 }
+
+@media screen and (min-width: 744px) {
+  .cakeImage {
+    width: 436px;
+    height: 289px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cakeImage {
+    width: 732px;
+    height: 484px;
+    margin-bottom: 0;
+  }
+}

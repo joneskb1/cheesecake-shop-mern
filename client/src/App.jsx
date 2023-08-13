@@ -40,10 +40,32 @@ import raspberryTablet from './assets/images/tablet/cakes-354w/raspberry-354w.jp
 import redVelvetTablet from './assets/images/tablet/cakes-354w/red-velvet-354w.jpg';
 import strawberryTablet from './assets/images/tablet/cakes-354w/strawberry-354w.jpg';
 
+import blueberryTabletLarge from './assets/images/tablet/cakes-436w/blueberry-436w.jpg';
+import caramelCookieTabletLarge from './assets/images/tablet/cakes-436w/caramel-cookie-436w.jpg';
+import caramelTurtleTabletLarge from './assets/images/tablet/cakes-436w/caramel-turtle-436w.jpg';
+import cherryTabletLarge from './assets/images/tablet/cakes-436w/cherry-436w.jpg';
+import chocolateTabletLarge from './assets/images/tablet/cakes-436w/chocolate-436w.jpg';
+import lemonTabletLarge from './assets/images/tablet/cakes-436w/lemon-436w.jpg';
+import raspberryTabletLarge from './assets/images/tablet/cakes-436w/raspberry-436w.jpg';
+import redVelvetTabletLarge from './assets/images/tablet/cakes-436w/red-velvet-436w.jpg';
+import strawberryTabletLarge from './assets/images/tablet/cakes-436w/strawberry-436w.jpg';
+
+import blueberryDesktop from './assets/images/desktop/cakes-732w/blueberry-732w.jpg';
+import caramelCookieDesktop from './assets/images/desktop/cakes-732w/caramel-cookie-732w.jpg';
+import caramelTurtleDesktop from './assets/images/desktop/cakes-732w/caramel-turtle-732w.jpg';
+import cherryDesktop from './assets/images/desktop/cakes-732w/cherry-732w.jpg';
+import chocolateDesktop from './assets/images/desktop/cakes-732w/chocolate-732w.jpg';
+import lemonDesktop from './assets/images/desktop/cakes-732w/lemon-732w.jpg';
+import raspberryDesktop from './assets/images/desktop/cakes-732w/raspberry-732w.jpg';
+import redVelvetDesktop from './assets/images/desktop/cakes-732w/red-velvet-732w.jpg';
+import strawberryDesktop from './assets/images/desktop/cakes-732w/strawberry-732w.jpg';
+
 const cakeCards = [
   {
     img: blueberry,
     imgTablet: blueberryTablet,
+    imgTabletLarge: blueberryTabletLarge,
+    imgDesktop: blueberryDesktop,
     name: 'Blueberry',
     description:
       'A delectable combination of smooth, creamy cheesecake complemented by the burst of juicy, ripe blueberries for a perfect balance of sweet and tangy flavors.',
@@ -55,6 +77,9 @@ const cakeCards = [
   {
     img: caramelTurtle,
     imgTablet: caramelTurtleTablet,
+    imgTabletLarge: caramelTurtleTabletLarge,
+    imgDesktop: caramelTurtleDesktop,
+
     name: 'Caramel Turtle',
     description:
       'Dive into layers of rich caramel, toasted pecans, and velvety chocolate ganache atop a velvety cheesecake, creating a heavenly turtle-inspired treat.',
@@ -66,6 +91,9 @@ const cakeCards = [
   {
     img: caramelCookie,
     imgTablet: caramelCookieTablet,
+    imgTabletLarge: caramelCookieTabletLarge,
+    imgDesktop: caramelCookieDesktop,
+
     name: 'Caramel Cookie',
     description:
       'Immerse yourself in velvety cheesecake infused with rich caramel swirls and crushed cookie pieces that add a delightful crunch to every heavenly bite.',
@@ -77,6 +105,9 @@ const cakeCards = [
   {
     img: cherry,
     imgTablet: cherryTablet,
+    imgTabletLarge: cherryTabletLarge,
+    imgDesktop: cherryDesktop,
+
     name: 'Cherry',
     description:
       'Indulge in a luscious cheesecake crowned with a layer of sweet, succulent cherries, providing a delightful contrast of creamy and fruity goodness.',
@@ -88,6 +119,8 @@ const cakeCards = [
   {
     img: chocolate,
     imgTablet: chocolateTablet,
+    imgTabletLarge: chocolateTabletLarge,
+    imgDesktop: chocolateDesktop,
 
     name: 'Chocolate',
     description:
@@ -100,6 +133,8 @@ const cakeCards = [
   {
     img: lemon,
     imgTablet: lemonTablet,
+    imgTabletLarge: lemonTabletLarge,
+    imgDesktop: lemonDesktop,
 
     name: 'Lemon',
     prices: {
@@ -112,6 +147,8 @@ const cakeCards = [
   {
     img: raspberry,
     imgTablet: raspberryTablet,
+    imgTabletLarge: raspberryTabletLarge,
+    imgDesktop: raspberryDesktop,
 
     name: 'Raspberry',
     description:
@@ -125,6 +162,8 @@ const cakeCards = [
   {
     img: redVelvet,
     imgTablet: redVelvetTablet,
+    imgTabletLarge: redVelvetTabletLarge,
+    imgDesktop: redVelvetDesktop,
 
     name: 'Red Velvet',
     description:
@@ -137,6 +176,9 @@ const cakeCards = [
   {
     img: strawberry,
     imgTablet: strawberryTablet,
+    imgTabletLarge: strawberryTabletLarge,
+    imgDesktop: strawberryDesktop,
+
     name: 'Strawberry',
     description:
       'Savor the taste of summer with a creamy cheesecake adorned with plump, juicy strawberries, the sweetest match made in dessert heaven.',

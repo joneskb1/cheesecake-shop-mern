@@ -2,3 +2,14 @@
   position: relative;
   overflow: hidden;
 }
+
+@media screen and (min-width: 1440px) {
+  .cakeImgDetailWrap {
+    height: 484px;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+  }
+}

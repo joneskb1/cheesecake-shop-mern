@@ -7,7 +7,7 @@
 .previousPageArrowText {
   font-size: 12px;
   position: absolute;
-  top: 0;
+  top: 2px;
   right: 22px;
   display: inline-block;
 }
@@ -26,4 +26,33 @@
   margin-bottom: 1.5rem;
   margin-left: 20px;
   margin-top: 10px;
+}
+
+@media screen and (min-width: 744px) {
+  .previousPageArrowWrap,
+  .backArrowLink {
+    width: 170px;
+  }
+
+  .previousPageArrowText {
+    font-size: 14px;
+    top: 0px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .backArrowLink,
+  .previousPageArrowWrap {
+    width: 210px;
+    height: 25px;
+  }
+
+  .previousPageArrowText {
+    font-size: 18px;
+    top: -3px;
+  }
+
+  .backArrowLink {
+    margin-left: 70px;
+  }
 }
