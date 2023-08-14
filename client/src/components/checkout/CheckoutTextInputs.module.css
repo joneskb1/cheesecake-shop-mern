@@ -30,3 +30,9 @@
 .zipWrap {
   flex-grow: 1;
 }
+
+@media screen and (min-width: 744px) {
+  .checkoutTextLabel {
+    font-size: 18px;
+  }
+}

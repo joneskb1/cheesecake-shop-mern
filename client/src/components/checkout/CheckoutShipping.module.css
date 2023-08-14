@@ -1,9 +1,10 @@
 .shippingInputWrap {
   position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 
 .shippingInput {
-  appearance: none;
   position: absolute;
   top: 6px;
   left: 2px;
@@ -12,6 +13,7 @@
   border: 1px solid black;
   border-radius: 50%;
   cursor: pointer;
+  appearance: none;
 }
 
 .shippingLabel {
@@ -27,4 +29,14 @@ input[type='radio']:checked {
 
 .shippingInputWrap:last-child {
   margin-bottom: 2rem;
+}
+
+.price {
+  font-family: var(--header-title-font-medium);
+}
+
+@media screen and (min-width: 744px) {
+  .shippingLabel {
+    font-size: 18px;
+  }
 }

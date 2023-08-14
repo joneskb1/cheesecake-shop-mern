@@ -1,8 +1,12 @@
+import { useLocation } from 'react-router-dom';
 import styles from './MiniCakeCard.module.css';
+
 import cake from '../../assets/images/mobile/mobile-cakes-38w/red-velvet-38w.jpg';
 import cakeLarge from '../../assets/images/mobile/mobile-cakes-75w/red-velvet-75w.jpg';
 
 export default function MiniCakeCard() {
+  let location = useLocation();
+  const onCheckout = location.pathname === '/checkout';
   return (
     <div className={styles.miniCakeCardContainer}>
       <picture>
@@ -14,7 +18,11 @@ export default function MiniCakeCard() {
         />
       </picture>
 
-      <p className={styles.miniCakeCardName}>
+      <p
+        className={`${styles.miniCakeCardName} ${
+          onCheckout ? styles.largeText : ''
+        } `}
+      >
         Creamy cheesecake with fruit, sprinkles, and caramel!
       </p>
     </div>

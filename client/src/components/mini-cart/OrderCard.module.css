@@ -28,4 +28,8 @@
   .paragraph {
     font-size: 16px;
   }
+
+  .largeText {
+    font-size: 18px;
+  }
 }

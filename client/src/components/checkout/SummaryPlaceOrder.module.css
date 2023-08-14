@@ -40,3 +40,21 @@
 .gap {
   margin-top: 1.5rem;
 }
+
+@media screen and (min-width: 1200px) {
+  .summaryContainer {
+    width: 35%;
+    max-width: 546px;
+    margin: 0;
+    margin-top: 6rem;
+  }
+
+  .summaryHeading {
+    font-size: 40px;
+  }
+
+  .detailsContainer {
+    font-size: 18px;
+    margin-bottom: 1rem;
+  }
+}
