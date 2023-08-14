@@ -2,7 +2,7 @@
   background: var(--cream);
   box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.16);
   border-radius: 5px;
-  margin: 1rem;
+  margin: 1rem 0;
   padding: 1rem;
   position: relative;
 }

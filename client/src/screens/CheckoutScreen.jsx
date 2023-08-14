@@ -34,8 +34,7 @@ export default function CheckoutScreen() {
 
       <CheckoutSectionHeader>Shipping Method</CheckoutSectionHeader>
       <CheckoutShipping />
-      <CheckoutSectionHeader>Review</CheckoutSectionHeader>
-      <CartHeader bg='noBg' />
+      <CheckoutSectionHeader>Review Items</CheckoutSectionHeader>
       {/* map through cart items */}
       <OrderCard />
       <SummaryPlaceOrder />
