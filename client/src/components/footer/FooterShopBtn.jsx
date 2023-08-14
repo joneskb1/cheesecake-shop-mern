@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
-import styles from "./FooterShopBtn.module.css";
+import styles from './FooterShopBtn.module.css';
 
 export default function FooterShopBtn() {
   return (
-    <NavLink to="/cheesecakes">
+    <NavLink to='/cheesecakes' className={styles.footerLink}>
       <button className={styles.footerShopBtn}>Shop Cheesecakes</button>
     </NavLink>
   );

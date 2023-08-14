@@ -6,6 +6,7 @@
   height: 205px;
   margin-top: -6px;
   padding: 1rem 3rem;
+  border-radius: 0 0 5px 5px;
 }
 
 .carouselHeading {
@@ -34,4 +35,49 @@
   height: 30px;
   border-radius: 5px;
   font-weight: 500;
+  padding-top: 0.3rem;
+}
+
+@media screen and (min-width: 744px) {
+  .carouselTextContainer {
+    padding: 3rem 4rem;
+    width: 550px;
+    height: 326px;
+  }
+
+  .carouselHeading {
+    font-size: 36px;
+  }
+
+  .carouselDescription {
+    font-size: 18px;
+  }
+
+  .carouselCartBtn {
+    width: 183px;
+    height: 45px;
+    font-size: 20px;
+    bottom: 75px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .carouselHeading {
+    font-size: 48px;
+    margin-bottom: 0.5rem;
+    margin-top: 1.75rem;
+  }
+
+  .carouselTextContainer {
+    font-size: 20px;
+    height: 437px;
+    border-radius: 0 5px 5px 0;
+  }
+
+  .carouselCartBtn {
+    width: 372px;
+    height: 53px;
+    font-size: 24px;
+    bottom: 75px;
+  }
 }

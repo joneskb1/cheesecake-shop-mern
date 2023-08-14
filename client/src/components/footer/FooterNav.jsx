@@ -6,7 +6,7 @@ export default function FooterNav() {
   return (
     <nav className={styles.footerNav}>
       <ul>
-        <li>
+        <li className={styles.navItem}>
           <NavLink
             to={'/'}
             className={({ isActive }) =>
@@ -18,7 +18,7 @@ export default function FooterNav() {
             Home
           </NavLink>
         </li>
-        <li>
+        <li className={styles.navItem}>
           <NavLink
             to={'/contact'}
             className={({ isActive }) =>
@@ -30,7 +30,7 @@ export default function FooterNav() {
             Contact Us
           </NavLink>
         </li>
-        <li>
+        <li className={styles.navItem}>
           <NavLink
             to={'/my-account'}
             className={({ isActive }) =>
@@ -42,7 +42,7 @@ export default function FooterNav() {
             My Account
           </NavLink>
         </li>
-        <li>
+        <li className={styles.navItem}>
           <NavLink
             to={'/cart'}
             className={({ isActive }) =>

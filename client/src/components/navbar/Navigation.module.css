@@ -1,0 +1,41 @@
+.navItems {
+  font-family: var(--header-title-font-regular);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.cartIcon {
+  height: 21px;
+}
+
+.accountIcon {
+  height: 20px;
+}
+
+.link {
+  color: white;
+  margin-left: 3rem;
+}
+
+@media screen and (max-width: 744px) {
+  .navigation {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .navItems {
+    font-size: 24px;
+    margin-right: 3rem;
+  }
+
+  .cartIcon {
+    height: 25px;
+  }
+
+  .accountIcon {
+    height: 25px;
+  }
+}

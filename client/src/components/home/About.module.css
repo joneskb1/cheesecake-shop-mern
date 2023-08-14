@@ -1,11 +1,11 @@
 .aboutContainer {
-  width: 335px;
-  height: 745px;
+  width: 345px;
+  /* height: 745px; */
   margin: 0 auto;
   background: var(--light-pink-cream-gradient);
   border-radius: 5px;
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1.5rem;
   text-align: center;
 }
 
@@ -22,11 +22,71 @@
 }
 
 .aboutTextContainer {
+  width: 296px;
+  margin: 1rem auto 0;
+
   background-color: var(--blue);
   border-radius: 5px;
-  margin-top: 1rem;
   color: white;
   font-size: 14px;
   height: 375px;
   padding: 1rem 2rem;
+}
+
+@media screen and (min-width: 744px) {
+  .aboutContainer {
+    width: 549px;
+    height: auto;
+  }
+
+  .aboutHeading {
+    font-size: 40px;
+  }
+
+  .aboutImg {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+
+  .aboutTextContainer {
+    font-size: 16px;
+    width: 436px;
+    height: auto;
+    margin: 0 auto 1rem;
+    padding: 2rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .aboutContainer {
+    width: 1280px;
+  }
+  .aboutContentWrap {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .aboutHeading {
+    font-size: 60px;
+  }
+
+  .aboutImg {
+    display: inline-block;
+    margin: 0.4rem 0 0;
+    height: 430px;
+  }
+  .aboutTextContainer {
+    font-size: 20px;
+    width: 60%;
+    height: 430px;
+    margin: 0;
+    padding: 3.5rem 6rem;
+  }
+  .break {
+    display: none;
+  }
 }

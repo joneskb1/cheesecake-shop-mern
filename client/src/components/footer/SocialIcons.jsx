@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './SocialIcons.module.css';
 
 import twitterIcon from '../../assets/icons/twitter.svg';
@@ -8,13 +9,31 @@ export default function SocialIcons() {
   return (
     <ul className={styles.socialIcons}>
       <li>
-        <img src={twitterIcon} alt='' />
+        <Link className={styles.iconLink}>
+          <img
+            src={twitterIcon}
+            alt='twitter link icon'
+            className={styles.twitterIcon}
+          />
+        </Link>
       </li>
       <li>
-        <img src={instagramIcon} alt='' />
+        <Link className={styles.iconLink}>
+          <img
+            src={instagramIcon}
+            alt='instagram link icon'
+            className={styles.instagramIcon}
+          />
+        </Link>
       </li>
       <li>
-        <img src={pinterestIcon} alt='' />
+        <Link className={styles.iconLink}>
+          <img
+            src={pinterestIcon}
+            alt='pinterest link icon'
+            className={styles.pinterestIcon}
+          />
+        </Link>
       </li>
     </ul>
   );

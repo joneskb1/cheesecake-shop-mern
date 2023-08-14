@@ -2,3 +2,15 @@
   display: block;
   margin: -30px auto 3rem;
 }
+
+@media screen and (min-width: 744px) {
+  .spinnyCake {
+    margin-top: -60px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .spinnyCake {
+    margin-top: -110px;
+  }
+}

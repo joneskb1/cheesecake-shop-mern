@@ -1,3 +1,9 @@
 .hamburger {
   cursor: pointer;
 }
+
+@media screen and (min-width: 744px) {
+  .hamburger {
+    display: none;
+  }
+}

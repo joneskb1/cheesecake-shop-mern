@@ -19,3 +19,47 @@
   display: inline-block;
   text-align: center;
 }
+
+@media screen and (min-width: 744px) {
+  .featuredHeaderContainer {
+    margin-top: 31rem;
+  }
+
+  .featuredText {
+    font-size: 40px;
+  }
+
+  .chefIcon {
+    top: 20%;
+    left: -3%;
+  }
+}
+
+@media screen and (min-width: 959px) {
+  .featuredHeaderContainer {
+    margin-top: 42rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1177px) {
+  .featuredHeaderContainer {
+    margin-top: 70rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .featuredText {
+    font-size: 60px;
+  }
+
+  .featuredHeaderContainer {
+    width: 450px;
+  }
+
+  .chefIcon {
+    top: 30%;
+    left: -10%;
+  }
+}

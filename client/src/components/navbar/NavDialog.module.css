@@ -60,3 +60,9 @@
 .dialog::backdrop {
   background: rgba(15, 15, 15, 0.815);
 }
+
+@media screen and (min-width: 1440px) {
+  .dialog {
+    display: none;
+  }
+}

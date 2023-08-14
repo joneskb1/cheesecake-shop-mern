@@ -4,3 +4,37 @@
   align-items: center;
   width: 116px;
 }
+
+@media screen and (min-width: 744px) {
+  .iconLink {
+    margin-right: 1.5rem;
+  }
+  .twitterIcon {
+    width: 40px;
+  }
+  .pinterestIcon {
+    width: 36px;
+  }
+  .instagramIcon {
+    width: 37px;
+  }
+}
+
+/* @media screen and (min-width: 1440px) {
+  .socialIcons {
+    position: absolute;
+    top: 65%;
+    right: 15rem;
+  }
+} */
+@media screen and (min-width: 1440px) {
+  .socialIcons {
+    grid-column: 3/-1;
+    justify-self: end;
+    width: 200px;
+  }
+
+  .iconLink {
+    margin: 0;
+  }
+}

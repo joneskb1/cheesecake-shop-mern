@@ -2,3 +2,9 @@
   display: block;
   margin: 2rem auto 0;
 }
+
+@media screen and (min-width: 744px) {
+  .header {
+    margin-top: 8rem;
+  }
+}
