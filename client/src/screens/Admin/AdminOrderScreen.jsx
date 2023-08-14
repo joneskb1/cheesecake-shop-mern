@@ -1,5 +1,5 @@
-import styles from "./AdminOrderScreen.module.css";
-import MyAccountOrders from "../../components/MyAccount/MyAccountOrders";
+import styles from './AdminOrderScreen.module.css';
+import MyAccountOrders from '../../components/my-account/MyAccountOrders';
 export default function AdminOrderScreen() {
   return (
     <div className={styles.container}>

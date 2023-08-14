@@ -25,3 +25,25 @@
   color: var(--black);
   font-family: var(--header-title-font-regular);
 }
+
+@media screen and (min-width: 744px) {
+  .summaryContainer {
+    width: 500px;
+    height: 310px;
+  }
+
+  .summaryHeading {
+    font-size: 26px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .summaryContainer {
+    width: 500px;
+    height: 320px;
+  }
+
+  .summaryHeading {
+    font-size: 32px;
+  }
+}

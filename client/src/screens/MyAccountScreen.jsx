@@ -1,7 +1,7 @@
 import styles from './MyAccountScreen.module.css';
 
-import MyAccountForm from '../components/MyAccount/MyAccountForm';
-import MyAccountOrders from '../components/MyAccount/MyAccountOrders';
+import MyAccountForm from '../components/my-account/MyAccountForm';
+import MyAccountOrders from '../components/my-account/MyAccountOrders';
 
 import backgroundCake1 from '../assets/images/mobile/my-account-cheesecake-mobile-199w.png';
 

@@ -1,6 +1,7 @@
 .cartScreen {
   position: relative;
   overflow: hidden;
+  min-height: calc(100vh - 434px);
 }
 
 .cartHeader {
@@ -11,6 +12,36 @@
   color: var(--blue);
 }
 
+.noItemsContainer {
+  background-color: var(--light-purple);
+  width: 300px;
+  margin: 0 auto 3rem;
+  border-radius: 5px;
+  padding: 1rem;
+  border: 1px solid rgba(32, 26, 99, 0.46);
+  box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.25);
+}
+
+.noItemsText {
+  font-size: 14px;
+  text-align: center;
+}
+
+.shopLink {
+  text-decoration: none;
+  border-radius: 12px;
+  background: var(--transparent-blue);
+  color: white;
+  width: 98px;
+  height: 29px;
+  display: block;
+  text-align: center;
+  padding-top: 2px;
+  font-family: var(--header-title-font-medium);
+  font-size: 14px;
+  margin: 1rem auto 0;
+}
+
 .OrdersContainer {
   width: 335px;
   margin: 2rem auto 9rem;
@@ -18,22 +49,74 @@
 
 .topCake {
   position: absolute;
-  top: -15%;
-  left: 75%;
+  top: -100px;
+  right: -105px;
 }
 
 .bottomCake {
   position: absolute;
-  bottom: -10%;
-  right: 75%;
+  bottom: -75px;
+  left: -100px;
 }
 
 @media screen and (min-width: 744px) {
+  .cartScreen {
+    min-height: calc(100vh - 567px);
+  }
+
   .OrdersContainer {
-    width: 450px;
+    width: 500px;
   }
 
   .cartHeader {
     font-size: 40px;
+  }
+
+  .topCake {
+    top: -80px;
+    right: -80px;
+  }
+
+  .bottomCake {
+    bottom: -70px;
+    left: -70px;
+  }
+
+  .noItemsContainer {
+    width: 350px;
+  }
+
+  .noItemsText {
+    font-size: 16px;
+  }
+
+  .shopLink {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cartScreen {
+    min-height: calc(100vh - 339px);
+  }
+
+  .topCake {
+    top: 450px;
+    right: -400px;
+  }
+
+  .bottomCake {
+    display: none;
+  }
+
+  .OrdersContainer {
+    margin: 1rem auto 0;
+  }
+
+  .summaryOrderContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }

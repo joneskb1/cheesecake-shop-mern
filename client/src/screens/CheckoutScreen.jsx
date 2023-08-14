@@ -7,7 +7,6 @@ import CheckoutHeader from '../components/checkout/CheckoutHeader';
 import CheckoutAddressInputs from '../components/checkout/CheckoutAddressInputs';
 import CheckoutBillingInputs from '../components/checkout/CheckoutBillingInputs';
 import CheckoutShipping from '../components/checkout/CheckoutShipping';
-import CartHeader from '../components/mini-cart/CartHeader';
 import OrderCard from '../components/mini-cart/OrderCard';
 import SummaryPlaceOrder from '../components/checkout/SummaryPlaceOrder';
 
