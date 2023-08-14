@@ -26,12 +26,15 @@ export default function CheesecakeScreen({ cakeCards }) {
       <div className={styles.container}>
         <PreviousPageArrowLink />
         <SingleCakeHeader name={cake.name} />
-        <SingleCakeImg cake={cake} />
-        <CakeDetailsCard
-          cake={cake}
-          isMiniCartOpen={isMiniCartOpen}
-          setIsMiniCartOpen={setIsMiniCartOpen}
-        />
+        <div className={styles.cakeImgDetailWrap}>
+          <SingleCakeImg cake={cake} />
+          <CakeDetailsCard
+            cake={cake}
+            isMiniCartOpen={isMiniCartOpen}
+            setIsMiniCartOpen={setIsMiniCartOpen}
+          />
+        </div>
+
         <CakeIconsMarquee />
         <YouMayLike cakeCards={cakeCards} cake={cake} />
         <MiniCart

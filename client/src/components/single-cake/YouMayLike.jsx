@@ -38,12 +38,14 @@ export default function YouMayLike({ cakeCards, cake }) {
   return (
     <>
       <h4 className={styles.youMayLikeHeader}>You May Also Like</h4>
-      {theRandomCakes &&
-        theRandomCakes.map((cake, index) => (
-          <ShopCakeCard key={index} src={cake.img}>
-            {cake.name}
-          </ShopCakeCard>
-        ))}
+      <div className={styles.youMayLikeCakeWrap}>
+        {theRandomCakes &&
+          theRandomCakes.map((cake, index) => (
+            <ShopCakeCard key={index} cake={cake}>
+              {cake.name}
+            </ShopCakeCard>
+          ))}
+      </div>
     </>
   );
 }

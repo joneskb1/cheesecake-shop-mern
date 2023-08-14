@@ -1,5 +1,5 @@
-import styles from "./Qty.module.css";
-import { useState } from "react";
+import styles from './Qty.module.css';
+import { useState } from 'react';
 
 export default function Qty() {
   const [qty, setQty] = useState(0);
@@ -7,6 +7,8 @@ export default function Qty() {
 
   return (
     <div className={styles.qtyContainer}>
+      <p className={styles.label}>Qty:</p>
+
       <select
         onChange={(e) => setQty(e.target.value)}
         value={qty}
@@ -19,7 +21,7 @@ export default function Qty() {
             </option>
           );
         })}
-        <option value="delete">Delete</option>
+        <option value='delete'>Delete</option>
       </select>
     </div>
   );

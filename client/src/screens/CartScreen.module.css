@@ -3,17 +3,12 @@
   overflow: hidden;
 }
 
-.cartHeader,
-.itemsHeader {
+.cartHeader {
   margin: 2rem auto 2rem;
   font-size: 20px;
   text-align: center;
   font-family: var(--header-title-font-regular);
   color: var(--blue);
-}
-
-.itemsHeader {
-  margin: 2rem auto 1rem;
 }
 
 .OrdersContainer {
@@ -31,4 +26,14 @@
   position: absolute;
   bottom: -10%;
   right: 75%;
+}
+
+@media screen and (min-width: 744px) {
+  .OrdersContainer {
+    width: 450px;
+  }
+
+  .cartHeader {
+    font-size: 40px;
+  }
 }

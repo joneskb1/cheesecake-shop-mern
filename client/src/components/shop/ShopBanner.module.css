@@ -14,6 +14,7 @@
   transform: translate(-50%, -50%);
   font-family: var(--fancy-font);
   font-size: 22px;
+  color: var(--blue);
 }
 
 .bannerCake {
@@ -28,4 +29,48 @@
 .largeCake {
   top: -33px;
   right: -100px;
+}
+
+@media screen and (min-width: 744px) {
+  .banner {
+    height: 206px;
+  }
+
+  .bannerText {
+    font-size: 36px;
+  }
+
+  .smallCake {
+    content: url('../../assets/images/tablet/banner-small-195w.png');
+    top: -75px;
+    left: -75px;
+  }
+
+  .largeCake {
+    content: url('../../assets/images/tablet/banner-large-275w.png');
+    top: -70px;
+    right: -160px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .banner {
+    height: 300px;
+  }
+
+  .bannerText {
+    font-size: 60px;
+  }
+
+  .smallCake {
+    content: url('../../assets/images/desktop/banner-small-379w.png');
+    top: -150px;
+    left: -150px;
+  }
+
+  .largeCake {
+    content: url('../../assets/images/desktop/banner-large-534w.png');
+    top: -150px;
+    right: -350px;
+  }
 }
