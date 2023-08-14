@@ -12,3 +12,12 @@
   font-size: 14px;
   font-family: var(--header-title-font-medium);
 }
+
+@media screen and (min-width: 744px) {
+  .checkoutLink {
+    padding-top: 0.3rem;
+    font-size: 18px;
+    width: 210px;
+    height: 40px;
+  }
+}

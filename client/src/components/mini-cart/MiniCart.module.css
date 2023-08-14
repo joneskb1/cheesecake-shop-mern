@@ -29,7 +29,18 @@
 
 .orderCardContainer {
   /* 100% minus nav & footer */
-  height: calc(100vh - 60px - 210px);
+  height: calc(100vh - 60px - 220px);
   overflow: scroll;
   margin: 0 0.25rem 0;
+}
+
+@media screen and (min-width: 744px) {
+  .miniCart {
+    width: 450px;
+  }
+
+  .orderCardContainer {
+    /* 100% minus nav & footer */
+    height: calc(100vh - 60px - 250px);
+  }
 }

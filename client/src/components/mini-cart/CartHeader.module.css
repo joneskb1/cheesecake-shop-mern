@@ -1,11 +1,8 @@
 .cartHeaderContainer {
   background-color: var(--light-purple);
-  height: 60px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  padding: 0.5rem;
-  align-items: center;
-  justify-items: center;
+  height: 50px;
+  padding-top: 0.75rem;
+  text-align: center;
   border-radius: 5px;
 }
 
@@ -17,4 +14,10 @@
 
 .bgNone {
   background-color: initial;
+}
+
+@media screen and (min-width: 744px) {
+  .cartHeader {
+    font-size: 18px;
+  }
 }

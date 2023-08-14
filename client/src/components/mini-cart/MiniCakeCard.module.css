@@ -1,6 +1,17 @@
+.miniCakeCardContainer {
+  display: flex;
+}
+
 .miniCakeCardName {
   font-size: 12px;
-  text-align: center;
+  text-align: left;
   font-family: var(--header-title-font-regular);
   color: var(--black);
+  margin-left: 1rem;
+}
+
+@media screen and (min-width: 744px) {
+  .miniCakeCardName {
+    font-size: 16px;
+  }
 }
