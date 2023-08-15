@@ -7,7 +7,7 @@ export default function VariantPreview() {
   return (
     <div className={styles.variantWrap}>
       <div className={styles.variant}>
-        <div className={styles.variantNum}>Variation 1</div>
+        <div className={styles.variantNum}>Var. 1</div>
         <div className={styles.variationPrice}>$14.99</div>
         <div className={styles.variationPrice}>Stock: 3</div>
         <div className={styles.variationPrice}>Size: 6&quot;</div>

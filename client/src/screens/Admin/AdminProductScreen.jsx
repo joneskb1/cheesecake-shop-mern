@@ -31,6 +31,7 @@ const deleteProductBtnStyles = {
 
 export default function AdminProductScreen() {
   const [createVariant, setCreateVariant] = useState(false);
+  const [isVariants, setIsVariants] = useState(true);
 
   return (
     <div className={styles.screen}>
@@ -55,7 +56,15 @@ export default function AdminProductScreen() {
         <CreateVariantForm setCreateVariant={setCreateVariant} />
       )}
 
-      <VariantPreview />
+      {isVariants && (
+        <>
+          <h3 className={styles.variantsHeader}>Variants</h3>
+          {/* map through previews */}
+          <VariantPreview />
+          <VariantPreview />
+          <VariantPreview />
+        </>
+      )}
     </div>
   );
 }
