@@ -1,18 +1,18 @@
 .createAccount {
   font-family: var(--header-title-font-regular);
-  width: 300px;
-  /* height: 250px; */
-  margin: 0 auto;
+  width: 88vw;
+  max-width: 575px;
+  margin: 1rem auto 0;
   background: var(--light-purple);
   border-radius: 5px;
-
-  padding: 0.5rem 0 1rem 0;
+  padding: 1.5rem 1rem;
 }
 
 .createAccountHeader {
-  font-size: 20px;
+  font-size: 22px;
   text-align: center;
-  margin-bottom: 0.2rem;
+  margin: 0 auto 0.2rem;
+  text-align: center;
 }
 
 .textInputWrap {
@@ -41,7 +41,7 @@
   color: white;
   width: 155px;
   height: 42px;
-  margin: 0 auto;
+  margin: 0.5rem auto 0;
   background: var(--purple);
 }
 
