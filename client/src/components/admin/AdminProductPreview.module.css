@@ -40,11 +40,13 @@
 .iconEdit {
   padding-right: 1.7rem;
   justify-self: end;
+  cursor: pointer;
 }
 
 .iconTrash {
   padding-right: 2rem;
   justify-self: end;
+  cursor: pointer;
 }
 
 .hide {
@@ -62,5 +64,12 @@
 
   .iconEdit {
     padding-right: 1rem;
+  }
+
+  .name,
+  .size,
+  .price,
+  .stock {
+    font-size: 16px;
   }
 }

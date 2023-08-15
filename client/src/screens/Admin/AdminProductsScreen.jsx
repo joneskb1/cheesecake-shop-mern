@@ -15,6 +15,7 @@ export default function AdminProductsScreen() {
       <AdminProductHeader />
       {/* map over products */}
       <AdminProductPreview />
+      <AdminProductPreview />
     </div>
   );
 }
