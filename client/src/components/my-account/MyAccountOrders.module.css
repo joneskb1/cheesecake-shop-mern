@@ -1,7 +1,7 @@
 .section {
   font-family: var(--header-title-font-regular);
   width: 85vw;
-  max-width: 737px;
+  max-width: 550px;
   margin: 0 auto 7rem;
   padding-top: 0.5rem;
   border: 1px solid var(--blue);
@@ -12,4 +12,14 @@
 .orderSummaryContainer {
   width: 90%;
   margin: 0 auto;
+}
+
+.header {
+  font-size: 18px;
+}
+
+@media screen and (min-width: 744px) {
+  .header {
+    font-size: 20px;
+  }
 }
