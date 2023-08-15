@@ -31,7 +31,7 @@ const deleteProductBtnStyles = {
 
 export default function AdminProductScreen() {
   const [createVariant, setCreateVariant] = useState(false);
-  const [isVariants, setIsVariants] = useState(true);
+  const [isVariants] = useState(true);
 
   return (
     <div className={styles.screen}>
