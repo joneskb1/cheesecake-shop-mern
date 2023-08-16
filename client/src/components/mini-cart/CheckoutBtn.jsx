@@ -8,9 +8,7 @@ export default function CheckoutBtn({ children }) {
   return (
     <Link
       to='/checkout'
-      className={`${styles.checkoutLink} ${
-        onCheckout ? styles.largeText : ''
-      } ${onCheckout ? styles.largeBtn : ''}`}
+      className={`${styles.checkoutLink}  ${onCheckout ? styles.largeBtn : ''}`}
     >
       {children}
     </Link>

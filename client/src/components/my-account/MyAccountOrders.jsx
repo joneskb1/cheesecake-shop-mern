@@ -13,7 +13,7 @@ export default function MyAccountOrders() {
         <h3 className={styles.header}>Items</h3>
         <hr></hr>
         <ProductCard />
-        <SummaryPlaceOrder placeOrderBtn={false} />
+        <SummaryPlaceOrder placeOrderBtn={false} smallText={true} />
       </div>
       <MyAccountDetails />
     </section>
