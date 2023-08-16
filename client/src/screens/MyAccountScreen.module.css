@@ -25,9 +25,44 @@
   margin-bottom: 3rem;
 }
 
+.orderHeader {
+  font-family: var(--header-title-font-regular);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 16px;
+}
+
 .accountSectionHeader {
   font-family: var(--header-title-font-regular);
   font-size: 16px;
   text-align: center;
   margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 744px) {
+  .accountHeader {
+    font-size: 40px;
+  }
+
+  .backgroundCake1 {
+    top: -225px;
+    left: -250px;
+  }
+
+  .backgroundCake2 {
+    display: none;
+  }
+
+  .orderHeader {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .flexWrap {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
 }

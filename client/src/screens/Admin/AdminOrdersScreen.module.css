@@ -10,3 +10,15 @@
   margin: 1rem;
   color: var(--blue);
 }
+
+@media screen and (min-width: 744px) {
+  .heading {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .heading {
+    font-size: 40px;
+  }
+}

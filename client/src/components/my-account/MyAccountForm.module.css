@@ -1,7 +1,8 @@
 .myAccountForms {
   font-family: var(--header-title-font-regular);
   width: 85vw;
-  max-width: 497px;
+  max-width: 550px;
+  max-height: 510px;
   margin: 0 auto 2rem;
   padding: 1rem;
   background: var(--light-purple);
@@ -49,3 +50,31 @@
 .accountForm {
   margin-bottom: 1rem;
 }
+
+@media screen and (min-width: 744px) {
+  .myAccountForms {
+    width: 550px;
+  }
+  .formHeader {
+    font-size: 24px;
+  }
+
+  .myAccountForms {
+    padding: 2rem;
+  }
+
+  .myAccountInputLabel {
+    font-size: 18px;
+  }
+
+  .myAccountFormBtn {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .myAccountForms {
+    margin: 0;
+  }
+}
+

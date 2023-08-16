@@ -10,7 +10,7 @@ export default function MyAccountOrders() {
     <section className={styles.section}>
       <MyAccountOrdersInfo />
       <div className={styles.orderSummaryContainer}>
-        <h2 className={styles.header}>Items</h2>
+        <h3 className={styles.header}>Items</h3>
         <hr></hr>
         <ProductCard />
         <SummaryPlaceOrder placeOrderBtn={false} />

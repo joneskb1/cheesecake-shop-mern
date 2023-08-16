@@ -1,5 +1,5 @@
-import styles from "./AdminOrdersScreen.module.css";
-import AdminOrderPreview from "../../components/admin/AdminOrderPreview";
+import styles from './AdminOrdersScreen.module.css';
+import AdminOrderPreview from '../../components/admin/AdminOrderPreview';
 
 export default function AdminOrdersScreen() {
   return (

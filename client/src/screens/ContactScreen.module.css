@@ -5,12 +5,38 @@
 
 .topCake {
   position: absolute;
-  top: -10%;
-  left: 70%;
+  top: -90px;
+  right: -100px;
 }
 
 .bottomCake {
   position: absolute;
-  bottom: -32.5%;
-  left: -65%;
+  bottom: -250px;
+  left: -255px;
+}
+
+@media screen and (min-width: 744px) {
+  .topCake {
+    top: -120px;
+    right: -100px;
+  }
+
+  .bottomCake {
+    position: absolute;
+    bottom: -200px;
+    left: -200px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .topCake {
+    top: -300px;
+    right: -300px;
+  }
+
+  .bottomCake {
+    position: absolute;
+    bottom: -400px;
+    left: -350px;
+  }
 }
