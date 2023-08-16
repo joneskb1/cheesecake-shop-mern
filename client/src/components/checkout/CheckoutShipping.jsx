@@ -20,6 +20,7 @@ export default function CheckoutShipping() {
           <label htmlFor='shipping-priority' className={styles.shippingLabel}>
             USPS Priority (2-4 Days)
           </label>
+          <p className={styles.price}>$12.90</p>
         </div>
 
         <div className={styles.shippingInputWrap}>
@@ -35,6 +36,7 @@ export default function CheckoutShipping() {
           <label htmlFor='shipping-expedited' className={styles.shippingLabel}>
             USPS Expedited (1-2 Days)
           </label>
+          <p className={styles.price}>$24.90</p>
         </div>
       </div>
     </>

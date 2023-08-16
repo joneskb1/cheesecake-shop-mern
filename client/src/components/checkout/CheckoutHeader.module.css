@@ -4,3 +4,9 @@
   text-align: center;
   margin: 1.5rem auto 1rem;
 }
+
+@media screen and (min-width: 744px) {
+  .checkoutHeader {
+    font-size: 40px;
+  }
+}

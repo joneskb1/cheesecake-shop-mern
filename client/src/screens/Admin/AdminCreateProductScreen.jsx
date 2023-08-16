@@ -1,6 +1,3 @@
-
-import styles from './AdminCreateProductScreen.module.css';
-
 import AdminProductForm from '../../components/admin/AdminProductForm';
 import AdminFormHeader from '../../components/admin/AdminFormHeader';
 import BaseProductFormInputs from '../../components/admin/BaseProductFormInputs';

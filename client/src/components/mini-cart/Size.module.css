@@ -10,7 +10,7 @@
   font-family: var(--header-title-font-regular);
   text-align: center;
   width: 45px;
-  height: 25px;
+  height: 30px;
   color: var(--black);
 }
 
@@ -25,5 +25,8 @@
   .sizeContainer,
   .label {
     font-size: 16px;
+  }
+  .largeText {
+    font-size: 18px;
   }
 }

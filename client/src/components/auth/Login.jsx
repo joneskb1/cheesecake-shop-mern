@@ -17,7 +17,7 @@ export default function Login() {
           name='email'
           id='email'
           className={styles.textInput}
-          onChange={(e) => setEmail(e.value.target)}
+          onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
       </div>
@@ -30,7 +30,7 @@ export default function Login() {
           name='password'
           id='password'
           className={styles.textInput}
-          onChange={(e) => setPassword(e.value.target)}
+          onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
       </div>

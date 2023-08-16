@@ -2,6 +2,7 @@
   font-family: var(--header-title-font-regular);
   width: 85vw;
   max-width: 550px;
+
   margin: 0 auto 7rem;
   padding-top: 0.5rem;
   border: 1px solid var(--blue);
@@ -23,3 +24,4 @@
     font-size: 20px;
   }
 }
+

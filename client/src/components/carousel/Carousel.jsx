@@ -190,11 +190,9 @@ export default function Carousel({
       }
     }
 
-    if (id) {
-      return () => {
-        clearTimeout(id);
-      };
-    }
+    return () => {
+      clearTimeout(id);
+    };
   }, [
     changeSlideRight,
     currentSlide,

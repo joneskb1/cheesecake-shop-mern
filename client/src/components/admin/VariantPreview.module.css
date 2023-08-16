@@ -2,7 +2,8 @@
   width: 90vw;
   max-width: 700px;
   margin: 0 auto;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  font-size: 14px;
 }
 
 .variant {
@@ -23,4 +24,14 @@
 .editIcon {
   width: 16px;
   height: 16px;
+}
+
+.variantWrap:last-of-type {
+  margin-bottom: 3rem;
+}
+
+@media screen and (min-width: 744px) {
+  .variantWrap {
+    font-size: 16px;
+  }
 }
