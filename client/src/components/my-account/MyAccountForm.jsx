@@ -21,7 +21,7 @@ export default function MyAccountForm() {
             id='name'
             className={styles.myAccountTextInput}
             value={name}
-            onClick={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
           <label htmlFor='email' className={styles.myAccountInputLabel}>
             Email
@@ -32,7 +32,7 @@ export default function MyAccountForm() {
             id='email'
             className={styles.myAccountTextInput}
             value={email}
-            onClick={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <button className={styles.myAccountFormBtn}>Update Account</button>
         </form>
@@ -46,7 +46,7 @@ export default function MyAccountForm() {
             id='password'
             className={styles.myAccountTextInput}
             value={password}
-            onClick={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <label
             htmlFor='password-confirm'
@@ -60,7 +60,7 @@ export default function MyAccountForm() {
             id='password-confirm'
             className={styles.myAccountTextInput}
             value={passwordConfirm}
-            onClick={(e) => setPasswordConfirm(e.target.value)}
+            onChange={(e) => setPasswordConfirm(e.target.value)}
           />
           <button className={styles.myAccountFormBtn}>Reset Password</button>
         </form>

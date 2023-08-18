@@ -18,9 +18,9 @@ export default function CheckoutScreen() {
 
   return (
     <div className={styles.formWrap}>
+      <CheckoutHeader />
       <form className={styles.checkoutForm}>
         <div className={styles.form}>
-          <CheckoutHeader />
           <CheckoutSectionHeader>Shipping Address</CheckoutSectionHeader>
           <CheckoutAddressInputs />
           <CheckoutCheckbox
@@ -41,7 +41,9 @@ export default function CheckoutScreen() {
           {/* map through cart items */}
           <OrderCard />
         </div>
-        <SummaryPlaceOrder />
+        <div className={styles.summaryWrap}>
+          <SummaryPlaceOrder />
+        </div>
       </form>
       <img src={cakeImg} alt='large cake' className={styles.cakeImg} />
     </div>

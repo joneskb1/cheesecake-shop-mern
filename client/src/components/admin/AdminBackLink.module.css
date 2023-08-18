@@ -1,12 +1,11 @@
 .backArrowLink {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   width: 155px;
   height: 25px;
   color: var(--black);
   text-decoration: none;
-  margin-left: 20px;
 }
 
 .previousPageArrowText {

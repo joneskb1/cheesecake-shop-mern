@@ -8,6 +8,7 @@ import BaseProductFormInputs from '../../components/admin/BaseProductFormInputs'
 import AdminFormBtn from '../../components/admin/AdminFormBtn';
 import CreateVariantForm from '../../components/admin/CreateVariantForm';
 import VariantPreview from '../../components/admin/VariantPreview';
+import AdminBackLink from '../../components/admin/AdminBackLink';
 
 const updateBtnStyles = {
   color: 'var(--black)',
@@ -35,6 +36,8 @@ export default function AdminProductScreen() {
 
   return (
     <div className={styles.screen}>
+      <AdminBackLink to='products' />
+
       <AdminProductForm>
         <AdminFormHeader>Edit Product</AdminFormHeader>
         <BaseProductFormInputs />

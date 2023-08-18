@@ -1,3 +1,9 @@
+.linkWrap {
+  width: 150px;
+  margin-top: 1rem;
+  margin-left: 5%;
+}
+
 .heading {
   font-family: var(--header-title-font-regular);
   text-align: center;

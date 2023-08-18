@@ -1,11 +1,22 @@
 import styles from './SummaryPlaceOrder.module.css';
 import CheckoutBtn from '../mini-cart/CheckoutBtn';
 
-export default function SummaryPlaceOrder({ placeOrderBtn = true }) {
+export default function SummaryPlaceOrder({ placeOrderBtn = true, smallText }) {
+  console.log(smallText);
   return (
     <div className={`${styles.summaryContainer}`}>
-      <h2 className={styles.summaryHeading}>Summary</h2>
-      <div className={styles.detailsContainer}>
+      <h2
+        className={`${styles.summaryHeading} ${
+          smallText ? styles.smallHeadingText : ''
+        }`}
+      >
+        Summary
+      </h2>
+      <div
+        className={`${styles.detailsContainer} ${
+          smallText ? styles.smallDetailsText : ''
+        }`}
+      >
         <p className={styles.left}>Items</p>
         <p className={styles.right}>$18.19</p>
         <p className={styles.left}>Tax</p>
