@@ -1,7 +1,8 @@
 .cartScreen {
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - 434px);
+  /* 100% minus nav & footer */
+  min-height: calc(100vh - 454px);
 }
 
 .cartHeader {
@@ -13,13 +14,9 @@
 }
 
 .noItemsContainer {
-  background-color: var(--light-purple);
   width: 300px;
-  margin: 0 auto 3rem;
-  border-radius: 5px;
+  margin: 5rem auto 3rem;
   padding: 1rem;
-  border: 1px solid rgba(32, 26, 99, 0.46);
-  box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.25);
 }
 
 .noItemsText {
@@ -61,7 +58,8 @@
 
 @media screen and (min-width: 744px) {
   .cartScreen {
-    min-height: calc(100vh - 567px);
+    /* 100% minus nav & footer */
+    min-height: calc(100vh - 513px);
   }
 
   .OrdersContainer {
@@ -97,7 +95,8 @@
 
 @media screen and (min-width: 1440px) {
   .cartScreen {
-    min-height: calc(100vh - 339px);
+    /* 100% minus nav & footer */
+    min-height: calc(100vh - 324px);
   }
 
   .topCake {

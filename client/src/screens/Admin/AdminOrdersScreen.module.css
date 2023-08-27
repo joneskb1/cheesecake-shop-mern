@@ -1,6 +1,9 @@
 .container {
   width: 90%;
-  margin: 0 auto;
+  /* 100% minus nav & footer */
+  min-height: calc(100vh - 430px);
+  margin: 0 auto 4rem;
+  padding-top: 2rem;
 }
 
 .heading {
@@ -20,5 +23,10 @@
 @media screen and (min-width: 1440px) {
   .heading {
     font-size: 40px;
+  }
+
+  .container {
+    /* 100% minus nav & footer */
+    min-height: calc(100vh - 324px);
   }
 }

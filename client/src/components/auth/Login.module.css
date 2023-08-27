@@ -2,10 +2,11 @@
   font-family: var(--header-title-font-regular);
   width: 75%;
   max-width: 575px;
-  margin: 4rem auto 0;
+  margin: 4rem auto 2rem;
   background: var(--light-purple);
   border-radius: 5px;
   padding: 2rem 1rem;
+  text-align: center;
 }
 
 .loginHeader {
@@ -21,6 +22,7 @@
 
 .textInputLabel {
   display: block;
+  text-align: left;
   font-size: 18px;
 }
 
@@ -31,6 +33,11 @@
   border: 1px solid black;
   border-radius: 5px;
   margin-bottom: 0.5rem;
+}
+
+.signUpLink {
+  display: inline-block;
+  margin-bottom: 1rem;
 }
 
 .loginBtn {
@@ -46,4 +53,13 @@
 
 .textInputWrap:last-of-type {
   margin-bottom: 0.5rem;
+}
+
+.error {
+  border-radius: 5px;
+  color: white;
+  padding: 0.5rem;
+  margin: 0 auto;
+  background-color: var(--error);
+  width: 85%;
 }

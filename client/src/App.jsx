@@ -1,4 +1,10 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import AppLayout from './components/AppLayout';
 import './App.css';
 
@@ -122,7 +128,7 @@ const cakeCards = [
     imgTabletLarge: chocolateTabletLarge,
     imgDesktop: chocolateDesktop,
 
-    name: 'Chocolate',
+    name: 'Chocolate Oreo',
     description:
       "Embark on a chocolate lover's dream with a velvety, chocolaty oreo cheesecake that will satisfy even the most intense cocoa cravings.",
     prices: {
@@ -209,74 +215,109 @@ allHitTerms.forEach((term) => {
   searchMap.set(term, hits);
 });
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <AppLayout />,
-    children: [
-      { path: '', element: <HomeScreen /> },
-
-      {
-        path: 'cheesecakes',
-        element: (
-          <ShopCheesecakesScreen cakeCards={cakeCards} searchMap={searchMap} />
-        ),
-      },
-      {
-        path: 'cheesecake/:id',
-        element: <CheesecakeScreen cakeCards={cakeCards} />,
-      },
-      {
-        path: 'cart',
-        element: <CartScreen />,
-      },
-      {
-        path: 'checkout',
-        element: <CheckoutScreen />,
-      },
-      {
-        path: 'contact',
-        element: <ContactScreen />,
-      },
-      {
-        path: 'my-account',
-        element: <MyAccountScreen />,
-      },
-      {
-        path: 'admin-products',
-        element: <AdminProductsScreen />,
-      },
-      {
-        path: 'admin-products/:id',
-        element: <AdminProductScreen />,
-      },
-      {
-        path: 'admin-create-product',
-        element: <AdminCreateProductScreen />,
-      },
-      {
-        path: 'admin-orders',
-        element: <AdminOrdersScreen />,
-      },
-      {
-        path: 'admin-orders/:id',
-        element: <AdminOrderScreen />,
-      },
-      {
-        path: 'auth',
-        element: <AuthScreen />,
-        children: [
-          { path: 'login', element: <Login /> },
-          { path: 'forgot-password', element: <ForgotPassword /> },
-          { path: 'create-account', element: <CreateAccount /> },
-          { path: 'reset-password', element: <ResetPassword /> },
-        ],
-      },
-    ],
-  },
-]);
-
 function App() {
+  const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
+
+  console.log(isAdmin, isLoggedIn);
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <AppLayout />,
+      children: [
+        { path: '', element: <HomeScreen /> },
+        {
+          path: 'cheesecakes',
+          element: (
+            <ShopCheesecakesScreen
+              cakeCards={cakeCards}
+              searchMap={searchMap}
+            />
+          ),
+        },
+        {
+          path: 'cheesecake/:id',
+          element: <CheesecakeScreen cakeCards={cakeCards} />,
+        },
+        {
+          path: 'cart',
+          element: <CartScreen />,
+        },
+        {
+          path: 'checkout',
+          element: <CheckoutScreen />,
+        },
+        {
+          path: 'contact',
+          element: <ContactScreen />,
+        },
+        {
+          path: 'my-account',
+          element: isLoggedIn ? (
+            <MyAccountScreen />
+          ) : (
+            <Navigate to={'/auth/login'} replace />
+          ),
+        },
+        {
+          path: 'admin-products',
+          element:
+            isLoggedIn && isAdmin ? (
+              <AdminProductsScreen />
+            ) : (
+              <Navigate to={'/auth/login'} replace />
+            ),
+        },
+        {
+          path: 'admin-products/:id',
+          element:
+            isLoggedIn && isAdmin ? (
+              <AdminProductScreen />
+            ) : (
+              <Navigate to={'/auth/login'} replace />
+            ),
+        },
+        {
+          path: 'admin-create-product',
+          element:
+            isLoggedIn && isAdmin ? (
+              <AdminCreateProductScreen />
+            ) : (
+              <Navigate to={'/auth/login'} replace />
+            ),
+        },
+        {
+          path: 'admin-orders',
+          element:
+            isLoggedIn && isAdmin ? (
+              <AdminOrdersScreen />
+            ) : (
+              <Navigate to={'/auth/login'} replace />
+            ),
+        },
+        {
+          path: 'admin-orders/:id',
+          element:
+            isLoggedIn && isAdmin ? (
+              <AdminOrderScreen />
+            ) : (
+              <Navigate to={'/auth/login'} replace />
+            ),
+        },
+        {
+          path: 'auth',
+          element: <AuthScreen />,
+          children: [
+            { path: 'login', element: <Login /> },
+            { path: 'forgot-password', element: <ForgotPassword /> },
+            { path: 'create-account', element: <CreateAccount /> },
+            { path: 'reset-password/:token', element: <ResetPassword /> },
+          ],
+        },
+        { path: '*', element: <Navigate to='/' replace /> },
+      ],
+    },
+  ]);
   return <RouterProvider router={router} />;
 }
 

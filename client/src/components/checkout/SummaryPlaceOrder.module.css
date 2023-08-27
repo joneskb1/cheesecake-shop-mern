@@ -41,6 +41,30 @@
   margin-top: 1.5rem;
 }
 
+.placeOrderLink {
+  display: block;
+  margin: 1rem auto;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 0.25rem;
+  width: 155px;
+  height: 30px;
+  background-color: var(--purple);
+  color: white;
+  font-size: 14px;
+  font-family: var(--header-title-font-medium);
+}
+
+@media screen and (min-width: 744px) {
+  .placeOrderLink {
+    padding-top: 0.3rem;
+    font-size: 18px;
+    width: 210px;
+    height: 40px;
+  }
+}
+
 @media screen and (min-width: 1200px) {
   .summaryHeading {
     font-size: 40px;
@@ -57,5 +81,12 @@
 
   .smallDetailsText {
     font-size: 16px;
+  }
+
+  .placeOrderLink {
+    font-size: 24px;
+    padding: 0.5rem;
+    width: initial;
+    height: initial;
   }
 }

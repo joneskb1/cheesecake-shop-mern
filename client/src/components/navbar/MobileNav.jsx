@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import styles from './MobileNav.module.css';
-
 import NavDialog from './NavDialog';
 import hamburger from '../../assets/icons/hamburger.svg';
 

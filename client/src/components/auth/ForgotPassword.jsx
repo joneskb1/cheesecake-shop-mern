@@ -20,7 +20,8 @@ export default function ForgotPassword() {
         />
       </div>
       <p className={styles.resetPwMsg}>
-        A reset password link will be sent <br /> to your email.
+        A reset password link will be sent <br className={styles.break} /> to
+        your email.
       </p>
       <button className={styles.forgotPwBtn}>Submit</button>
     </form>

@@ -1,20 +1,22 @@
 .header {
   background: var(--blue);
-  padding: 7px 20px;
   width: 100%;
+  height: 70px;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1.5rem;
   max-width: 2000px;
   margin: 0 auto;
+  height: 100%;
 }
 
-@media screen and (min-width: 744px) {
+@media screen and (min-width: 1400px) {
   .header {
-    height: 100px;
+    height: 85px;
   }
 
   .navbar {

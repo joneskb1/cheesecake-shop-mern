@@ -25,5 +25,4 @@ dist-ssr
 *.txt
 *.env
 
-cheesecake-descriptions/
-cheesecake-images/
+text/

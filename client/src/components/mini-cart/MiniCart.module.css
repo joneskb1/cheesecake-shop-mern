@@ -28,7 +28,7 @@
 }
 
 .orderCardContainer {
-  /* 100% minus nav & footer */
+  /* 100% minus nav & footer of mini cart*/
   height: calc(100vh - 60px - 220px);
   overflow: scroll;
   margin: 0 1.25rem 0;
@@ -40,7 +40,7 @@
   }
 
   .orderCardContainer {
-    /* 100% minus nav & footer */
+    /* 100% minus nav & footer of mini cart*/
     height: calc(100vh - 60px - 250px);
   }
 }

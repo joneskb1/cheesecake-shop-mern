@@ -6,7 +6,7 @@
 
 .heroContainer {
   position: absolute;
-  top: 60px;
+  top: 70px;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -23,9 +23,9 @@
   }
 }
 
-@media screen and (min-width: 744px) {
+@media screen and (min-width: 1400px) {
   .heroContainer {
-    top: 100px;
+    top: 85px;
   }
 }
 

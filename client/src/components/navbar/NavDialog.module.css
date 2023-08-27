@@ -1,6 +1,6 @@
 .dialog {
   width: 300px;
-  height: 300px;
+  /* height: 300px; */
   margin: 25vh auto;
   border: none;
   border-radius: 5px;
@@ -32,7 +32,7 @@
 }
 
 .navLink.active {
-  border-bottom: 1px solid var(--blue);
+  text-decoration: underline;
 }
 
 .navLink.active::before {
@@ -44,8 +44,12 @@
   width: 25px;
   height: 25px;
   margin-right: 5px;
-  background-image: url('../assets/icons/chef-icon.png');
+  background-image: url('../../assets/icons/chef-icon.png');
   background-size: cover;
+}
+
+.navLink:hover {
+  text-decoration: underline;
 }
 
 .closeX {

@@ -1,72 +1,49 @@
 .footerShopBtn {
   position: relative;
-  width: 334px;
-  height: 57px;
+  /* width: 334px;
+  height: 57px; */
   background: var(--purple);
   font-size: 14px;
   color: white;
   margin: 0 auto 1rem;
+  padding: 0.75rem 1.25rem 0.75rem 3rem;
 }
 
 .footerShopBtn::before {
   content: '';
   position: absolute;
-  left: 24%;
-  top: 25%;
+  left: 9%;
+  top: 18%;
   width: 25px;
   height: 25px;
   background-image: url('../../assets/icons/chef-icon.png');
   background-size: cover;
-  z-index: 1000;
 }
 
 @media screen and (min-width: 744px) {
   .footerShopBtn {
-    font-size: 28px;
-    width: 552px;
-    height: 84px;
+    font-size: 20px;
+    padding: 1rem 1.25rem 1rem 3.5rem;
   }
 
   .footerShopBtn::before {
     background-image: url('../../assets/icons/chef-icon-38w.png');
     width: 38px;
     height: 38px;
-    left: 22%;
-    top: 23%;
+    left: 6%;
+    top: 15%;
   }
 }
 
-/* @media screen and (min-width: 1440px) {
-  .footerShopBtn {
-    width: 375px;
-    height: 84px;
-  }
-
-  .footerShopBtn::before {
-    background-image: url('../../assets/icons/chef-icon-38w.png');
-    width: 38px;
-    height: 38px;
-    left: 8%;
-    top: 21%;
-  }
-} */
 @media screen and (min-width: 1440px) {
-  .footerShopBtn {
-    width: 375px;
-    height: 84px;
-  }
-
-  .footerShopBtn::before {
-    background-image: url('../../assets/icons/chef-icon-38w.png');
-    width: 38px;
-    height: 38px;
-    left: 8%;
-    top: 21%;
-  }
-
   .footerLink {
     grid-column: 3 / -1;
     grid-row: 1 / 2;
     justify-self: end;
+    align-self: flex-start;
+  }
+
+  .footerShopBtn {
+    margin-bottom: 0;
   }
 }

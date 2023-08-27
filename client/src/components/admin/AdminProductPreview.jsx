@@ -3,6 +3,7 @@ import edit from '../../assets/icons/edit.svg';
 import trash from '../../assets/icons/trash.svg';
 import AdminCakeCard from './AdminCakeCard';
 import cake from '../../assets/images/mobile/mobile-cakes-75w/blueberry-75w.jpg';
+import { NavLink } from 'react-router-dom';
 
 export default function AdminProductPreview() {
   return (
@@ -22,7 +23,9 @@ export default function AdminProductPreview() {
           <p className={`${styles.stock} ${styles.hide}`}>5</p>
           <p className={`${styles.stock} ${styles.hide}`}>10</p>
         </div>
-        <img src={edit} className={styles.iconEdit} alt='edit icon' />
+        <NavLink to={'/admin-products/:id'} className={styles.iconEdit}>
+          <img src={edit} alt='edit icon' />
+        </NavLink>
         <img src={trash} className={styles.iconTrash} alt='delete icon' />
       </div>
       <hr className={styles.line} />

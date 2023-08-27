@@ -14,12 +14,24 @@
   height: 20px;
 }
 
+.navBtn {
+  font-family: var(--header-title-font-regular);
+  font-size: 18px;
+  background: none;
+  color: white;
+  margin-left: 2rem;
+}
+
 .link {
   color: white;
   margin-left: 3rem;
 }
 
-@media screen and (max-width: 744px) {
+.active {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 790px) {
   .navigation {
     display: none;
   }

@@ -2,7 +2,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 744px) {
+@media screen and (min-width: 791px) {
   .hamburger {
     display: none;
   }

@@ -1,8 +1,8 @@
 import styles from './SummaryPlaceOrder.module.css';
 import CheckoutBtn from '../mini-cart/CheckoutBtn';
+import { Link } from 'react-router-dom';
 
 export default function SummaryPlaceOrder({ placeOrderBtn = true, smallText }) {
-  console.log(smallText);
   return (
     <div className={`${styles.summaryContainer}`}>
       <h2
@@ -28,7 +28,12 @@ export default function SummaryPlaceOrder({ placeOrderBtn = true, smallText }) {
         <p className={styles.left}>Payment Method</p>
         <p className={styles.right}>Paypal</p>
       </div>
-      {placeOrderBtn && <CheckoutBtn>Place Order</CheckoutBtn>}
+      {/* {placeOrderBtn && <CheckoutBtn>Place Order</CheckoutBtn>} */}
+      {placeOrderBtn && (
+        <Link to='/my-account' className={`${styles.placeOrderLink}`}>
+          Place Order
+        </Link>
+      )}
     </div>
   );
 }

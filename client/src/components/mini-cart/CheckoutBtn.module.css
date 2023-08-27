@@ -21,12 +21,3 @@
     height: 40px;
   }
 }
-
-@media screen and (min-width: 1200px) {
-  .largeBtn {
-    font-size: 24px;
-    padding: 0.5rem;
-    width: initial;
-    height: initial;
-  }
-}

@@ -1,12 +1,31 @@
 import { NavLink } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutGlobalState } from '../../slices/authSlice';
+import { useLogoutMutation } from '../../slices/userApiSlice';
 import styles from './NavDialog.module.css';
 import closeX from '../../assets/icons/close-x.svg';
 
 export default function NavDialog({ dialogRef }) {
+  const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
+  const [logout] = useLogoutMutation();
+  const dispatch = useDispatch();
+
   const handleCloseDialog = function () {
     dialogRef.current.close();
   };
+
+  async function handleLogout() {
+    try {
+      const res = await logout().unwrap();
+      if (res.status === 'success') {
+        dispatch(logoutGlobalState());
+        // navigate to home
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    handleCloseDialog();
+  }
 
   return (
     <dialog
@@ -66,20 +85,7 @@ export default function NavDialog({ dialogRef }) {
             </NavLink>
           </li>
           <br />
-          <li className={styles.li}>
-            <NavLink
-              to={'/my-account'}
-              className={({ isActive }) =>
-                isActive
-                  ? `${styles.navLink} ${styles.active}`
-                  : `${styles.navLink}`
-              }
-              onClick={handleCloseDialog}
-            >
-              Account
-            </NavLink>
-          </li>
-          <br />
+
           <li className={styles.li}>
             <NavLink
               to={'/cart'}
@@ -90,9 +96,86 @@ export default function NavDialog({ dialogRef }) {
                   : `${styles.navLink}`
               }
             >
-              Shopping Cart
+              Cart
             </NavLink>
           </li>
+          <br />
+          {isLoggedIn && isAdmin && (
+            <>
+              <li className={styles.li}>
+                <NavLink
+                  to={'/admin-products'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.navLink} ${styles.active}`
+                      : `${styles.navLink}`
+                  }
+                  onClick={handleCloseDialog}
+                >
+                  Products
+                </NavLink>
+              </li>
+              <br />
+              <li className={styles.li}>
+                <NavLink
+                  to={'/admin-orders'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.navLink} ${styles.active}`
+                      : `${styles.navLink}`
+                  }
+                  onClick={handleCloseDialog}
+                >
+                  Orders
+                </NavLink>
+              </li>
+              <br />
+            </>
+          )}
+          {isLoggedIn && (
+            <>
+              <li className={styles.li}>
+                <NavLink
+                  to={'/my-account'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.navLink} ${styles.active}`
+                      : `${styles.navLink}`
+                  }
+                  onClick={handleCloseDialog}
+                >
+                  Account
+                </NavLink>
+              </li>
+              <br />
+              <li className={styles.li}>
+                <NavLink
+                  to={'/'}
+                  className={styles.navLink}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </NavLink>
+              </li>
+              <br />
+            </>
+          )}
+
+          {!isLoggedIn && (
+            <li className={styles.li}>
+              <NavLink
+                to={'/auth/login'}
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.navLink} ${styles.active}`
+                    : `${styles.navLink}`
+                }
+                onClick={handleCloseDialog}
+              >
+                Login
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
     </dialog>

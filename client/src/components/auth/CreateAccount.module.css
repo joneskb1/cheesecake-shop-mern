@@ -2,10 +2,12 @@
   font-family: var(--header-title-font-regular);
   width: 88vw;
   max-width: 575px;
+  height: auto;
   margin: 1rem auto 0;
   background: var(--light-purple);
   border-radius: 5px;
   padding: 1.5rem 1rem;
+  text-align: center;
 }
 
 .createAccountHeader {
@@ -23,6 +25,7 @@
 .textInputLabel {
   display: block;
   font-size: 18px;
+  text-align: left;
 }
 
 .textInput {
@@ -34,6 +37,11 @@
   margin-bottom: 0.5rem;
 }
 
+.loginLink {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
 .createAccountBtn {
   display: block;
   font-family: var(--header-title-font-medium);
@@ -41,10 +49,19 @@
   color: white;
   width: 155px;
   height: 42px;
-  margin: 0.5rem auto 0;
+  margin: 0 auto;
   background: var(--purple);
 }
 
 .textInputWrap:last-of-type {
   margin-bottom: 0.5rem;
+}
+
+.error {
+  border-radius: 5px;
+  color: white;
+  padding: 0.5rem;
+  background-color: var(--error);
+  width: 85%;
+  margin: 0 auto;
 }

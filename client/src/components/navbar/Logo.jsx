@@ -6,7 +6,7 @@ export default function Logo() {
   return (
     <NavLink to='/'>
       <picture>
-        <source srcSet={logoLarge} media='(min-width: 744px)' />
+        <source srcSet={logoLarge} media='(min-width: 1400px)' />
         <img src={logo} alt='logo' />
       </picture>
     </NavLink>
