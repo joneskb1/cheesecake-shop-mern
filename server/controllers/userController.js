@@ -112,6 +112,10 @@ const getUser = catchAsync(async (req, res, next) => {
 // @route PATCH api/v1/users/
 // @access Public
 const updateUser = catchAsync(async (req, res, next) => {
+  if (!req.body.name && !req.body.email) {
+    return next(new AppError('Must provide name or email to update', 400));
+  }
+
   if (
     req.body.password ||
     req.body.passwordConfirm ||
@@ -123,7 +127,21 @@ const updateUser = catchAsync(async (req, res, next) => {
     );
   }
 
-  const user = await User.findByIdAndUpdate(req.user.id, req.body, {
+  let update;
+
+  if (!req.body.name) {
+    update = {
+      email: req.body.email,
+    };
+  } else if (!req.body.email) {
+    update = {
+      name: req.body.name,
+    };
+  } else {
+    update = req.body;
+  }
+
+  const user = await User.findByIdAndUpdate(req.user.id, update, {
     new: true,
     runValidators: true,
   });

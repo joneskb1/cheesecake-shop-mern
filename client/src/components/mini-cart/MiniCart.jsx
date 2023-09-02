@@ -6,7 +6,11 @@ import MiniCartFooter from './MiniCartFooter';
 // parent should be position relative and overflow hidden
 // open button and state are kept in parent
 
-export default function MiniCart({ isMiniCartOpen, setIsMiniCartOpen }) {
+export default function MiniCart({
+  isMiniCartOpen,
+  setIsMiniCartOpen,
+  setIsLoginModalOpen,
+}) {
   const closeMiniCart = function () {
     setIsMiniCartOpen(false);
   };
@@ -25,7 +29,10 @@ export default function MiniCart({ isMiniCartOpen, setIsMiniCartOpen }) {
           <OrderCard />
         </div>
 
-        <MiniCartFooter closeMiniCart={closeMiniCart} />
+        <MiniCartFooter
+          closeMiniCart={closeMiniCart}
+          setIsLoginModalOpen={setIsLoginModalOpen}
+        />
       </div>
 
       {isMiniCartOpen && (

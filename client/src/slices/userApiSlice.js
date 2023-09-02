@@ -1,6 +1,7 @@
 import { apiSlice } from './apiSlice.js';
 import { USER_URL } from '../utils/constants.js';
 
+// change to plural: users
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     registerUser: builder.mutation({
@@ -33,6 +34,29 @@ export const userApiSlice = apiSlice.injectEndpoints({
         credentials: 'include',
       }),
     }),
+    updatePassword: builder.mutation({
+      query: (data) => ({
+        url: `${USER_URL}/update-password`,
+        method: 'PATCH',
+        credentials: 'include',
+        body: data,
+      }),
+    }),
+    updateAccount: builder.mutation({
+      query: (data) => ({
+        url: `${USER_URL}`,
+        method: 'PATCH',
+        credentials: 'include',
+        body: data,
+      }),
+    }),
+    getUser: builder.query({
+      query: () => ({
+        url: `${USER_URL}`,
+        method: 'GET',
+        credentials: 'include',
+      }),
+    }),
   }),
 });
 
@@ -41,4 +65,7 @@ export const {
   useLoginMutation,
   useLogoutMutation,
   useVerifyLoggedInMutation,
+  useUpdatePasswordMutation,
+  useUpdateAccountMutation,
+  useGetUserQuery,
 } = userApiSlice;

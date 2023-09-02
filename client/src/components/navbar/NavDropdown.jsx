@@ -60,9 +60,9 @@ export default function NavDropdown({ children, onLogout }) {
               </>
             )}
             <li>
-              <button className={styles.navBtn} onClick={onLogout}>
+              <NavLink to={'/'} className={styles.navBtn} onClick={onLogout}>
                 Logout
-              </button>
+              </NavLink>
             </li>
           </ul>
         )}

@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../../slices/userApiSlice';
 import { loginGlobalState, logoutGlobalState } from '../../slices/authSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Login.module.css';
 
 export default function Login() {
@@ -10,9 +10,12 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { search } = useLocation();
 
+  const dispatch = useDispatch();
   const [login] = useLoginMutation();
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -34,6 +37,17 @@ export default function Login() {
       dispatch(logoutGlobalState());
     }
   }
+
+  const searchParams = new URLSearchParams(search);
+  const redirect = searchParams.get('redirect')
+    ? searchParams.get('redirect')
+    : '/cheesecakes';
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate(redirect);
+    }
+  }, [isLoggedIn, navigate, redirect]);
 
   return (
     <form className={styles.login} onSubmit={handleLogin}>
@@ -66,7 +80,10 @@ export default function Login() {
       </div>
       {error && <p className={styles.error}>{error}</p>}
       <p className={styles.signUpText}>New customer?</p>
-      <Link to={'/auth/create-account'} className={styles.signUpLink}>
+      <Link
+        to={`/auth/create-account?redirect=${redirect}`}
+        className={styles.signUpLink}
+      >
         Sign Up
       </Link>
       <button className={styles.loginBtn}>Login</button>

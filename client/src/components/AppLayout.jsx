@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginGlobalState, logoutGlobalState } from '../slices/authSlice';
 import { useVerifyLoggedInMutation } from '../slices/userApiSlice';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Navbar from './navbar/Navbar';
 import Footer from './footer/Footer';
@@ -26,7 +28,6 @@ export default function AppLayout() {
   // const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
   useEffect(() => {
     async function checkLogin() {
-      console.log('CHECKING. PLEASE HOLD. :)');
       try {
         const res = await verifyLoggedIn().unwrap();
         if (res.status === 'success') {
@@ -50,6 +51,16 @@ export default function AppLayout() {
     <>
       <ScrollToTop />
       <Navbar />
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        theme='light'
+      />
       <Outlet />
       <Footer />
     </>

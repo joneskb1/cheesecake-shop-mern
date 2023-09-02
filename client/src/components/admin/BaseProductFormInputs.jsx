@@ -1,14 +1,50 @@
-import { useState } from 'react';
+import { useUploadImageMutation } from '../../slices/productsSlice';
+import { toast } from 'react-toastify';
 import styles from './BaseProductFormInputs.module.css';
 
-import uploadIcon from '../../assets/icons/upload.svg';
+// import uploadIcon from '../../assets/icons/upload.svg';
 
-export default function BaseProductFormInputs() {
-  const [productName, setProductName] = useState('');
-  const [productDescription, setProductDescription] = useState('');
-  const [productPrice, setProductPrice] = useState('');
-  const [productSize, setProductSize] = useState('');
-  const [productStock, setProductStock] = useState('');
+export default function BaseProductFormInputs({ formState }) {
+  const {
+    productName,
+    setProductName,
+    productDescription,
+    setProductDescription,
+    productPrice,
+    setProductPrice,
+    productSize,
+    setProductSize,
+    productStock,
+    setProductStock,
+    error,
+    setError,
+    productImage,
+    setProductImage,
+  } = formState;
+
+  const [uploadImage] = useUploadImageMutation();
+
+  async function handleImageUpload(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('image', e.target.files[0]);
+
+    try {
+      const res = await uploadImage(formData).unwrap();
+      if (res.message === 'Image Upload') {
+        setError(null);
+        setProductImage(res.image);
+        toast.success(res.message);
+      } else {
+        setError(res.message);
+        setProductImage(null);
+      }
+    } catch (error) {
+      setError(error?.data?.message);
+      toast.error(error?.data?.message);
+      setProductImage(null);
+    }
+  }
 
   return (
     <>
@@ -16,6 +52,7 @@ export default function BaseProductFormInputs() {
         Name
       </label>
       <input
+        required
         type='text'
         name='product-name'
         id='product-name'
@@ -28,7 +65,8 @@ export default function BaseProductFormInputs() {
         Price
       </label>
       <input
-        type='text'
+        required
+        type='number'
         name='product-price'
         id='product-price'
         className={styles.textInput}
@@ -39,7 +77,8 @@ export default function BaseProductFormInputs() {
         Size
       </label>
       <input
-        type='text'
+        required
+        type='number'
         name='product-size'
         id='product-size'
         className={styles.textInput}
@@ -50,7 +89,8 @@ export default function BaseProductFormInputs() {
         Stock
       </label>
       <input
-        type='text'
+        required
+        type='number'
         name='product-stock'
         id='product-stock'
         className={styles.textInput}
@@ -61,6 +101,7 @@ export default function BaseProductFormInputs() {
         Description
       </label>
       <textarea
+        required
         name='product-description'
         id='product-description'
         className={styles.adminProductDescription}
@@ -70,13 +111,30 @@ export default function BaseProductFormInputs() {
       <label htmlFor='image' className={styles.textInputLabel}>
         Image
       </label>
-      <div id='image' className={styles.upLoadImageBtn}>
+
+      <input
+        required
+        type='file'
+        name='image'
+        id='image'
+        className={styles.imageUploadInput}
+        onChange={handleImageUpload}
+      />
+      {productImage && (
+        <img
+          src={`/src/assets/uploads/original/${productImage}`}
+          className={styles.img}
+          alt={productName || 'image'}
+        />
+      )}
+      {/* <div id='image' className={styles.upLoadImageBtn}>
         <img
           src={uploadIcon}
           className={styles.uploadIcon}
           alt='upload image icon'
         />
-      </div>
+      </div> */}
+      {error && <p className={styles.error}>{error}</p>}
     </>
   );
 }

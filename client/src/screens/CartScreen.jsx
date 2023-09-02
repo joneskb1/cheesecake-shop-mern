@@ -7,7 +7,9 @@ import CartHeader from '../components/mini-cart/CartHeader';
 import OrderCard from '../components/mini-cart/OrderCard';
 import cakeLarge from '../assets/images/desktop/cart-cake-802w.png';
 
-export default function CartScreen() {
+import LoginSignUpModal from '../components/checkout/LoginSignUpModal';
+
+export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
   const items = true;
 
   return (
@@ -30,7 +32,10 @@ export default function CartScreen() {
       )}
       {items && (
         <div className={styles.summaryOrderContainer}>
-          <SummaryCart />
+          <SummaryCart
+            isLoginModalOpen={isLoginModalOpen}
+            setIsLoginModalOpen={setIsLoginModalOpen}
+          />
           <div className={styles.OrdersContainer}>
             <CartHeader />
             <OrderCard />
@@ -38,6 +43,11 @@ export default function CartScreen() {
         </div>
       )}
       <img className={styles.bottomCake} src={cake2} alt='berry cheesecake' />
+      {isLoginModalOpen && (
+        <LoginSignUpModal
+          setIsLoginModalOpen={setIsLoginModalOpen}
+        ></LoginSignUpModal>
+      )}
     </div>
   );
 }

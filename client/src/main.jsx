@@ -16,7 +16,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 // TUH DURRRRS
-// DURR 1) finish rtk user routes and ui
 // DURR 2) products controller/db, rtk, ui
 // DURR 3) orders controller/db, rtk, ui
 // DURR 4) cart slice, ui, storage
@@ -24,3 +23,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 // DURR 6) payment processing w/ stripe
 // DURR 7) usps api for shipping
 // DURR 8) admin mutate users rtk & ui
+// DURR 9) images

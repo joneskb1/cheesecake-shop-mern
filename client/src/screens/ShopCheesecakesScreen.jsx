@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import styles from './ShopCheesecakesScreen.module.css';
-
+import { useGetAllProductsQuery } from '../slices/productsSlice.js';
 import ShopBanner from '../components/shop/ShopBanner';
 import ShopCheesecakesHeader from '../components/shop/ShopCheesecakesHeader';
 import SearchBtn from '../components/shop/SearchBtn';
@@ -11,6 +11,13 @@ import SearchInput from '../components/shop/SearchInput';
 export default function ShopheesecakesScreen({ cakeCards, searchMap }) {
   const [cakes, setCakes] = useState(cakeCards);
   const [searchInput, setSearchInput] = useState('');
+
+  const { data: products } = useGetAllProductsQuery();
+  let productArray;
+
+  if (products) {
+    productArray = products.data.products;
+  }
 
   return (
     <div className={styles.shopWrap}>

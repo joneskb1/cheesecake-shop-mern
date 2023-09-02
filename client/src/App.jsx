@@ -65,6 +65,7 @@ import lemonDesktop from './assets/images/desktop/cakes-732w/lemon-732w.jpg';
 import raspberryDesktop from './assets/images/desktop/cakes-732w/raspberry-732w.jpg';
 import redVelvetDesktop from './assets/images/desktop/cakes-732w/red-velvet-732w.jpg';
 import strawberryDesktop from './assets/images/desktop/cakes-732w/strawberry-732w.jpg';
+import { useState } from 'react';
 
 const cakeCards = [
   {
@@ -217,6 +218,7 @@ allHitTerms.forEach((term) => {
 
 function App() {
   const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   console.log(isAdmin, isLoggedIn);
 
@@ -237,11 +239,22 @@ function App() {
         },
         {
           path: 'cheesecake/:id',
-          element: <CheesecakeScreen cakeCards={cakeCards} />,
+          element: (
+            <CheesecakeScreen
+              cakeCards={cakeCards}
+              isLoginModalOpen={isLoginModalOpen}
+              setIsLoginModalOpen={setIsLoginModalOpen}
+            />
+          ),
         },
         {
           path: 'cart',
-          element: <CartScreen />,
+          element: (
+            <CartScreen
+              isLoginModalOpen={isLoginModalOpen}
+              setIsLoginModalOpen={setIsLoginModalOpen}
+            />
+          ),
         },
         {
           path: 'checkout',

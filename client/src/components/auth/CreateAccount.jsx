@@ -22,7 +22,7 @@ export default function CreateAccount() {
   const searchParams = new URLSearchParams(search);
   const redirect = searchParams.get('redirect')
     ? searchParams.get('redirect')
-    : '/';
+    : '/cheesecakes';
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -112,7 +112,10 @@ export default function CreateAccount() {
       {error && <p className={styles.error}>{error}</p>}
 
       <p className={styles.loginText}>Already a customer?</p>
-      <Link to={'/auth/login'} className={styles.loginLink}>
+      <Link
+        to={`/auth/login?redirect=${redirect}`}
+        className={styles.loginLink}
+      >
         Login
       </Link>
 

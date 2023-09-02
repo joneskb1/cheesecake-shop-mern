@@ -1,6 +1,7 @@
 import styles from './AdminProductScreen.module.css';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import AdminFormHeader from '../../components/admin/AdminFormHeader';
 import AdminProductForm from '../../components/admin/AdminProductForm';
@@ -9,6 +10,8 @@ import AdminFormBtn from '../../components/admin/AdminFormBtn';
 import CreateVariantForm from '../../components/admin/CreateVariantForm';
 import VariantPreview from '../../components/admin/VariantPreview';
 import AdminBackLink from '../../components/admin/AdminBackLink';
+import { useGetProductQuery } from '../../slices/productsSlice.js';
+import PageLoader from '../../components/PageLoader.jsx';
 
 const updateBtnStyles = {
   color: 'var(--black)',
@@ -33,14 +36,62 @@ const deleteProductBtnStyles = {
 export default function AdminProductScreen() {
   const [createVariant, setCreateVariant] = useState(false);
   const [isVariants] = useState(true);
+  const { id } = useParams();
+  const { data, isLoading } = useGetProductQuery(id);
+
+  const [productName, setProductName] = useState('');
+  const [productDescription, setProductDescription] = useState('');
+  const [productPrice, setProductPrice] = useState('');
+  const [productSize, setProductSize] = useState('');
+  const [productStock, setProductStock] = useState('');
+  const [productImage, setProductImage] = useState('');
+
+  const [error, setError] = useState(null);
+
+  const formState = {
+    productName,
+    setProductName,
+    productDescription,
+    setProductDescription,
+    productPrice,
+    setProductPrice,
+    productSize,
+    setProductSize,
+    productStock,
+    setProductStock,
+    productImage,
+    setProductImage,
+    error,
+    setError,
+  };
+
+  async function handleEditProduct(e) {
+    e.preventDefault();
+    console.log('submit');
+  }
+
+  useEffect(() => {
+    if (data) {
+      setProductName(data.data.product.name || '');
+      setProductDescription(data.data.product.description || '');
+      setProductPrice(data.data.product.variant[0].price || '');
+      setProductSize(data.data.product.variant[0].size || '');
+      setProductStock(data.data.product.variant[0].stock || '');
+      setProductImage(data.data.product.image || '');
+    }
+  }, [data]);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
 
   return (
     <div className={styles.screen}>
       <AdminBackLink to='products' />
 
-      <AdminProductForm>
+      <AdminProductForm formHandler={handleEditProduct}>
         <AdminFormHeader>Edit Product</AdminFormHeader>
-        <BaseProductFormInputs />
+        <BaseProductFormInputs formState={formState} />
         <AdminFormBtn propStyles={updateBtnStyles}>Update Product</AdminFormBtn>
         {!createVariant && (
           <AdminFormBtn

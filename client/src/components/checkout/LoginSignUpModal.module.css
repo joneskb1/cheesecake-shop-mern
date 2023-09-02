@@ -1,0 +1,32 @@
+.loginSignUpModal {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  color: black;
+  background: var(--light-purple);
+  font-family: var(--header-title-font-regular);
+  z-index: 4;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 2rem;
+}
+
+.loginSignUpModalOverlay {
+  position: fixed;
+  top: 0px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(85, 85, 85, 0.658);
+  z-index: 3;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}

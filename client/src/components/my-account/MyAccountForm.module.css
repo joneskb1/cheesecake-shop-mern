@@ -2,11 +2,11 @@
   font-family: var(--header-title-font-regular);
   width: 85vw;
   max-width: 550px;
-  max-height: 510px;
   margin: 0 auto 2rem;
   padding: 1rem;
   background: var(--light-purple);
   border-radius: 5px;
+  align-self: flex-start;
 }
 
 .formsWrap {
@@ -49,6 +49,13 @@
 
 .accountForm {
   margin-bottom: 1rem;
+}
+
+.error {
+  color: var(--error);
+  margin-bottom: 1rem;
+  font-family: var(--header-title-font-medium);
+  font-size: 18px;
 }
 
 @media screen and (min-width: 744px) {

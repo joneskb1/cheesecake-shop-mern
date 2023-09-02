@@ -43,7 +43,7 @@
 }
 
 .dropdownOverlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -55,7 +55,7 @@
   text-decoration: underline;
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1440px) {
   .dropdown {
     left: -5px;
   }

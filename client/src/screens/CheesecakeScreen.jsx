@@ -10,8 +10,13 @@ import CakeDetailsCard from '../components/single-cake/CakeDetailsCard';
 import CakeIconsMarquee from '../components/single-cake/CakeIconsMarquee';
 import YouMayLike from '../components/single-cake/YouMayLike';
 import MiniCart from '../components/mini-cart/MiniCart';
+import LoginSignUpModal from '../components/checkout/LoginSignUpModal';
 
-export default function CheesecakeScreen({ cakeCards }) {
+export default function CheesecakeScreen({
+  cakeCards,
+  isLoginModalOpen,
+  setIsLoginModalOpen,
+}) {
   const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
 
   const params = useParams();
@@ -40,7 +45,13 @@ export default function CheesecakeScreen({ cakeCards }) {
         <MiniCart
           isMiniCartOpen={isMiniCartOpen}
           setIsMiniCartOpen={setIsMiniCartOpen}
+          setIsLoginModalOpen={setIsLoginModalOpen}
         />
+        {isLoginModalOpen && (
+          <LoginSignUpModal
+            setIsLoginModalOpen={setIsLoginModalOpen}
+          ></LoginSignUpModal>
+        )}
       </div>
     </>
   );
