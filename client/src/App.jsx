@@ -219,6 +219,7 @@ allHitTerms.forEach((term) => {
 function App() {
   const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [userChangedImageFile, setUserChangedImageFile] = useState(false);
 
   console.log(isAdmin, isLoggedIn);
 
@@ -285,7 +286,10 @@ function App() {
           path: 'admin-products/:id',
           element:
             isLoggedIn && isAdmin ? (
-              <AdminProductScreen />
+              <AdminProductScreen
+                userChangedImageFile={userChangedImageFile}
+                setUserChangedImageFile={setUserChangedImageFile}
+              />
             ) : (
               <Navigate to={'/auth/login'} replace />
             ),
@@ -294,7 +298,10 @@ function App() {
           path: 'admin-create-product',
           element:
             isLoggedIn && isAdmin ? (
-              <AdminCreateProductScreen />
+              <AdminCreateProductScreen
+                userChangedImageFile={userChangedImageFile}
+                setUserChangedImageFile={setUserChangedImageFile}
+              />
             ) : (
               <Navigate to={'/auth/login'} replace />
             ),

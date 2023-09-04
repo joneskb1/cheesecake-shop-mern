@@ -1,10 +1,18 @@
 import { useUploadImageMutation } from '../../slices/productsSlice';
 import { toast } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
 import styles from './BaseProductFormInputs.module.css';
+import { useState } from 'react';
 
 // import uploadIcon from '../../assets/icons/upload.svg';
 
-export default function BaseProductFormInputs({ formState }) {
+export default function BaseProductFormInputs({
+  setUserChangedImageFile,
+  userChangedImageFile,
+  formState,
+}) {
+  const location = useLocation();
+  const [uploadImage] = useUploadImageMutation();
   const {
     productName,
     setProductName,
@@ -22,10 +30,12 @@ export default function BaseProductFormInputs({ formState }) {
     setProductImage,
   } = formState;
 
-  const [uploadImage] = useUploadImageMutation();
+  const onCreatePage = location.pathname.startsWith('/admin-create-product');
 
   async function handleImageUpload(e) {
     e.preventDefault();
+    if (!e.target.files[0]) return;
+
     const formData = new FormData();
     formData.append('image', e.target.files[0]);
 
@@ -35,6 +45,7 @@ export default function BaseProductFormInputs({ formState }) {
         setError(null);
         setProductImage(res.image);
         toast.success(res.message);
+        setUserChangedImageFile(true);
       } else {
         setError(res.message);
         setProductImage(null);
@@ -113,7 +124,7 @@ export default function BaseProductFormInputs({ formState }) {
       </label>
 
       <input
-        required
+        required={onCreatePage}
         type='file'
         name='image'
         id='image'
@@ -122,7 +133,13 @@ export default function BaseProductFormInputs({ formState }) {
       />
       {productImage && (
         <img
-          src={`/src/assets/uploads/original/${productImage}`}
+          src={
+            !userChangedImageFile
+              ? `/src/assets/uploads/clones/small/${
+                  productImage.split('.')[0]
+                }-170w.${productImage.split('.')[1]}`
+              : `/src/assets/uploads/original/${productImage}`
+          }
           className={styles.img}
           alt={productName || 'image'}
         />

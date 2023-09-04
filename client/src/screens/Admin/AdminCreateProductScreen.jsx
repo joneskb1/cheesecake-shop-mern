@@ -10,7 +10,10 @@ import AdminFormBtn from '../../components/admin/AdminFormBtn';
 import AdminBackLink from '../../components/admin/AdminBackLink';
 import { toast } from 'react-toastify';
 
-export default function AdminCreateProductScreen() {
+export default function AdminCreateProductScreen({
+  userChangedImageFile,
+  setUserChangedImageFile,
+}) {
   const [productName, setProductName] = useState('');
   const [productDescription, setProductDescription] = useState('');
   const [productPrice, setProductPrice] = useState('');
@@ -97,6 +100,7 @@ export default function AdminCreateProductScreen() {
         setProductDescription('');
         setProductPrice('');
         setProductStock('');
+        setUserChangedImageFile(false);
         navigate(`/admin-products/${res.data.product._id}`);
       } else {
         setError(res.message);
@@ -118,7 +122,11 @@ export default function AdminCreateProductScreen() {
     <AdminProductForm formHandler={handleCreateProduct}>
       <AdminBackLink to='products' />
       <AdminFormHeader>Create Product</AdminFormHeader>
-      <BaseProductFormInputs formState={formState} />
+      <BaseProductFormInputs
+        userChangedImageFile={userChangedImageFile}
+        setUserChangedImageFile={setUserChangedImageFile}
+        formState={formState}
+      />
       <AdminFormBtn>Create Product</AdminFormBtn>
     </AdminProductForm>
   );

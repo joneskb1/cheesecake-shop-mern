@@ -1,7 +1,7 @@
-import styles from './AdminProductScreen.module.css';
-
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import styles from './AdminProductScreen.module.css';
 
 import AdminFormHeader from '../../components/admin/AdminFormHeader';
 import AdminProductForm from '../../components/admin/AdminProductForm';
@@ -10,7 +10,11 @@ import AdminFormBtn from '../../components/admin/AdminFormBtn';
 import CreateVariantForm from '../../components/admin/CreateVariantForm';
 import VariantPreview from '../../components/admin/VariantPreview';
 import AdminBackLink from '../../components/admin/AdminBackLink';
-import { useGetProductQuery } from '../../slices/productsSlice.js';
+import { useCloneImageMutation } from '../../slices/productsSlice';
+import {
+  useGetProductQuery,
+  useUpdateProductMutation,
+} from '../../slices/productsSlice.js';
 import PageLoader from '../../components/PageLoader.jsx';
 
 const updateBtnStyles = {
@@ -33,12 +37,12 @@ const deleteProductBtnStyles = {
   marginTop: '5px',
 };
 
-export default function AdminProductScreen() {
+export default function AdminProductScreen({
+  userChangedImageFile,
+  setUserChangedImageFile,
+}) {
   const [createVariant, setCreateVariant] = useState(false);
   const [isVariants] = useState(true);
-  const { id } = useParams();
-  const { data, isLoading } = useGetProductQuery(id);
-
   const [productName, setProductName] = useState('');
   const [productDescription, setProductDescription] = useState('');
   const [productPrice, setProductPrice] = useState('');
@@ -47,6 +51,13 @@ export default function AdminProductScreen() {
   const [productImage, setProductImage] = useState('');
 
   const [error, setError] = useState(null);
+
+  const { id } = useParams();
+  const previousName = useRef('');
+
+  const { data, isLoading } = useGetProductQuery(id);
+  const [updateProduct] = useUpdateProductMutation();
+  const [cloneImage] = useCloneImageMutation();
 
   const formState = {
     productName,
@@ -67,7 +78,49 @@ export default function AdminProductScreen() {
 
   async function handleEditProduct(e) {
     e.preventDefault();
-    console.log('submit');
+
+    if (userChangedImageFile) {
+      try {
+        const res = await cloneImage({ productImage, productName }).unwrap();
+
+        if (res.status === 'success') {
+          console.log('CLONE');
+          toast.success('Images Created', {
+            hideProgressBar: false,
+            progress: undefined,
+          });
+          setError(null);
+        } else {
+          setError(res.message);
+          toast.error(res.message, {
+            hideProgressBar: false,
+            progress: undefined,
+          });
+        }
+      } catch (error) {
+        setError(error.data.message);
+        toast.error(error.data.message, {
+          hideProgressBar: false,
+          progress: undefined,
+        });
+      }
+    }
+
+    const res = await updateProduct({
+      id,
+      productName,
+      productDescription,
+      productPrice,
+      productSize,
+      productStock,
+      productImage,
+      previousName: previousName.current,
+      userChangedImageFile,
+    }).unwrap();
+
+    setProductImage(res.data.data.image);
+    previousName.current = productName;
+    setUserChangedImageFile(false);
   }
 
   useEffect(() => {
@@ -78,6 +131,7 @@ export default function AdminProductScreen() {
       setProductSize(data.data.product.variant[0].size || '');
       setProductStock(data.data.product.variant[0].stock || '');
       setProductImage(data.data.product.image || '');
+      previousName.current = data.data.product.name;
     }
   }, [data]);
 
@@ -91,7 +145,11 @@ export default function AdminProductScreen() {
 
       <AdminProductForm formHandler={handleEditProduct}>
         <AdminFormHeader>Edit Product</AdminFormHeader>
-        <BaseProductFormInputs formState={formState} />
+        <BaseProductFormInputs
+          userChangedImageFile={userChangedImageFile}
+          setUserChangedImageFile={setUserChangedImageFile}
+          formState={formState}
+        />
         <AdminFormBtn propStyles={updateBtnStyles}>Update Product</AdminFormBtn>
         {!createVariant && (
           <AdminFormBtn
