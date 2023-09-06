@@ -164,10 +164,7 @@ const deleteUser = catchAsync(async (req, res, next) => {
 
   if (!user) return next(new AppError('User not found', 404));
 
-  res.status(204).json({
-    status: 'success',
-    data: null,
-  });
+  res.status(204);
 });
 
 // @desc verify user is logged in
@@ -447,10 +444,7 @@ const adminDeleteUser = catchAsync(async (req, res, next) => {
 
   if (!user) return next(new AppError('User not found', 404));
 
-  res.status(204).json({
-    status: 'success',
-    data: null,
-  });
+  res.status(204);
 });
 
 export {

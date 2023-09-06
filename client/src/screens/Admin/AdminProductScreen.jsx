@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styles from './AdminProductScreen.module.css';
 
@@ -10,10 +10,11 @@ import AdminFormBtn from '../../components/admin/AdminFormBtn';
 import CreateVariantForm from '../../components/admin/CreateVariantForm';
 import VariantPreview from '../../components/admin/VariantPreview';
 import AdminBackLink from '../../components/admin/AdminBackLink';
-import { useCloneImageMutation } from '../../slices/productsSlice';
 import {
   useGetProductQuery,
   useUpdateProductMutation,
+  useCloneImageMutation,
+  useDeleteProductMutation,
 } from '../../slices/productsSlice.js';
 import PageLoader from '../../components/PageLoader.jsx';
 
@@ -49,15 +50,19 @@ export default function AdminProductScreen({
   const [productSize, setProductSize] = useState('');
   const [productStock, setProductStock] = useState('');
   const [productImage, setProductImage] = useState('');
+  const [originalImg, setOriginalImg] = useState('');
 
   const [error, setError] = useState(null);
 
   const { id } = useParams();
+  const navigate = useNavigate();
   const previousName = useRef('');
+  const fileInputRef = useRef('');
 
   const { data, isLoading } = useGetProductQuery(id);
   const [updateProduct] = useUpdateProductMutation();
   const [cloneImage] = useCloneImageMutation();
+  const [deleteProduct] = useDeleteProductMutation();
 
   const formState = {
     productName,
@@ -117,10 +122,11 @@ export default function AdminProductScreen({
       previousName: previousName.current,
       userChangedImageFile,
     }).unwrap();
-
-    setProductImage(res.data.data.image);
+    setOriginalImg(res.data.data.image);
+    setProductImage('');
     previousName.current = productName;
     setUserChangedImageFile(false);
+    fileInputRef.current.value = '';
   }
 
   useEffect(() => {
@@ -131,9 +137,24 @@ export default function AdminProductScreen({
       setProductSize(data.data.product.variant[0].size || '');
       setProductStock(data.data.product.variant[0].stock || '');
       setProductImage(data.data.product.image || '');
+      setOriginalImg(data.data.product.image || '');
       previousName.current = data.data.product.name;
     }
   }, [data]);
+
+  async function handleDeleteProduct(e) {
+    e.preventDefault();
+    try {
+      await deleteProduct({ id });
+      navigate('/admin-products');
+    } catch (error) {
+      setError(error.data.message);
+      toast.error(error.data.message, {
+        hideProgressBar: false,
+        progress: undefined,
+      });
+    }
+  }
 
   if (isLoading) {
     return <PageLoader />;
@@ -146,6 +167,8 @@ export default function AdminProductScreen({
       <AdminProductForm formHandler={handleEditProduct}>
         <AdminFormHeader>Edit Product</AdminFormHeader>
         <BaseProductFormInputs
+          fileInputRef={fileInputRef}
+          originalImg={originalImg}
           userChangedImageFile={userChangedImageFile}
           setUserChangedImageFile={setUserChangedImageFile}
           formState={formState}
@@ -160,7 +183,10 @@ export default function AdminProductScreen({
           </AdminFormBtn>
         )}
       </AdminProductForm>
-      <AdminFormBtn propStyles={deleteProductBtnStyles}>
+      <AdminFormBtn
+        propStyles={deleteProductBtnStyles}
+        onClick={handleDeleteProduct}
+      >
         Delete Product
       </AdminFormBtn>
 

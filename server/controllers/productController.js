@@ -5,6 +5,39 @@ import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 import Product from '../models/productModel.js';
 
+const outputPathBase = '/client/src/assets/uploads/clones';
+const __dirname = path.resolve();
+const clones = [
+  { path: `${outputPathBase}/xx-large`, size: [732, 484] },
+  { path: `${outputPathBase}/x-large`, size: [436, 289] },
+  { path: `${outputPathBase}/large`, size: [354, 266] },
+  { path: `${outputPathBase}/medium`, size: [265, 199] },
+  { path: `${outputPathBase}/small`, size: [170, 112] },
+  { path: `${outputPathBase}/x-small`, size: [75, 60] },
+  { path: `${outputPathBase}/xx-small`, size: [38, 29] },
+];
+
+function deleteClones(name, path, ext, size) {
+  fs.unlink(`${__dirname}/${path}/${name}-${size}w.${ext}`, (err) => {
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+  });
+}
+
+function deleteOriginals() {
+  const folderPath = `${__dirname}/client/src/assets/uploads/original`;
+  fs.readdir(folderPath, (err, files) => {
+    if (err) new AppError('issue reading directory to delete originals', 404);
+    files.forEach(async (file) => {
+      fs.unlink(path.join(folderPath, file), (err) => {
+        if (err) new AppError('could not delete originals', 500);
+      });
+    });
+  });
+}
+
 // @desc get products
 // @route GET api/v1/products/
 // @access Public
@@ -76,6 +109,8 @@ const createProduct = catchAsync(async (req, res, next) => {
 
   if (!product) return next(new AppError('Could not create product', 400));
 
+  deleteOriginals();
+
   res.status(200).json({
     status: 'success',
     data: {
@@ -84,6 +119,9 @@ const createProduct = catchAsync(async (req, res, next) => {
   });
 });
 
+// @desc update a product
+// @route Patch api/v1/products/:id
+// @access ADMIN
 const updateProduct = catchAsync(async (req, res, next) => {
   const {
     id,
@@ -101,12 +139,12 @@ const updateProduct = catchAsync(async (req, res, next) => {
 
   // if only name changes but no image change: rename image files to new name
 
-  const outputPathBase = '/client/src/assets/uploads/clones';
+  if (productImage) {
+  }
+
   const oldImageName = product.image.split('.')[0];
   const oldImageExt = product.image.split('.')[1];
-  const newImageExt = productImage.split('.')[1];
-  console.log('old ext', oldImageExt);
-  console.log('new ext', newImageExt);
+  const newImageExt = productImage?.split('.')[1];
   const newFileName = productName
     .toLowerCase()
     .replace(/\s\s+/g, ' ')
@@ -114,22 +152,13 @@ const updateProduct = catchAsync(async (req, res, next) => {
     .split(' ')
     .join('-');
 
-  const __dirname = path.resolve();
-  const clones = [
-    { path: `${outputPathBase}/xx-large`, size: [732, 484] },
-    { path: `${outputPathBase}/x-large`, size: [436, 289] },
-    { path: `${outputPathBase}/large`, size: [354, 266] },
-    { path: `${outputPathBase}/medium`, size: [265, 199] },
-    { path: `${outputPathBase}/small`, size: [170, 112] },
-    { path: `${outputPathBase}/x-small`, size: [75, 60] },
-    { path: `${outputPathBase}/xx-small`, size: [38, 29] },
-  ];
-
   if (productName !== previousName && !userChangedImageFile) {
     clones.forEach(async (clone) => {
       await fs.rename(
         `${__dirname}/${clone.path}/${oldImageName}-${clone.size[0]}w.${oldImageExt}`,
-        `${__dirname}/${clone.path}/${newFileName}-${clone.size[0]}w.${newImageExt}`,
+        `${__dirname}/${clone.path}/${newFileName}-${clone.size[0]}w.${
+          newImageExt ? newImageExt : oldImageExt
+        }`,
         (error) => {
           if (error) {
             console.log(error);
@@ -141,16 +170,7 @@ const updateProduct = catchAsync(async (req, res, next) => {
 
   if (userChangedImageFile && productName !== previousName) {
     clones.forEach(async (clone) => {
-      await fs.unlink(
-        `${__dirname}/${clone.path}/${oldImageName}-${clone.size[0]}w.${oldImageExt}`,
-        (err) => {
-          if (err) {
-            console.log(err);
-            throw err;
-          }
-          console.log('path/file.txt was deleted');
-        }
-      );
+      deleteClones(oldImageName, clone.path, oldImageExt, clone.size[0]);
     });
   }
 
@@ -164,15 +184,20 @@ const updateProduct = catchAsync(async (req, res, next) => {
         stock: productStock,
       },
     ],
-    image: newFileName + '.' + newImageExt,
+    image: oldImageName + '.' + oldImageExt,
   };
+
+  if (productImage) {
+    console.log('BACK IMG', productImage);
+    productData.image = newFileName + '.' + newImageExt;
+  }
 
   const updatedProduct = await Product.findByIdAndUpdate(id, productData, {
     new: true,
     runValidators: true,
   });
 
-  // if name and image are changed, delete images with previous name
+  deleteOriginals();
 
   res.status(200).json({
     status: 'success',
@@ -182,4 +207,30 @@ const updateProduct = catchAsync(async (req, res, next) => {
   });
 });
 
-export { getAllProducts, createProduct, getProduct, updateProduct };
+// @desc delete product
+// @route Delete api/v1/products/:id
+// @access Public
+const deleteProduct = catchAsync(async (req, res, next) => {
+  const product = await Product.findByIdAndDelete(req.params.id);
+
+  if (!product) {
+    return next(new AppError("Couldn't find product to delete", 400));
+  } else {
+    const productName = product.image.split('.')[0];
+    const productExt = product.image.split('.')[1];
+
+    clones.forEach(async (clone) => {
+      deleteClones(productName, clone.path, productExt, clone.size[0]);
+    });
+  }
+
+  res.status(204).send();
+});
+
+export {
+  getAllProducts,
+  createProduct,
+  getProduct,
+  updateProduct,
+  deleteProduct,
+};

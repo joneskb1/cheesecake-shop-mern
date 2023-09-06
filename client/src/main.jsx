@@ -23,9 +23,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 // DURR 6) payment processing w/ stripe
 // DURR 7) usps api for shipping
 // DURR 8) admin mutate users rtk & ui
-// DURR 9) images
-
-// today's tuh durrs:
-// need to pull in current image into edit screen
-// 1) update product: if user updates name, need to find all image files with that name and update the image file names. if they update the image, need to delete all the images with the product name and replace them with the updated image. if they update name and image need to delete all old images and replace with updated one
-// 2) delete product: delete all images with file names matching product name
+// DURR 9) images: delete originals folder after successfully submitting new product or edit product. delete all images on product deletion.

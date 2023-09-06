@@ -10,6 +10,8 @@ export default function BaseProductFormInputs({
   setUserChangedImageFile,
   userChangedImageFile,
   formState,
+  originalImg,
+  fileInputRef,
 }) {
   const location = useLocation();
   const [uploadImage] = useUploadImageMutation();
@@ -34,7 +36,11 @@ export default function BaseProductFormInputs({
 
   async function handleImageUpload(e) {
     e.preventDefault();
-    if (!e.target.files[0]) return;
+    if (!e.target.files[0]) {
+      setProductImage(null);
+      setUserChangedImageFile(false);
+      return;
+    }
 
     const formData = new FormData();
     formData.append('image', e.target.files[0]);
@@ -122,6 +128,43 @@ export default function BaseProductFormInputs({
       <label htmlFor='image' className={styles.textInputLabel}>
         Image
       </label>
+      {onCreatePage && productImage && (
+        <img
+          src={`/src/assets/uploads/original/${productImage}`}
+          className={styles.img}
+          alt={productName || 'image'}
+        />
+      )}
+
+      {!onCreatePage && (
+        <img
+          src={`/src/assets/uploads/clones/small/${
+            originalImg.split('.')[0]
+          }-170w.${originalImg.split('.')[1]}?timestamp=${Date.now()}`}
+          className={styles.img}
+          alt={productName || 'image'}
+        />
+      )}
+
+      {onCreatePage && productImage && (
+        <label htmlFor='image' className={styles.textInputLabel}>
+          Edit Image
+        </label>
+      )}
+
+      {!onCreatePage && (
+        <label htmlFor='image' className={styles.textInputLabel}>
+          Edit Image
+        </label>
+      )}
+
+      {!onCreatePage && userChangedImageFile && productImage !== null && (
+        <img
+          src={`/src/assets/uploads/original/${productImage}`}
+          className={styles.img}
+          alt={productName || 'image'}
+        />
+      )}
 
       <input
         required={onCreatePage}
@@ -130,20 +173,9 @@ export default function BaseProductFormInputs({
         id='image'
         className={styles.imageUploadInput}
         onChange={handleImageUpload}
+        ref={fileInputRef}
       />
-      {productImage && (
-        <img
-          src={
-            !userChangedImageFile
-              ? `/src/assets/uploads/clones/small/${
-                  productImage.split('.')[0]
-                }-170w.${productImage.split('.')[1]}`
-              : `/src/assets/uploads/original/${productImage}`
-          }
-          className={styles.img}
-          alt={productName || 'image'}
-        />
-      )}
+
       {/* <div id='image' className={styles.upLoadImageBtn}>
         <img
           src={uploadIcon}

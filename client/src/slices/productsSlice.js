@@ -14,6 +14,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         body: data,
         credentials: 'include',
       }),
+      invalidatesTags: ['Product'],
     }),
     getAllProducts: builder.query({
       query: () => ({
@@ -21,6 +22,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         method: 'GET',
         credentials: 'include',
       }),
+      providesTags: ['Product'],
     }),
     getProduct: builder.query({
       query: (id) => ({
@@ -28,6 +30,8 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         method: 'GET',
         credentials: 'include',
       }),
+      providesTags: ['Product'],
+      keepUnusedDataFor: 0,
     }),
     uploadImage: builder.mutation({
       query: (data) => ({
@@ -52,6 +56,17 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         credentials: 'include',
         body: data,
       }),
+      invalidatesTags: ['Product'],
+      keepUnusedDataFor: 0,
+    }),
+    deleteProduct: builder.mutation({
+      query: (data) => ({
+        url: `${PRODUCTS_URL}/${data.id}`,
+        method: 'DELETE',
+        credentials: 'include',
+        body: data,
+      }),
+      invalidatesTags: ['Product'],
     }),
   }),
 });
@@ -62,5 +77,6 @@ export const {
   useCloneImageMutation,
   useUpdateProductMutation,
   useGetAllProductsQuery,
+  useDeleteProductMutation,
   useGetProductQuery,
 } = productsApiSlice;
