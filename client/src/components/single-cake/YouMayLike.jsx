@@ -2,9 +2,17 @@ import styles from './YouMayLike.module.css';
 
 import ShopCakeCard from '../shop/ShopCakeCard';
 import { useEffect, useCallback, useState } from 'react';
+import { useGetAllProductsQuery } from '../../slices/productsSlice';
 
 export default function YouMayLike({ cakeCards, cake }) {
   const [theRandomCakes, setTheRandomCakes] = useState([]);
+  const { data } = useGetAllProductsQuery();
+
+  let cakes;
+
+  if (data) {
+    cakes = data.data.products;
+  }
 
   const findRandomCakes = useCallback(
     function (numRandomCakes) {
@@ -12,8 +20,8 @@ export default function YouMayLike({ cakeCards, cake }) {
       let count = 0;
 
       while (count < numRandomCakes) {
-        const num = Math.floor(Math.random() * cakeCards.length);
-        const randomCakeName = cakeCards[num].name;
+        const num = Math.floor(Math.random() * cakes.length);
+        const randomCakeName = cakes[num].name;
 
         if (
           !randomCakeNamesSet.has(randomCakeName) &&
@@ -24,16 +32,16 @@ export default function YouMayLike({ cakeCards, cake }) {
         }
       }
 
-      return cakeCards.filter((cakeCard) =>
-        randomCakeNamesSet.has(cakeCard.name)
-      );
+      return cakes.filter((cakeCard) => randomCakeNamesSet.has(cakeCard.name));
     },
-    [cake.name, cakeCards]
+    [cake.name, cakes]
   );
 
   useEffect(() => {
-    setTheRandomCakes(findRandomCakes(3));
-  }, [cake, findRandomCakes]);
+    if (data) {
+      setTheRandomCakes(findRandomCakes(3));
+    }
+  }, [cake, findRandomCakes, data]);
 
   return (
     <>

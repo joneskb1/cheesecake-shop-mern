@@ -1,5 +1,5 @@
 import styles from './SummaryPlaceOrder.module.css';
-import CheckoutBtn from '../mini-cart/CheckoutBtn';
+// import CheckoutBtn from '../mini-cart/CheckoutBtn';
 import { Link } from 'react-router-dom';
 
 export default function SummaryPlaceOrder({ placeOrderBtn = true, smallText }) {

@@ -1,10 +1,16 @@
-import styles from './AdminProductsScreen.module.css';
 import { Link } from 'react-router-dom';
+import { useGetAllProductsQuery } from '../../slices/productsSlice';
+import styles from './AdminProductsScreen.module.css';
 
 import AdminProductHeader from '../../components/admin/AdminProductHeader';
 import AdminProductPreview from '../../components/admin/AdminProductPreview';
+import PageLoader from '../../components/PageLoader';
 
 export default function AdminProductsScreen() {
+  const { data, isLoading } = useGetAllProductsQuery();
+
+  if (isLoading) return <PageLoader />;
+
   return (
     <div className={styles.pageContainer}>
       <div className={styles.headingContainer}>
@@ -14,9 +20,10 @@ export default function AdminProductsScreen() {
         </Link>
       </div>
       <AdminProductHeader />
-      {/* map over products */}
-      <AdminProductPreview />
-      <AdminProductPreview />
+      {data &&
+        data?.data?.products?.map((product) => {
+          return <AdminProductPreview key={product.name} product={product} />;
+        })}
     </div>
   );
 }

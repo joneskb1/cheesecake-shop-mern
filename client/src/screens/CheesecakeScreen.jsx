@@ -11,6 +11,8 @@ import CakeIconsMarquee from '../components/single-cake/CakeIconsMarquee';
 import YouMayLike from '../components/single-cake/YouMayLike';
 import MiniCart from '../components/mini-cart/MiniCart';
 import LoginSignUpModal from '../components/checkout/LoginSignUpModal';
+import { useGetProductQuery } from '../slices/productsSlice';
+import PageLoader from '../components/PageLoader';
 
 export default function CheesecakeScreen({
   cakeCards,
@@ -19,12 +21,17 @@ export default function CheesecakeScreen({
 }) {
   const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
 
-  const params = useParams();
-  const paramsCakeName = params.id.split('-').join(' ');
+  const { id } = useParams();
 
-  const cake = cakeCards.find(
-    (cakeCard) => cakeCard.name.toLowerCase() === paramsCakeName
-  );
+  // const cake = cakeCards.find(
+  //   (cakeCard) => cakeCard.name.toLowerCase() === 'cherry'
+  // );
+
+  const { data, isLoading } = useGetProductQuery(id);
+  console.log(isLoading);
+  if (isLoading) return <PageLoader />;
+
+  let cake = data.data.product;
 
   return (
     <>

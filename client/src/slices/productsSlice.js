@@ -30,7 +30,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         method: 'GET',
         credentials: 'include',
       }),
-      providesTags: ['Product'],
+      // providesTags: ['Product'],
       keepUnusedDataFor: 0,
     }),
     uploadImage: builder.mutation({

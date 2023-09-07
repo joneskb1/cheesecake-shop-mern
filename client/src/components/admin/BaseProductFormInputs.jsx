@@ -2,7 +2,6 @@ import { useUploadImageMutation } from '../../slices/productsSlice';
 import { toast } from 'react-toastify';
 import { useLocation } from 'react-router-dom';
 import styles from './BaseProductFormInputs.module.css';
-import { useState } from 'react';
 
 // import uploadIcon from '../../assets/icons/upload.svg';
 

@@ -14,7 +14,7 @@ import cartIcon from '../../assets/icons/cart-33w.svg';
 
 export default function Navigation() {
   const dispatch = useDispatch();
-  const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const [logout] = useLogoutMutation();
 
   async function handleLogout() {

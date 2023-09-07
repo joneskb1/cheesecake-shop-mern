@@ -16,11 +16,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 // TUH DURRRRS
-// DURR 2) products controller/db, rtk, ui
-// DURR 3) orders controller/db, rtk, ui
-// DURR 4) cart slice, ui, storage
-// DURR 5) emails for forgotten pw's/orders
-// DURR 6) payment processing w/ stripe
-// DURR 7) usps api for shipping
-// DURR 8) admin mutate users rtk & ui
-// DURR 9) images: delete originals folder after successfully submitting new product or edit product. delete all images on product deletion.
+// DURR pull in products on admin products page
+// DURR add new product button on edit page
+// DURR add variant feature
+// DURR error being thrown when adding product:  http://localhost:5173/src/assets/uploads/clones/small/-170w.undefined?timestamp=1694033265322 404 (Not Found)
+// DURR products controller/db, rtk, ui
+// DURR  orders controller/db, rtk, ui
+// DURR  cart slice, ui, storage
+// DURR  emails for forgotten pw's/orders
+// DURR  payment processing w/ stripe
+// DURR  usps api for shipping
+// DURR  admin mutate users rtk & ui

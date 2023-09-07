@@ -1,6 +1,8 @@
+import { useGetAllProductsQuery } from '../../slices/productsSlice';
 import styles from './ShopCakes.module.css';
 
 import ShopCakeCard from './ShopCakeCard';
+import PageLoader from '../PageLoader';
 
 export default function ShopCakes({
   cakes,
@@ -9,10 +11,14 @@ export default function ShopCakes({
   cakeCards,
   setSearchInput,
 }) {
+  const { data, isLoading } = useGetAllProductsQuery();
+
   const resetCakes = function () {
     setCakes(cakeCards);
     setSearchInput('');
   };
+
+  if (isLoading) <PageLoader />;
 
   return (
     <div className={styles.shop}>
@@ -30,10 +36,10 @@ export default function ShopCakes({
         </button>
       )}
 
-      {cakes &&
-        cakes.map((card, index) => (
-          <ShopCakeCard cake={card} key={index}>
-            {card.name}
+      {data &&
+        data?.data?.products?.map((cake, index) => (
+          <ShopCakeCard cake={cake} key={index}>
+            {cake.name}
           </ShopCakeCard>
         ))}
     </div>

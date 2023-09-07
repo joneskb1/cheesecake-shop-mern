@@ -15,14 +15,26 @@ export default function ShopCakeCard({ children, cake }) {
         youMayLike ? styles.youMayLikeWrap : ''
       }`}
     >
-      <NavLink to={`/cheesecake/${id}`} className={styles.navLinkImg}>
+      <NavLink to={`/cheesecake/${cake._id}`} className={styles.navLinkImg}>
         <picture>
-          <source media='(min-width: 1200px)' srcSet={cake.imgTablet} />
+          <source
+            media='(min-width: 1200px)'
+            srcSet={`/src/assets/uploads/clones/large/${
+              cake.image.split('.')[0]
+            }-354w.${cake.image.split('.')[1]}`}
+          />
           {youMayLike && (
-            <source media='(min-width: 744px)' srcSet={cake.imgTablet} />
+            <source
+              media='(min-width: 744px)'
+              srcSet={`/src/assets/uploads/clones/large/${
+                cake.image.split('.')[0]
+              }-354w.${cake.image.split('.')[1]}`}
+            />
           )}
           <img
-            src={cake.img}
+            src={`/src/assets/uploads/clones/medium/${
+              cake.image.split('.')[0]
+            }-265w.${cake.image.split('.')[1]}`}
             alt={`${children} cake`}
             className={`${styles.cake} ${
               youMayLike ? styles.youMayLikeCard : ''
@@ -31,7 +43,7 @@ export default function ShopCakeCard({ children, cake }) {
         </picture>
       </NavLink>
       <br />
-      <NavLink to={`/cheesecake/${id}`} className={styles.navLink}>
+      <NavLink to={`/cheesecake/${cake._id}`} className={styles.navLink}>
         <p className={styles.cakeTitle}>{children}</p>
       </NavLink>
     </div>
