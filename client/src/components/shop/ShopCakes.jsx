@@ -1,8 +1,8 @@
-import { useGetAllProductsQuery } from '../../slices/productsSlice';
 import styles from './ShopCakes.module.css';
 
 import ShopCakeCard from './ShopCakeCard';
 import PageLoader from '../PageLoader';
+import { useSelector } from 'react-redux';
 
 export default function ShopCakes({
   cakes,
@@ -11,14 +11,16 @@ export default function ShopCakes({
   cakeCards,
   setSearchInput,
 }) {
-  const { data, isLoading } = useGetAllProductsQuery();
+  const data = useSelector((state) => state.products);
 
   const resetCakes = function () {
     setCakes(cakeCards);
     setSearchInput('');
   };
 
-  if (isLoading) <PageLoader />;
+  if (!data) {
+    return <PageLoader />;
+  }
 
   return (
     <div className={styles.shop}>
@@ -37,7 +39,7 @@ export default function ShopCakes({
       )}
 
       {data &&
-        data?.data?.products?.map((cake, index) => (
+        data.map((cake, index) => (
           <ShopCakeCard cake={cake} key={index}>
             {cake.name}
           </ShopCakeCard>

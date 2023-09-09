@@ -31,22 +31,34 @@ export default function AdminProductPreview({ product }) {
         />
         <p className={`${styles.name} ${styles.hide}`}>{product.name}</p>
         <div className={`${styles.variableContainer} ${styles.hide}`}>
-          {/* map through all variants */}
-          <p className={`${styles.size} ${styles.hide}`}>
-            {product.variant[0].size}&quot;
-          </p>
+          {product.variants.map((variant) => {
+            return (
+              <p className={`${styles.size} ${styles.hide}`} key={variant._id}>
+                {variant.size}&quot;
+              </p>
+            );
+          })}
         </div>
         <div className={`${styles.variableContainer} ${styles.hide}`}>
-          {/* map through all variants */}
-          <p className={`${styles.price} ${styles.hide}`}>
-            ${product.variant[0].price}
-          </p>
+          {product.variants.map((variant) => {
+            return (
+              <p className={`${styles.size} ${styles.hide}`} key={variant._id}>
+                {/* if price needs a 0 at the end then add it */}$
+                {variant.price.toString().split('.')[1]?.length < 2
+                  ? variant.price + '0'
+                  : variant.price}
+              </p>
+            );
+          })}
         </div>
         <div className={`${styles.variableContainer} ${styles.hide}`}>
-          {/* map through all variants */}
-          <p className={`${styles.stock} ${styles.hide}`}>
-            {product.variant[0].stock}
-          </p>
+          {product.variants.map((variant) => {
+            return (
+              <p className={`${styles.stock} ${styles.hide}`} key={variant._id}>
+                {variant.stock}
+              </p>
+            );
+          })}
         </div>
         <NavLink
           to={`/admin-products/${product._id}`}

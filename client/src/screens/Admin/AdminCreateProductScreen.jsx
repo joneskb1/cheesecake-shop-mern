@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCreateProductMutation } from '../../slices/productsSlice';
 import { useCloneImageMutation } from '../../slices/productsSlice';
+import styles from './AdminCreateProductScreen.module.css';
 
 import AdminProductForm from '../../components/admin/AdminProductForm';
 import AdminFormHeader from '../../components/admin/AdminFormHeader';
@@ -127,7 +128,9 @@ export default function AdminCreateProductScreen({
         setUserChangedImageFile={setUserChangedImageFile}
         formState={formState}
       />
-      <AdminFormBtn>Create Product</AdminFormBtn>
+      <div className={styles.btnWrap}>
+        <AdminFormBtn>Create Product</AdminFormBtn>
+      </div>
     </AdminProductForm>
   );
 }

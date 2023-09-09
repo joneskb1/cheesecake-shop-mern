@@ -2,16 +2,17 @@ import styles from './YouMayLike.module.css';
 
 import ShopCakeCard from '../shop/ShopCakeCard';
 import { useEffect, useCallback, useState } from 'react';
-import { useGetAllProductsQuery } from '../../slices/productsSlice';
+import { useSelector } from 'react-redux';
 
-export default function YouMayLike({ cakeCards, cake }) {
+export default function YouMayLike({ cake }) {
   const [theRandomCakes, setTheRandomCakes] = useState([]);
-  const { data } = useGetAllProductsQuery();
+
+  const data = useSelector((state) => state.products);
 
   let cakes;
 
   if (data) {
-    cakes = data.data.products;
+    cakes = data;
   }
 
   const findRandomCakes = useCallback(
@@ -41,7 +42,7 @@ export default function YouMayLike({ cakeCards, cake }) {
     if (data) {
       setTheRandomCakes(findRandomCakes(3));
     }
-  }, [cake, findRandomCakes, data]);
+  }, [cake, data, findRandomCakes]);
 
   return (
     <>

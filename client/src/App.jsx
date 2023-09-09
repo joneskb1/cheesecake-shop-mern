@@ -3,7 +3,8 @@ import {
   RouterProvider,
   Navigate,
 } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useGetAllProductsQuery, setProducts } from './slices/productsSlice';
 
 import AppLayout from './components/AppLayout';
 import './App.css';
@@ -65,7 +66,7 @@ import lemonDesktop from './assets/images/desktop/cakes-732w/lemon-732w.jpg';
 import raspberryDesktop from './assets/images/desktop/cakes-732w/raspberry-732w.jpg';
 import redVelvetDesktop from './assets/images/desktop/cakes-732w/red-velvet-732w.jpg';
 import strawberryDesktop from './assets/images/desktop/cakes-732w/strawberry-732w.jpg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const cakeCards = [
   {
@@ -220,8 +221,14 @@ function App() {
   const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [userChangedImageFile, setUserChangedImageFile] = useState(false);
+  const { data } = useGetAllProductsQuery();
+  const dispatch = useDispatch();
 
-  console.log(isAdmin, isLoggedIn);
+  useEffect(() => {
+    if (data) {
+      dispatch(setProducts(data.data.products));
+    }
+  }, [data, dispatch]);
 
   const router = createBrowserRouter([
     {

@@ -11,11 +11,10 @@ import CakeIconsMarquee from '../components/single-cake/CakeIconsMarquee';
 import YouMayLike from '../components/single-cake/YouMayLike';
 import MiniCart from '../components/mini-cart/MiniCart';
 import LoginSignUpModal from '../components/checkout/LoginSignUpModal';
-import { useGetProductQuery } from '../slices/productsSlice';
 import PageLoader from '../components/PageLoader';
+import { useSelector } from 'react-redux';
 
 export default function CheesecakeScreen({
-  cakeCards,
   isLoginModalOpen,
   setIsLoginModalOpen,
 }) {
@@ -23,15 +22,18 @@ export default function CheesecakeScreen({
 
   const { id } = useParams();
 
-  // const cake = cakeCards.find(
-  //   (cakeCard) => cakeCard.name.toLowerCase() === 'cherry'
-  // );
+  const data = useSelector((state) => state.products);
 
-  const { data, isLoading } = useGetProductQuery(id);
-  console.log(isLoading);
-  if (isLoading) return <PageLoader />;
+  let cake;
 
-  let cake = data.data.product;
+  if (data) {
+    const item = data.filter((cake) => {
+      return cake._id === id;
+    });
+    cake = item[0];
+  }
+
+  if (data.length === 0) return <PageLoader />;
 
   return (
     <>
@@ -48,7 +50,7 @@ export default function CheesecakeScreen({
         </div>
 
         <CakeIconsMarquee />
-        <YouMayLike cakeCards={cakeCards} cake={cake} />
+        <YouMayLike cake={cake} />
         <MiniCart
           isMiniCartOpen={isMiniCartOpen}
           setIsMiniCartOpen={setIsMiniCartOpen}

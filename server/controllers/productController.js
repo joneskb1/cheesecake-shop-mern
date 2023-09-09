@@ -95,7 +95,7 @@ const createProduct = catchAsync(async (req, res, next) => {
   const productData = {
     name: req.body.name,
     description: req.body.description,
-    variant: [
+    variants: [
       {
         price: req.body.price,
         size: req.body.size,
@@ -175,20 +175,32 @@ const updateProduct = catchAsync(async (req, res, next) => {
   }
 
   const productData = {
-    name: productName,
-    description: productDescription,
-    variant: [
-      {
+    $set: {
+      'variants.0': {
         price: productPrice,
         size: productSize,
         stock: productStock,
       },
-    ],
+    },
+    name: productName,
+    description: productDescription,
     image: oldImageName + '.' + oldImageExt,
   };
 
+  // const productData = {
+  //   name: productName,
+  //   description: productDescription,
+  //   variants: [
+  //     {
+  //       price: productPrice,
+  //       size: productSize,
+  //       stock: productStock,
+  //     },
+  //   ],
+  //   image: oldImageName + '.' + oldImageExt,
+  // };
+
   if (productImage) {
-    console.log('BACK IMG', productImage);
     productData.image = newFileName + '.' + newImageExt;
   }
 
@@ -209,7 +221,7 @@ const updateProduct = catchAsync(async (req, res, next) => {
 
 // @desc delete product
 // @route Delete api/v1/products/:id
-// @access Public
+// @access ADMIN
 const deleteProduct = catchAsync(async (req, res, next) => {
   const product = await Product.findByIdAndDelete(req.params.id);
 
@@ -227,10 +239,117 @@ const deleteProduct = catchAsync(async (req, res, next) => {
   res.status(204).send();
 });
 
+// @desc create product variant
+// @route PATCH api/v1/products/create-variant/:id
+// @access ADMIN
+const createVariant = catchAsync(async (req, res, next) => {
+  const productId = req.params.id;
+  const newVariant = req.body.variant;
+
+  if (!newVariant.price || !newVariant.size || !newVariant.stock) {
+    return next(new AppError('Please fill out price, size, and stock', 400));
+  }
+
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    return res
+      .status(404)
+      .json({ status: 'fail', message: 'Product not found' });
+  }
+
+  product.variants.push(newVariant);
+
+  await product.save();
+
+  return res.status(200).json({
+    status: 'success',
+    message: 'Variant added successfully',
+    product,
+  });
+});
+
+// @desc edit product variant
+// @route PATCH api/v1/products/edit-variant/:id
+// @access ADMIN
+const editVariant = catchAsync(async (req, res, next) => {
+  const productId = req.params.id;
+  const newVariant = req.body.variant;
+
+  if (!newVariant.price || !newVariant.size || !newVariant.stock) {
+    return next(new AppError('Please fill out price, size, and stock', 400));
+  }
+
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    return res
+      .status(404)
+      .json({ status: 'fail', message: 'Product not found' });
+  }
+
+  // find variant and replace data
+  const updatedVariants = product.variants.map((variant) => {
+    const newVariantId = newVariant.id.toString();
+    const oldVariantId = JSON.stringify(variant._id).replace(/['"]+/g, '');
+
+    if (newVariantId === oldVariantId) {
+      return {
+        price: newVariant.price,
+        size: newVariant.size,
+        stock: newVariant.stock,
+      };
+    } else return variant;
+  });
+
+  product.variants = updatedVariants;
+  await product.save();
+
+  return res.status(200).json({
+    status: 'success',
+    message: 'Variant edit successful',
+    product,
+  });
+});
+
+// @desc delete product variant
+// @route delete api/v1/products/delete-variant/:id
+// @access ADMIN
+const deleteVariant = catchAsync(async (req, res, next) => {
+  const productId = req.params.id;
+  const variantId = req.body.variantId;
+
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    return res
+      .status(404)
+      .json({ status: 'fail', message: 'Product not found' });
+  }
+
+  // find variant and replace data
+  const updatedVariants = product.variants.filter((variant) => {
+    const variantToDeleteId = variantId.toString();
+    const id = JSON.stringify(variant._id).replace(/['"]+/g, '');
+
+    if (variantToDeleteId !== id) {
+      return variant;
+    }
+  });
+
+  product.variants = updatedVariants;
+  await product.save();
+
+  return res.status(204).send();
+});
+
 export {
   getAllProducts,
   createProduct,
   getProduct,
   updateProduct,
   deleteProduct,
+  createVariant,
+  editVariant,
+  deleteVariant,
 };

@@ -1,9 +1,23 @@
 import { apiSlice } from './apiSlice.js';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   PRODUCTS_URL,
   UPLOAD_IMAGE_URL,
   CLONE_IMAGE_URL,
 } from '../utils/constants.js';
+
+const productsSlice = createSlice({
+  name: 'products',
+  initialState: [],
+  reducers: {
+    setProducts: (state, action) => {
+      return action.payload;
+    },
+  },
+});
+
+export const { setProducts } = productsSlice.actions;
+export default productsSlice.reducer;
 
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -30,7 +44,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         method: 'GET',
         credentials: 'include',
       }),
-      // providesTags: ['Product'],
+      providesTags: ['Product'],
       keepUnusedDataFor: 0,
     }),
     uploadImage: builder.mutation({
@@ -68,6 +82,33 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['Product'],
     }),
+    createVariant: builder.mutation({
+      query: (data) => ({
+        url: `${PRODUCTS_URL}/create-variant/${data.id}`,
+        method: 'PATCH',
+        credentials: 'include',
+        body: data,
+      }),
+      invalidatesTags: ['Product'],
+    }),
+    editVariant: builder.mutation({
+      query: (data) => ({
+        url: `${PRODUCTS_URL}/edit-variant/${data.id}`,
+        method: 'PATCH',
+        credentials: 'include',
+        body: data,
+      }),
+      invalidatesTags: ['Product'],
+    }),
+    deleteVariant: builder.mutation({
+      query: (data) => ({
+        url: `${PRODUCTS_URL}/delete-variant/${data.id}`,
+        method: 'DELETE',
+        credentials: 'include',
+        body: data,
+      }),
+      invalidatesTags: ['Product'],
+    }),
   }),
 });
 
@@ -79,4 +120,7 @@ export const {
   useGetAllProductsQuery,
   useDeleteProductMutation,
   useGetProductQuery,
+  useCreateVariantMutation,
+  useEditVariantMutation,
+  useDeleteVariantMutation,
 } = productsApiSlice;

@@ -16,11 +16,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 // TUH DURRRRS
-// DURR pull in products on admin products page
-// DURR add new product button on edit page
-// DURR add variant feature
+// ask before deleting product
 // DURR error being thrown when adding product:  http://localhost:5173/src/assets/uploads/clones/small/-170w.undefined?timestamp=1694033265322 404 (Not Found)
-// DURR products controller/db, rtk, ui
 // DURR  orders controller/db, rtk, ui
 // DURR  cart slice, ui, storage
 // DURR  emails for forgotten pw's/orders

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styles from './AdminProductScreen.module.css';
 
@@ -10,6 +10,7 @@ import AdminFormBtn from '../../components/admin/AdminFormBtn';
 import CreateVariantForm from '../../components/admin/CreateVariantForm';
 import VariantPreview from '../../components/admin/VariantPreview';
 import AdminBackLink from '../../components/admin/AdminBackLink';
+import EditVariantForm from '../../components/admin/EditVariantForm';
 import {
   useGetProductQuery,
   useUpdateProductMutation,
@@ -43,7 +44,8 @@ export default function AdminProductScreen({
   setUserChangedImageFile,
 }) {
   const [createVariant, setCreateVariant] = useState(false);
-  const [isVariants] = useState(true);
+  const [editVariant, setEditVariant] = useState(false);
+  const [editingVariantId, setEditingVariantId] = useState(null);
   const [productName, setProductName] = useState('');
   const [productDescription, setProductDescription] = useState('');
   const [productPrice, setProductPrice] = useState('');
@@ -127,15 +129,18 @@ export default function AdminProductScreen({
     previousName.current = productName;
     setUserChangedImageFile(false);
     fileInputRef.current.value = '';
+    toast.success('Product updated');
+
+    //handle errors
   }
 
   useEffect(() => {
     if (data) {
       setProductName(data.data.product.name || '');
       setProductDescription(data.data.product.description || '');
-      setProductPrice(data.data.product.variant[0].price || '');
-      setProductSize(data.data.product.variant[0].size || '');
-      setProductStock(data.data.product.variant[0].stock || '');
+      setProductPrice(data.data.product.variants[0].price || '');
+      setProductSize(data.data.product.variants[0].size || '');
+      setProductStock(data.data.product.variants[0].stock || '');
       setProductImage(data.data.product.image || '');
       setOriginalImg(data.data.product.image || '');
       previousName.current = data.data.product.name;
@@ -156,13 +161,25 @@ export default function AdminProductScreen({
     }
   }
 
+  function handleCreateForm() {
+    setCreateVariant((prevState) => !prevState);
+    if (editVariant) {
+      setEditVariant(false);
+    }
+  }
+
   if (isLoading) {
     return <PageLoader />;
   }
 
   return (
     <div className={styles.screen}>
-      <AdminBackLink to='products' />
+      <div className={styles.linkWrap}>
+        <AdminBackLink to='products' />
+        <Link to='/admin-create-product' className={styles.link}>
+          Add New Product
+        </Link>
+      </div>
 
       <AdminProductForm formHandler={handleEditProduct}>
         <AdminFormHeader>Edit Product</AdminFormHeader>
@@ -176,7 +193,7 @@ export default function AdminProductScreen({
         <AdminFormBtn propStyles={updateBtnStyles}>Update Product</AdminFormBtn>
         {!createVariant && (
           <AdminFormBtn
-            onClick={() => setCreateVariant((prevState) => !prevState)}
+            onClick={handleCreateForm}
             propStyles={createVariantBtnStyles}
           >
             Create Variant
@@ -194,13 +211,29 @@ export default function AdminProductScreen({
         <CreateVariantForm setCreateVariant={setCreateVariant} />
       )}
 
-      {isVariants && (
+      {editVariant && (
+        <EditVariantForm
+          variants={data.data.product.variants}
+          setEditVariant={setEditVariant}
+          editingVariantId={editingVariantId}
+        />
+      )}
+
+      {data.data.product.variants.length > 1 && (
         <>
           <h3 className={styles.variantsHeader}>Variants</h3>
-          {/* map through previews */}
-          <VariantPreview />
-          <VariantPreview />
-          <VariantPreview />
+          {data.data.product.variants.map((variant, index) => {
+            return (
+              <VariantPreview
+                variant={variant}
+                index={index}
+                key={index}
+                setEditVariant={setEditVariant}
+                setCreateVariant={setCreateVariant}
+                setEditingVariantId={setEditingVariantId}
+              />
+            );
+          })}
         </>
       )}
     </div>
