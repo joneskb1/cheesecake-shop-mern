@@ -82,7 +82,7 @@ export default function BaseProductFormInputs({
       </label>
       <input
         required
-        type='number'
+        type='text'
         name='product-price'
         id='product-price'
         className={styles.textInput}

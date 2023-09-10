@@ -102,7 +102,7 @@ export default function AdminCreateProductScreen({
         setProductPrice('');
         setProductStock('');
         setUserChangedImageFile(false);
-        navigate(`/admin-products/${res.data.product._id}`);
+        navigate(`/admin-products/${res.data.product._id}`, { replace: true });
       } else {
         setError(res.message);
         toast.error(res.message, {

@@ -15,12 +15,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-// TUH DURRRRS
+// To DO
 // ask before deleting product
-// DURR error being thrown when adding product:  http://localhost:5173/src/assets/uploads/clones/small/-170w.undefined?timestamp=1694033265322 404 (Not Found)
-// DURR  orders controller/db, rtk, ui
-// DURR  cart slice, ui, storage
-// DURR  emails for forgotten pw's/orders
-// DURR  payment processing w/ stripe
-// DURR  usps api for shipping
-// DURR  admin mutate users rtk & ui
+// error being thrown when adding product:  http://localhost:5173/src/assets/uploads/clones/small/-170w.undefined?timestamp=1694033265322 404 (Not Found)
+//  orders controller/db, rtk, ui
+//  cart slice, ui, storage
+//  emails for forgotten pw's/orders
+//  payment processing w/ stripe
+//  usps api for shipping
+//  admin mutate users rtk & ui

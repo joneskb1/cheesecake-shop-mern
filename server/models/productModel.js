@@ -15,7 +15,7 @@ const productSchema = mongoose.Schema({
   },
   variants: [
     {
-      price: Number,
+      price: String,
       size: Number,
       stock: Number,
     },

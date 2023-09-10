@@ -15,9 +15,21 @@ export default function LoginSignUpModal({ setIsLoginModalOpen }) {
           height='15px'
         />
         <p>
-          Please <Link to={'/auth/login?redirect=/checkout'}>login</Link> or{' '}
-          <Link to={'/auth/create-account?redirect=/checkout'}>sign up</Link> to
-          checkout 🍰
+          Please{' '}
+          <Link
+            to={'/auth/login?redirect=/checkout'}
+            onClick={() => setIsLoginModalOpen(false)}
+          >
+            login
+          </Link>{' '}
+          or{' '}
+          <Link
+            to={'/auth/create-account?redirect=/checkout'}
+            onClick={() => setIsLoginModalOpen(false)}
+          >
+            sign up
+          </Link>{' '}
+          to checkout 🍰
         </p>
       </div>
       <div
