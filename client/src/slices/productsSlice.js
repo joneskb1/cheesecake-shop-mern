@@ -45,7 +45,6 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         credentials: 'include',
       }),
       providesTags: ['Product'],
-      keepUnusedDataFor: 0,
     }),
     uploadImage: builder.mutation({
       query: (data) => ({

@@ -221,14 +221,6 @@ function App() {
   const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [userChangedImageFile, setUserChangedImageFile] = useState(false);
-  const { data } = useGetAllProductsQuery();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (data) {
-      dispatch(setProducts(data.data.products));
-    }
-  }, [data, dispatch]);
 
   const router = createBrowserRouter([
     {

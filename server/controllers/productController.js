@@ -92,12 +92,16 @@ const createProduct = catchAsync(async (req, res, next) => {
 
   const ext = req.body.image.split('.')[1];
 
+  const formattedPrice = Number.parseFloat(req.body.price, 10)
+    .toFixed(2)
+    .toString();
+
   const productData = {
     name: req.body.name,
     description: req.body.description,
     variants: [
       {
-        price: req.body.price,
+        price: formattedPrice,
         size: req.body.size,
         stock: req.body.stock,
       },
@@ -174,10 +178,14 @@ const updateProduct = catchAsync(async (req, res, next) => {
     });
   }
 
+  const formattedPrice = Number.parseFloat(productPrice, 10)
+    .toFixed(2)
+    .toString();
+
   const productData = {
     $set: {
       'variants.0': {
-        price: productPrice,
+        price: formattedPrice,
         size: productSize,
         stock: productStock,
       },
@@ -186,19 +194,6 @@ const updateProduct = catchAsync(async (req, res, next) => {
     description: productDescription,
     image: oldImageName + '.' + oldImageExt,
   };
-
-  // const productData = {
-  //   name: productName,
-  //   description: productDescription,
-  //   variants: [
-  //     {
-  //       price: productPrice,
-  //       size: productSize,
-  //       stock: productStock,
-  //     },
-  //   ],
-  //   image: oldImageName + '.' + oldImageExt,
-  // };
 
   if (productImage) {
     productData.image = newFileName + '.' + newImageExt;
@@ -258,6 +253,10 @@ const createVariant = catchAsync(async (req, res, next) => {
       .json({ status: 'fail', message: 'Product not found' });
   }
 
+  newVariant.price = Number.parseFloat(newVariant.price, 10)
+    .toFixed(2)
+    .toString();
+
   product.variants.push(newVariant);
 
   await product.save();
@@ -293,9 +292,13 @@ const editVariant = catchAsync(async (req, res, next) => {
     const newVariantId = newVariant.id.toString();
     const oldVariantId = JSON.stringify(variant._id).replace(/['"]+/g, '');
 
+    const formattedPrice = Number.parseFloat(newVariant.price, 10)
+      .toFixed(2)
+      .toString();
+
     if (newVariantId === oldVariantId) {
       return {
-        price: newVariant.price,
+        price: formattedPrice,
         size: newVariant.size,
         stock: newVariant.stock,
       };

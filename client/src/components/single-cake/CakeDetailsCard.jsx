@@ -5,7 +5,10 @@ export default function CakeDetailsCard({ cake, setIsMiniCartOpen }) {
   const [size, setSize] = useState(cake.variants[0].size);
   const [quantity, setQuantity] = useState(1);
   const [options, setOptions] = useState(
-    Array.from({ length: cake.variants[0].stock }, (_, i) => i + 1)
+    Array.from(
+      { length: cake.variants[0].stock > 10 ? 10 : cake.variants[0].stock },
+      (_, i) => i + 1
+    )
   );
 
   const openMiniCart = function () {
@@ -15,7 +18,12 @@ export default function CakeDetailsCard({ cake, setIsMiniCartOpen }) {
   const handleSizeChange = function (e) {
     setSize(e.target.value);
     const variant = cake.variants.filter((el) => el.size == e.target.value);
-    setOptions(Array.from({ length: variant[0].stock }, (_, i) => i + 1));
+    setOptions(
+      Array.from(
+        { length: variant[0].stock > 10 ? 10 : variant[0].stock },
+        (_, i) => i + 1
+      )
+    );
   };
 
   const handleQtyChange = function (e) {

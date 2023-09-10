@@ -43,10 +43,7 @@ export default function AdminProductPreview({ product }) {
           {product.variants.map((variant) => {
             return (
               <p className={`${styles.size} ${styles.hide}`} key={variant._id}>
-                {/* if price needs a 0 at the end then add it */}$
-                {variant.price.toString().split('.')[1]?.length < 2
-                  ? variant.price + '0'
-                  : variant.price}
+                ${variant.price}
               </p>
             );
           })}

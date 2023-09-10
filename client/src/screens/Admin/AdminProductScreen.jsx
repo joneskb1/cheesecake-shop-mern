@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styles from './AdminProductScreen.module.css';
+import { useSelector } from 'react-redux';
 
 import AdminFormHeader from '../../components/admin/AdminFormHeader';
 import AdminProductForm from '../../components/admin/AdminProductForm';

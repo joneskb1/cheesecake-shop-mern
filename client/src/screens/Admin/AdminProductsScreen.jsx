@@ -22,7 +22,7 @@ export default function AdminProductsScreen() {
       <AdminProductHeader />
       {data &&
         data?.data?.products?.map((product) => {
-          return <AdminProductPreview key={product.name} product={product} />;
+          return <AdminProductPreview key={product._id} product={product} />;
         })}
     </div>
   );
