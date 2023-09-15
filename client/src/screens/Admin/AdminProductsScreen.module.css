@@ -28,6 +28,11 @@
   padding: 0.5rem 1rem;
 }
 
+.noProducts {
+  font-size: 20px;
+  text-align: center;
+}
+
 @media screen and (min-width: 450px) {
   .pageContainer {
     width: 400px;

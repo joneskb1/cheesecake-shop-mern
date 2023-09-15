@@ -8,9 +8,11 @@ import OrderCard from '../components/mini-cart/OrderCard';
 import cakeLarge from '../assets/images/desktop/cart-cake-802w.png';
 
 import LoginSignUpModal from '../components/checkout/LoginSignUpModal';
+import { selectCartState } from '../slices/cartSlice';
+import { useSelector } from 'react-redux';
 
 export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
-  const items = true;
+  const cartItems = useSelector(selectCartState);
 
   return (
     <div className={styles.cartScreen}>
@@ -19,7 +21,7 @@ export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
         <img className={styles.topCake} src={cake1} alt='berry cheesecake' />
       </picture>
       <h1 className={styles.cartHeader}>Cart</h1>
-      {!items && (
+      {cartItems.length < 1 && (
         <div className={styles.noItemsContainer}>
           {' '}
           <p className={styles.noItemsText}>
@@ -30,7 +32,7 @@ export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
           </NavLink>
         </div>
       )}
-      {items && (
+      {cartItems.length > 0 && (
         <div className={styles.summaryOrderContainer}>
           <SummaryCart
             isLoginModalOpen={isLoginModalOpen}
@@ -38,7 +40,9 @@ export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
           />
           <div className={styles.OrdersContainer}>
             <CartHeader />
-            <OrderCard />
+            {cartItems.map((item, index) => {
+              return <OrderCard key={index} cake={item} />;
+            })}
           </div>
         </div>
       )}

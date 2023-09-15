@@ -2,17 +2,17 @@ import styles from './YouMayLike.module.css';
 
 import ShopCakeCard from '../shop/ShopCakeCard';
 import { useEffect, useCallback, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useGetAllProductsQuery } from '../../slices/productsSlice.js';
+import PageLoader from '../PageLoader';
 
-export default function YouMayLike({ cake }) {
+export default function YouMayLike({ cake, refetch }) {
   const [theRandomCakes, setTheRandomCakes] = useState([]);
-
-  const data = useSelector((state) => state.products);
+  const { data, isLoading } = useGetAllProductsQuery();
 
   let cakes;
 
   if (data) {
-    cakes = data;
+    cakes = data.data.products;
   }
 
   const findRandomCakes = useCallback(
@@ -44,13 +44,17 @@ export default function YouMayLike({ cake }) {
     }
   }, [cake, data, findRandomCakes]);
 
+  // if (isLoading) {
+  //   return <PageLoader />;
+  // }
+
   return (
     <>
       <h4 className={styles.youMayLikeHeader}>You May Also Like</h4>
       <div className={styles.youMayLikeCakeWrap}>
         {theRandomCakes &&
           theRandomCakes.map((cake, index) => (
-            <ShopCakeCard key={index} cake={cake}>
+            <ShopCakeCard key={index} cake={cake} refetch={refetch}>
               {cake.name}
             </ShopCakeCard>
           ))}

@@ -1,29 +1,47 @@
 import { useState } from 'react';
 import styles from './CakeDetailsCard.module.css';
 
+import { addItem } from '../../slices/cartSlice';
+import { useDispatch } from 'react-redux';
+
 export default function CakeDetailsCard({ cake, setIsMiniCartOpen }) {
   const [size, setSize] = useState(cake.variants[0].size);
+  const [price, setPrice] = useState(cake.variants[0].price);
   const [quantity, setQuantity] = useState(1);
-  const [options, setOptions] = useState(
-    Array.from(
-      { length: cake.variants[0].stock > 10 ? 10 : cake.variants[0].stock },
-      (_, i) => i + 1
-    )
-  );
+  const [stock, setStock] = useState(cake.variants[0].stock);
 
-  const openMiniCart = function () {
+  const [options, setOptions] = useState(
+    Array.from({ length: stock > 10 ? 10 : stock }, (_, i) => i + 1)
+  );
+  const dispatch = useDispatch();
+
+  const handleAddItemToCart = function () {
     setIsMiniCartOpen(true);
+
+    dispatch(
+      addItem({
+        id: cake._id,
+        size: Number.parseInt(size),
+        price: Number.parseFloat(price),
+        quantity: Number.parseInt(quantity, 10),
+        stock: Number.parseInt(stock, 10),
+        name: cake.name,
+      })
+    );
   };
 
   const handleSizeChange = function (e) {
     setSize(e.target.value);
-    const variant = cake.variants.filter((el) => el.size == e.target.value);
+    const variant = cake.variants.find((el) => el.size == e.target.value);
     setOptions(
       Array.from(
-        { length: variant[0].stock > 10 ? 10 : variant[0].stock },
+        { length: variant.stock > 10 ? 10 : variant.stock },
         (_, i) => i + 1
       )
     );
+
+    setPrice(variant.price);
+    setStock(variant.stock);
   };
 
   const handleQtyChange = function (e) {
@@ -34,7 +52,7 @@ export default function CakeDetailsCard({ cake, setIsMiniCartOpen }) {
     <div className={styles.cakeDetailsCard}>
       <h3 className={styles.cakeDetailsCardHeader}>{cake.name}</h3>
       <p className={styles.description}>{cake.description}</p>
-      <p className={styles.price}>Price: ${cake.variants[0].price}</p>
+      <p className={styles.price}>Price: ${price}</p>
       <label htmlFor='size' className={styles.label}>
         Size:
       </label>
@@ -69,7 +87,7 @@ export default function CakeDetailsCard({ cake, setIsMiniCartOpen }) {
         ))}
       </select>
 
-      <button className={styles.addToCartBtn} onClick={openMiniCart}>
+      <button className={styles.addToCartBtn} onClick={handleAddItemToCart}>
         Add To Cart
       </button>
     </div>

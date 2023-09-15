@@ -1,8 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './CheckoutShipping.module.css';
+import { useDispatch } from 'react-redux';
+import { updateShipping } from '../../slices/cartSlice';
 
 export default function CheckoutShipping() {
   const [shipping, setShipping] = useState('priority');
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const cost = shipping === 'priority' ? 12.9 : 24.9;
+    dispatch(updateShipping({ cost: cost.toFixed(2), type: shipping }));
+  }, [dispatch, shipping]);
 
   return (
     <>

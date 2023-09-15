@@ -12,28 +12,24 @@ import YouMayLike from '../components/single-cake/YouMayLike';
 import MiniCart from '../components/mini-cart/MiniCart';
 import LoginSignUpModal from '../components/checkout/LoginSignUpModal';
 import PageLoader from '../components/PageLoader';
-import { useSelector } from 'react-redux';
+import { useGetProductQuery } from '../slices/productsSlice.js';
 
 export default function CheesecakeScreen({
   isLoginModalOpen,
   setIsLoginModalOpen,
 }) {
   const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
-
   const { id } = useParams();
-
-  const data = useSelector((state) => state.products);
-
   let cake;
 
-  if (data) {
-    const item = data.filter((cake) => {
-      return cake._id === id;
-    });
-    cake = item[0];
-  }
+  const { data, isLoading, error } = useGetProductQuery(id);
+  if (error) console.log(error);
 
-  if (data.length === 0) return <PageLoader />;
+  if (isLoading) return <PageLoader />;
+
+  if (data) {
+    cake = data.data.product;
+  }
 
   return (
     <>
@@ -43,19 +39,29 @@ export default function CheesecakeScreen({
         <div className={styles.cakeImgDetailWrap}>
           <SingleCakeImg cake={cake} />
           <CakeDetailsCard
+            key={cake._id}
             cake={cake}
-            isMiniCartOpen={isMiniCartOpen}
             setIsMiniCartOpen={setIsMiniCartOpen}
           />
         </div>
 
         <CakeIconsMarquee />
         <YouMayLike cake={cake} />
+
         <MiniCart
           isMiniCartOpen={isMiniCartOpen}
           setIsMiniCartOpen={setIsMiniCartOpen}
           setIsLoginModalOpen={setIsLoginModalOpen}
         />
+        {/* 
+        {isMiniCartOpen && (
+          <MiniCart
+            isMiniCartOpen={isMiniCartOpen}
+            setIsMiniCartOpen={setIsMiniCartOpen}
+            setIsLoginModalOpen={setIsLoginModalOpen}
+          />
+        )} */}
+
         {isLoginModalOpen && (
           <LoginSignUpModal
             setIsLoginModalOpen={setIsLoginModalOpen}

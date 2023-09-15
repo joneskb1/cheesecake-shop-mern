@@ -2,7 +2,7 @@
   color: white;
   font-size: 14px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 4fr 1fr;
   justify-content: center;
   font-family: var(--header-title-font-regular);
   gap: 10px;

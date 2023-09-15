@@ -4,11 +4,12 @@ import searchIcon from '../../assets/icons/search.svg';
 
 export default function SearchDialog({
   searchDialogRef,
-  cakeCards,
+  // cakeCards,
   setCakes,
   searchInput,
   setSearchInput,
   searchMap,
+  data,
 }) {
   const closeDialog = function () {
     searchDialogRef.current.close();
@@ -18,7 +19,7 @@ export default function SearchDialog({
     e.preventDefault();
 
     if (!searchInput) {
-      setCakes(cakeCards);
+      setCakes(data.data.products);
       return searchDialogRef.current.close();
     }
 

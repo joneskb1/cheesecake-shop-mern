@@ -6,6 +6,7 @@ import connectDB from './db/db.js';
 import userRouter from './routes/userRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import uploadRouter from './routes/uploadRoutes.js';
+import orderRouter from './routes/orderRoutes.js';
 import cloneRouter from './routes/cloneRoutes.js';
 import errorController from './controllers/errorController.js';
 import cors from 'cors';
@@ -31,6 +32,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/upload', uploadRouter);
 app.use('/api/v1/clone', cloneRouter);
+app.use('/api/v1/order', orderRouter);
 
 // const __dirname = path.resolve();
 // app.use('/uploads', express.static(path.join(__dirname, '/uploads')));

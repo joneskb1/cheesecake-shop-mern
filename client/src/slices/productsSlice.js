@@ -1,24 +1,11 @@
 import { apiSlice } from './apiSlice.js';
-import { createSlice } from '@reduxjs/toolkit';
 import {
   PRODUCTS_URL,
   UPLOAD_IMAGE_URL,
   CLONE_IMAGE_URL,
 } from '../utils/constants.js';
 
-const productsSlice = createSlice({
-  name: 'products',
-  initialState: [],
-  reducers: {
-    setProducts: (state, action) => {
-      return action.payload;
-    },
-  },
-});
-
-export const { setProducts } = productsSlice.actions;
-export default productsSlice.reducer;
-
+// need to change file name
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     createProduct: builder.mutation({
@@ -45,6 +32,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         credentials: 'include',
       }),
       providesTags: ['Product'],
+      keepUnusedDataFor: 0,
     }),
     uploadImage: builder.mutation({
       query: (data) => ({

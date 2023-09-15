@@ -3,10 +3,10 @@ import {
   RouterProvider,
   Navigate,
 } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useGetAllProductsQuery, setProducts } from './slices/productsSlice';
+import { useSelector } from 'react-redux';
 
 import AppLayout from './components/AppLayout';
+import TestScreen from './screens/TestScreen';
 import './App.css';
 
 import ShopCheesecakesScreen from './screens/ShopCheesecakesScreen';
@@ -197,25 +197,27 @@ const cakeCards = [
   },
 ];
 
-const searchMap = new Map();
-const allHitTerms = [];
+// const searchMap = new Map();
+// const allHitTerms = [];
 
-cakeCards.forEach((cake) => {
-  const terms = cake.name.split(' ');
-  terms.forEach((term) => {
-    allHitTerms.push(term.toLowerCase());
-  });
-});
+// cakeCards.forEach((cake) => {
+//   const terms = cake.name.split(' ');
+//   terms.forEach((term) => {
+//     allHitTerms.push(term.toLowerCase());
+//   });
+// });
 
-allHitTerms.forEach((term) => {
-  const hits = [];
-  cakeCards.forEach((cake) => {
-    if (cake.name.toLowerCase().includes(term)) {
-      hits.push(cake);
-    }
-  });
-  searchMap.set(term, hits);
-});
+// allHitTerms.forEach((term) => {
+//   const hits = [];
+//   cakeCards.forEach((cake) => {
+//     if (cake.name.toLowerCase().includes(term)) {
+//       hits.push(cake);
+//     }
+//   });
+//   searchMap.set(term, hits);
+// });
+
+// console.log(searchMap);
 
 function App() {
   const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
@@ -227,13 +229,23 @@ function App() {
       path: '/',
       element: <AppLayout />,
       children: [
+        { path: 'testy', element: <TestScreen /> },
+        {
+          path: 'cheesecakes',
+          element: (
+            <ShopCheesecakesScreen
+              cakeCards={cakeCards}
+              // searchMap={searchMap}
+            />
+          ),
+        },
         { path: '', element: <HomeScreen /> },
         {
           path: 'cheesecakes',
           element: (
             <ShopCheesecakesScreen
               cakeCards={cakeCards}
-              searchMap={searchMap}
+              // searchMap={searchMap}
             />
           ),
         },

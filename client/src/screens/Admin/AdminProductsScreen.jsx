@@ -14,12 +14,18 @@ export default function AdminProductsScreen() {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.headingContainer}>
-        <h1 className={styles.header}>Products</h1>
+        <h1 className={styles.header}>
+          Products &#40;
+          {data.data.products.length > 0 ? data.data.products.length : 0} &#41;
+        </h1>
         <Link className={styles.link} to='/admin-create-product'>
           Add Product
         </Link>
       </div>
-      <AdminProductHeader />
+      {!data && (
+        <p className={styles.noProducts}> You do not have any products.</p>
+      )}
+      {data && <AdminProductHeader />}
       {data &&
         data?.data?.products?.map((product) => {
           return <AdminProductPreview key={product._id} product={product} />;

@@ -1,13 +1,16 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './ShopCakeCard.module.css';
+import PageLoader from '../PageLoader';
 
 export default function ShopCakeCard({ children, cake }) {
-  const id = children.split(' ').join('-').toLowerCase();
+  // const id = children.split(' ').join('-').toLowerCase();
 
   const location = useLocation();
   // if on the single cake page in youmaylike use larger img for tablet
   const youMayLike = location.pathname.startsWith('/cheesecake/');
+
+  // console.log(cake.image.split('.'));
 
   return (
     <div

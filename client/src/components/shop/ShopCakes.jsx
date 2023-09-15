@@ -2,19 +2,16 @@ import styles from './ShopCakes.module.css';
 
 import ShopCakeCard from './ShopCakeCard';
 import PageLoader from '../PageLoader';
-import { useSelector } from 'react-redux';
 
 export default function ShopCakes({
   cakes,
   setCakes,
   searchInput,
-  cakeCards,
   setSearchInput,
+  data,
 }) {
-  const data = useSelector((state) => state.products);
-
   const resetCakes = function () {
-    setCakes(cakeCards);
+    setCakes(data.data.products);
     setSearchInput('');
   };
 
@@ -32,14 +29,15 @@ export default function ShopCakes({
         </>
       )}
 
-      {searchInput.length > 0 && (
+      {/* give 'show all results' btn when displaying less than all cakes */}
+      {cakes?.length < data?.data?.products?.length && (
         <button className={styles.showAllResultsBtn} onClick={resetCakes}>
           Show All Results
         </button>
       )}
 
-      {data &&
-        data.map((cake, index) => (
+      {cakes &&
+        cakes.map((cake, index) => (
           <ShopCakeCard cake={cake} key={index}>
             {cake.name}
           </ShopCakeCard>

@@ -43,7 +43,6 @@ function deleteOriginals() {
 // @access Public
 const getAllProducts = catchAsync(async (req, res, next) => {
   const products = await Product.find();
-
   res.status(200).json({
     status: 'success',
     data: {
@@ -87,6 +86,7 @@ const createProduct = catchAsync(async (req, res, next) => {
     .toLowerCase()
     .replace(/\s\s+/g, ' ')
     .replace(/'+/g, '')
+    .trim()
     .split(' ')
     .join('-');
 
@@ -141,11 +141,6 @@ const updateProduct = catchAsync(async (req, res, next) => {
 
   const product = await Product.findById(id);
 
-  // if only name changes but no image change: rename image files to new name
-
-  if (productImage) {
-  }
-
   const oldImageName = product.image.split('.')[0];
   const oldImageExt = product.image.split('.')[1];
   const newImageExt = productImage?.split('.')[1];
@@ -153,12 +148,14 @@ const updateProduct = catchAsync(async (req, res, next) => {
     .toLowerCase()
     .replace(/\s\s+/g, ' ')
     .replace(/'+/g, '')
+    .trim()
     .split(' ')
     .join('-');
 
+  // if they only changed the name
   if (productName !== previousName && !userChangedImageFile) {
     clones.forEach(async (clone) => {
-      await fs.rename(
+      fs.rename(
         `${__dirname}/${clone.path}/${oldImageName}-${clone.size[0]}w.${oldImageExt}`,
         `${__dirname}/${clone.path}/${newFileName}-${clone.size[0]}w.${
           newImageExt ? newImageExt : oldImageExt
@@ -171,8 +168,11 @@ const updateProduct = catchAsync(async (req, res, next) => {
       );
     });
   }
-
-  if (userChangedImageFile && productName !== previousName) {
+  // if they changed the name and image or img ext then delete unused images. don't need to delete every image upload because if the name and extension are the same the cloneRoutes file will replace the old images with the new
+  if (
+    userChangedImageFile &&
+    (productName !== previousName || oldImageExt !== newImageExt)
+  ) {
     clones.forEach(async (clone) => {
       deleteClones(oldImageName, clone.path, oldImageExt, clone.size[0]);
     });

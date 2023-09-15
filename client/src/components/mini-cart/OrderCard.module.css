@@ -20,12 +20,20 @@
   align-items: center;
 }
 
+.maxQtyMessage {
+  color: var(--error);
+  text-align: left;
+  font-size: 12px;
+  padding-top: 0.25rem;
+}
+
 @media screen and (min-width: 744px) {
   .cardContainer {
-    padding: 2rem;
+    padding: 1rem;
   }
 
-  .paragraph {
+  .paragraph,
+  .maxQtyMessage {
     font-size: 16px;
   }
 

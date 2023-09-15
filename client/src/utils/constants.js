@@ -4,3 +4,4 @@ export const USER_URL = 'users';
 export const PRODUCTS_URL = 'products';
 export const UPLOAD_IMAGE_URL = 'upload';
 export const CLONE_IMAGE_URL = 'clone';
+export const ORDER_URL = 'order';
