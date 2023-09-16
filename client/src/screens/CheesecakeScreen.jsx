@@ -34,7 +34,9 @@ export default function CheesecakeScreen({
   return (
     <>
       <div className={styles.container}>
-        <PreviousPageArrowLink />
+        <PreviousPageArrowLink link={'/cheesecakes'}>
+          Back To Cheesecakes
+        </PreviousPageArrowLink>
         <SingleCakeHeader name={cake.name} />
         <div className={styles.cakeImgDetailWrap}>
           <SingleCakeImg cake={cake} />

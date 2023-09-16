@@ -1,0 +1,22 @@
+.container {
+  position: relative;
+}
+
+.heading {
+  font-family: var(--header-title-font-regular);
+  text-align: center;
+  margin: 2rem auto;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 744px) {
+  .heading {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .heading {
+    font-size: 40px;
+  }
+}

@@ -4,7 +4,6 @@ import searchIcon from '../../assets/icons/search.svg';
 
 export default function SearchDialog({
   searchDialogRef,
-  // cakeCards,
   setCakes,
   searchInput,
   setSearchInput,

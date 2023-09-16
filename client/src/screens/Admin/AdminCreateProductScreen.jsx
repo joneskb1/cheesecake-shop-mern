@@ -122,6 +122,7 @@ export default function AdminCreateProductScreen({
   return (
     <AdminProductForm formHandler={handleCreateProduct}>
       <AdminBackLink to='products' />
+
       <AdminFormHeader>Create Product</AdminFormHeader>
       <BaseProductFormInputs
         userChangedImageFile={userChangedImageFile}

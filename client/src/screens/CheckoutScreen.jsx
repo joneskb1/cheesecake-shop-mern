@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectCartState } from '../slices/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCartState, clearCart } from '../slices/cartSlice';
 import { usePlaceOrderMutation } from '../slices/orderApiSlice';
-
+import { useNavigate } from 'react-router-dom';
 import useCalcCart from '../custom-hooks/useCalcCart';
 
 import styles from './CheckoutScreen.module.css';
@@ -16,13 +16,15 @@ import CheckoutShipping from '../components/checkout/CheckoutShipping';
 import OrderCard from '../components/mini-cart/OrderCard';
 import SummaryPlaceOrder from '../components/checkout/SummaryPlaceOrder';
 import cakeImg from '../assets/images/desktop/checkout-cake-936w.png';
+import PreviousPageArrowLink from '../components/single-cake/PreviousPageArrowLink';
 
 export default function CheckoutScreen() {
   // may want to keep state in screen to pass to next section in order to conditionally render it
   const [isBillingSameAsAddress, setIsBillingSameAsAddress] = useState(true);
   const cartItems = useSelector(selectCartState);
   const [placeOrder] = usePlaceOrderMutation();
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   // shipping address state
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -103,6 +105,8 @@ export default function CheckoutScreen() {
       }).unwrap();
       if (res.status === 'success') {
         toast.success(`Order Placed!`);
+        dispatch(clearCart());
+        navigate('/my-account');
       }
     } catch (error) {
       console.log(error);

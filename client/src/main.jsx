@@ -16,7 +16,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 // To DO
-//  orders controller/db, rtk, ui
 //  emails for forgotten pw's/orders
 //  payment processing w/ stripe
 //  usps api for shipping
