@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCartState, clearCart } from '../slices/cartSlice';
-import { usePlaceOrderMutation } from '../slices/orderApiSlice';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectCartState } from '../slices/cartSlice';
 import useCalcCart from '../custom-hooks/useCalcCart';
 
 import styles from './CheckoutScreen.module.css';
@@ -16,15 +14,16 @@ import CheckoutShipping from '../components/checkout/CheckoutShipping';
 import OrderCard from '../components/mini-cart/OrderCard';
 import SummaryPlaceOrder from '../components/checkout/SummaryPlaceOrder';
 import cakeImg from '../assets/images/desktop/checkout-cake-936w.png';
-import PreviousPageArrowLink from '../components/single-cake/PreviousPageArrowLink';
+import { useCreateSessionMutation } from '../slices/stripeSlice';
+import { loadStripe } from '@stripe/stripe-js';
+import { STRIPE_PUB_KEY } from '../utils/constants';
+import { useGetUserQuery } from '../slices/userApiSlice';
 
 export default function CheckoutScreen() {
   // may want to keep state in screen to pass to next section in order to conditionally render it
   const [isBillingSameAsAddress, setIsBillingSameAsAddress] = useState(true);
   const cartItems = useSelector(selectCartState);
-  const [placeOrder] = usePlaceOrderMutation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   // shipping address state
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -34,8 +33,10 @@ export default function CheckoutScreen() {
   const [state, setState] = useState('');
   const [zipCode, setZipCode] = useState('');
 
-  const { subtotal, tax, orderTotal, shippingCost, shippingType } =
-    useCalcCart();
+  const { subtotal, tax, orderTotal } = useCalcCart();
+
+  const [createSession] = useCreateSessionMutation();
+  const { data } = useGetUserQuery();
 
   const shippingAddressFormState = {
     name,
@@ -94,20 +95,25 @@ export default function CheckoutScreen() {
     }
 
     try {
-      const res = await placeOrder({
-        orderState,
+      const orderDetails = {
+        orderState: JSON.stringify(orderState),
         subtotal,
         tax,
         orderTotal,
-        shippingCost,
-        shippingType,
-        cartItems,
+        cartItems: JSON.stringify(cartItems),
+        user: data.data.user._id,
+      };
+
+      const session = await createSession({
+        cart: cartItems,
+        metadata: orderDetails,
       }).unwrap();
-      if (res.status === 'success') {
-        toast.success(`Order Placed!`);
-        dispatch(clearCart());
-        navigate('/my-account');
-      }
+
+      const stripe = await loadStripe(STRIPE_PUB_KEY);
+
+      await stripe.redirectToCheckout({
+        sessionId: session.session.id,
+      });
     } catch (error) {
       console.log(error);
       toast.error(error.data.message);
@@ -162,14 +168,15 @@ export default function CheckoutScreen() {
             </>
           )}
 
-          <CheckoutSectionHeader>Shipping Method</CheckoutSectionHeader>
-          <CheckoutShipping />
+          {/* <CheckoutSectionHeader>Shipping Method</CheckoutSectionHeader> */}
+          {/* <CheckoutShipping /> */}
           <CheckoutSectionHeader>Review Items</CheckoutSectionHeader>
-          {/* map through cart items */}
-          {cartItems &&
-            cartItems.map((product, i) => {
-              return <OrderCard cake={product} key={i} />;
-            })}
+          <div className={styles.orderCardContainer}>
+            {cartItems &&
+              cartItems.map((product, i) => {
+                return <OrderCard cake={product} key={i} />;
+              })}
+          </div>
         </div>
         <div className={styles.summaryWrap}>
           <SummaryPlaceOrder />

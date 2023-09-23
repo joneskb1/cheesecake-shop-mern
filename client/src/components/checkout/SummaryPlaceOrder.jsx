@@ -22,9 +22,11 @@ export default function SummaryPlaceOrder({ placeOrderBtn = true, smallText }) {
         <p className={styles.right}>${subtotal}</p>
         <p className={styles.left}>Tax</p>
         <p className={styles.right}>${tax}</p>
-        <p className={styles.left}>Shipping</p>
-        <p className={styles.right}>${shippingCost}</p>
-        <p className={`${styles.left} ${styles.gap}`}>Order Total</p>
+        {/* <p className={styles.left}>Shipping</p>
+        <p className={styles.right}>${shippingCost}</p> */}
+        <p className={`${styles.left} ${styles.gap}`}>
+          Total (before shipping)
+        </p>
         <p className={`${styles.right} ${styles.gap}`}>${orderTotal}</p>
         <p className={styles.left}>Payment Method</p>
         <p className={styles.right}>Paypal</p>

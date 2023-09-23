@@ -9,6 +9,7 @@ export default function SelectInput({
   setter = null,
   path = null,
   style = null,
+  startingOption = null,
   children,
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -24,10 +25,12 @@ export default function SelectInput({
     ? options
     : Array.from({ length: options }, (_, i) => i + 1);
 
-  // if path exists create array so we can extract initial option from object with reducer function
-  if (path) {
+  // if startingOption prop is present that will be the intitial option
+  if (startingOption) {
+    initialOption = startingOption;
+  } else if (path) {
+    // if no startingOption and path exists create array so we can extract initial option from object with reducer function
     pathArray = path.split('.');
-
     initialOption = pathArray.reduce(
       (obj, key) => obj && obj[key],
       optionsArr[0]
@@ -38,6 +41,7 @@ export default function SelectInput({
   }
 
   function handleSelectOption(e) {
+    e.preventDefault();
     setDropdownOpen(false);
     setCurrentOption(e.target.innerHTML);
     if (setter) {
@@ -76,6 +80,7 @@ export default function SelectInput({
         className={styles.selectInputContainer}
       >
         <div className={styles.currentOptionWindow}>
+          {/* before an option is clicked we show the initial option (bc currentOption is null)and after we show currentOption */}
           {currentOption || initialOption}
         </div>
 

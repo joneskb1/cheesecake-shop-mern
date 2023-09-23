@@ -9,6 +9,9 @@ export default function OrderCard({ cake, isMiniCartOpen, setIsMiniCartOpen }) {
   let location = useLocation();
   const onCheckout = location.pathname === '/checkout';
 
+  const totalPrice =
+    Number.parseFloat(cake.price, 10) * Number.parseInt(cake.quantity, 10);
+
   return (
     <div className={styles.cardContainer}>
       <MiniCakeCard cakeId={cake.id} />
@@ -32,7 +35,7 @@ export default function OrderCard({ cake, isMiniCartOpen, setIsMiniCartOpen }) {
             onCheckout ? styles.largeText : ''
           }`}
         >
-          Price: ${cake.price}
+          Price: ${totalPrice.toFixed(2)}
         </p>
       </div>
       {cake.stock <= cake.quantity && (

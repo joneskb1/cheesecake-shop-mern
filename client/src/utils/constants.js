@@ -5,3 +5,6 @@ export const PRODUCTS_URL = 'products';
 export const UPLOAD_IMAGE_URL = 'upload';
 export const CLONE_IMAGE_URL = 'clone';
 export const ORDER_URL = 'order';
+export const STRIPE_URL = 'checkout';
+export const STRIPE_PUB_KEY =
+  'pk_test_51NrWHSAIpneYbxMThv2Xv2ZJiz2VqLeZMOIfDnvN4xDOtHqUdlKcuDgOz4jgbg71dJZx3eL2pkRtVTeonTEHpGOa00AEyk5tJK';

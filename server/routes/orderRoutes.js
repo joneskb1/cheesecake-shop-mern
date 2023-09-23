@@ -1,6 +1,5 @@
 import express from 'express';
 import {
-  placeOrder,
   getUserOrders,
   getOneOrder,
   getUserOrder,
@@ -11,7 +10,7 @@ import { protect, admin } from '../controllers/userController.js';
 const router = express.Router();
 
 router.use(protect);
-router.route('/').post(placeOrder).get(getUserOrders);
+router.route('/').get(getUserOrders);
 router.route('/:id').get(getUserOrder);
 
 router.use(admin);

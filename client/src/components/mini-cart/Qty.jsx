@@ -4,6 +4,8 @@ import { updateQty, removeItem } from '../../slices/cartSlice';
 import { useDispatch } from 'react-redux';
 import secureLocalStorage from 'react-secure-storage';
 
+import SelectInput from '../utils/SelectInput';
+
 export default function Qty({
   cake,
   isMiniCartOpen = null,
@@ -15,10 +17,9 @@ export default function Qty({
 
   let cakeStock = cake.stock;
   let options = Array.from({ length: Number(cakeStock) }, (_, i) => i + 1);
+  options.push('Delete');
 
-  function handleQtyChange(e) {
-    qty = e.target.value;
-
+  function handleQtyChange(qty) {
     // remove item from cart if they click delete
     if (qty.toLowerCase() === 'delete') {
       dispatch(
@@ -39,7 +40,7 @@ export default function Qty({
     // update quantity if they change it
     dispatch(
       updateQty({
-        newQty: e.target.value,
+        newQty: qty,
         cakeId: cake.id,
         cakeSize: cake.size,
         stock: cakeStock,
@@ -57,10 +58,10 @@ export default function Qty({
   return (
     <>
       <div className={styles.qtyContainer}>
-        <p className={`${styles.label} ${onCheckout ? styles.largeText : ''}`}>
+        {/* <p className={`${styles.label} ${onCheckout ? styles.largeText : ''}`}>
           Qty:
-        </p>
-        <select
+        </p> */}
+        {/* <select
           onChange={handleQtyChange}
           value={qty}
           className={`${styles.qtySelect} ${
@@ -75,7 +76,15 @@ export default function Qty({
             );
           })}
           <option value='delete'>Delete</option>
-        </select>{' '}
+        </select>{' '} */}
+        <SelectInput
+          options={options}
+          setter={handleQtyChange}
+          startingOption={cake.quantity}
+          key={cake.id + cake.size}
+        >
+          Qty:
+        </SelectInput>
       </div>{' '}
     </>
   );
