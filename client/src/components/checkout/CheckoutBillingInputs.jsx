@@ -1,14 +1,23 @@
 import { useState } from 'react';
 import styles from './CheckoutTextInputs.module.css';
 
-export default function CheckoutBillingInputs({ propStyles = {} }) {
-  const [billingName, setBillingName] = useState('');
-  const [billingPhoneNumber, setBillingPhoneNumber] = useState('');
-  const [billingAddress, setBillingAddress] = useState('');
-  const [billingSecondAddress, setBillingSecondAddress] = useState('');
-  const [billingCity, setBillingCity] = useState('');
-  const [billingState, setBillingState] = useState('');
-  const [billingZipCode, setBillingZipCode] = useState('');
+export default function CheckoutBillingInputs({ propStyles = {}, formState }) {
+  const {
+    billingName,
+    setBillingName,
+    billingPhoneNumber,
+    setBillingPhoneNumber,
+    billingAddress,
+    setBillingAddress,
+    billingSecondAddress,
+    setBillingSecondAddress,
+    billingCity,
+    setBillingCity,
+    billingState,
+    setBillingState,
+    billingZipCode,
+    setBillingZipCode,
+  } = formState;
 
   return (
     <div style={propStyles}>
@@ -18,6 +27,7 @@ export default function CheckoutBillingInputs({ propStyles = {} }) {
       <input
         type='text'
         id='name'
+        required
         value={billingName}
         className={styles.checkoutTextInput}
         onChange={(e) => setBillingName(e.target.value)}
@@ -26,7 +36,7 @@ export default function CheckoutBillingInputs({ propStyles = {} }) {
         Phone Number
       </label>
       <input
-        type='text'
+        type='tel'
         id='phone-number'
         value={billingPhoneNumber}
         className={styles.checkoutTextInput}
@@ -38,6 +48,7 @@ export default function CheckoutBillingInputs({ propStyles = {} }) {
       <input
         type='text'
         id='address'
+        required
         value={billingAddress}
         className={styles.checkoutTextInput}
         onChange={(e) => setBillingAddress(e.target.value)}
@@ -56,6 +67,7 @@ export default function CheckoutBillingInputs({ propStyles = {} }) {
         City
       </label>
       <input
+        required
         type='text'
         id='city'
         value={billingCity}
@@ -70,6 +82,7 @@ export default function CheckoutBillingInputs({ propStyles = {} }) {
           </label>
           <input
             type='text'
+            required
             id='state'
             value={billingState}
             className={styles.checkoutTextInput}
@@ -83,6 +96,7 @@ export default function CheckoutBillingInputs({ propStyles = {} }) {
           </label>
           <input
             type='text'
+            required
             id='zip-code'
             value={billingZipCode}
             className={styles.checkoutTextInput}

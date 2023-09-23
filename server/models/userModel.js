@@ -36,6 +36,12 @@ const userSchema = mongoose.Schema({
     required: true,
     default: false,
   },
+  orders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Order',
+    },
+  ],
 });
 
 userSchema.pre('save', async function (next) {
@@ -47,12 +53,11 @@ userSchema.pre('save', async function (next) {
 });
 
 userSchema.pre('save', function (next) {
-  if (!this.isModified || this.isNew) return next();
+  if (!this.isModified('password') || this.isNew) return next();
 
   // runs ONLY if modifying existing pw
   // sub 1 sec so token is always created after password is changed
   this.passwordChangedAt = Date.now() - 1000;
-
   next();
 });
 
@@ -68,6 +73,7 @@ userSchema.methods.changedPasswordAfter = function (jwtTimeStamp) {
       10
     );
     // if true then access should be denied as they've changed pw after token issue
+
     return jwtTimeStamp < changedTimeStamp;
   }
 

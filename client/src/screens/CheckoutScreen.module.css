@@ -40,4 +40,8 @@
     width: 450px;
     max-height: 425px;
   }
+
+  .orderCardContainer {
+    margin-bottom: 10rem;
+  }
 }

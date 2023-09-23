@@ -8,10 +8,10 @@ import SearchDialog from './SearchDialog';
 
 export default function SearchBtn({
   setCakes,
-  cakeCards,
   searchInput,
   setSearchInput,
   searchMap,
+  data,
 }) {
   const searchDialogRef = useRef(null);
 
@@ -32,7 +32,7 @@ export default function SearchBtn({
 
       <SearchDialog
         searchDialogRef={searchDialogRef}
-        cakeCards={cakeCards}
+        data={data}
         setCakes={setCakes}
         searchInput={searchInput}
         setSearchInput={setSearchInput}

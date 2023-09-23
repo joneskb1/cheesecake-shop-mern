@@ -1,14 +1,23 @@
 import { useState } from 'react';
 import styles from './CheckoutTextInputs.module.css';
 
-export default function CheckoutAddressInputs({ propStyles = {} }) {
-  const [name, setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [address, setAddress] = useState('');
-  const [secondAddress, setSecondAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zipCode, setZipCode] = useState('');
+export default function CheckoutAddressInputs({ propStyles = {}, formState }) {
+  const {
+    name,
+    setName,
+    phoneNumber,
+    setPhoneNumber,
+    address,
+    setAddress,
+    secondAddress,
+    setSecondAddress,
+    city,
+    setCity,
+    state,
+    setState,
+    zipCode,
+    setZipCode,
+  } = formState;
 
   return (
     <div style={propStyles}>
@@ -18,6 +27,7 @@ export default function CheckoutAddressInputs({ propStyles = {} }) {
       <input
         type='text'
         id='name'
+        required
         value={name}
         className={styles.checkoutTextInput}
         onChange={(e) => setName(e.target.value)}
@@ -26,7 +36,7 @@ export default function CheckoutAddressInputs({ propStyles = {} }) {
         Phone Number
       </label>
       <input
-        type='text'
+        type='tel'
         id='phone-number'
         value={phoneNumber}
         className={styles.checkoutTextInput}
@@ -38,6 +48,7 @@ export default function CheckoutAddressInputs({ propStyles = {} }) {
       <input
         type='text'
         id='address'
+        required
         value={address}
         className={styles.checkoutTextInput}
         onChange={(e) => setAddress(e.target.value)}
@@ -56,6 +67,7 @@ export default function CheckoutAddressInputs({ propStyles = {} }) {
         City
       </label>
       <input
+        required
         type='text'
         id='city'
         value={city}
@@ -69,6 +81,7 @@ export default function CheckoutAddressInputs({ propStyles = {} }) {
             State
           </label>
           <input
+            required
             type='text'
             id='state'
             value={state}
@@ -82,6 +95,7 @@ export default function CheckoutAddressInputs({ propStyles = {} }) {
             Zip Code
           </label>
           <input
+            required
             type='text'
             id='zip-code'
             value={zipCode}

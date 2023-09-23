@@ -36,6 +36,7 @@ router.post('/', (req, res, next) => {
           .toLowerCase()
           .replace(/\s\s+/g, ' ')
           .replace(/'+/g, '')
+          .trim()
           .split(' ')
           .join('-');
 

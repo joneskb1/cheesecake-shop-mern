@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styles from './AdminProductScreen.module.css';
-import { useSelector } from 'react-redux';
 
 import AdminFormHeader from '../../components/admin/AdminFormHeader';
 import AdminProductForm from '../../components/admin/AdminProductForm';
@@ -88,6 +87,7 @@ export default function AdminProductScreen({
     e.preventDefault();
 
     if (userChangedImageFile) {
+      setOriginalImg(() => '');
       try {
         const res = await cloneImage({ productImage, productName }).unwrap();
 
@@ -100,39 +100,43 @@ export default function AdminProductScreen({
           setError(null);
         } else {
           setError(res.message);
-          toast.error(res.message, {
-            hideProgressBar: false,
-            progress: undefined,
-          });
+          toast.error(res.message);
         }
       } catch (error) {
         setError(error.data.message);
-        toast.error(error.data.message, {
-          hideProgressBar: false,
-          progress: undefined,
-        });
+        toast.error(error.data.message);
       }
     }
 
-    const res = await updateProduct({
-      id,
-      productName,
-      productDescription,
-      productPrice,
-      productSize,
-      productStock,
-      productImage,
-      previousName: previousName.current,
-      userChangedImageFile,
-    }).unwrap();
-    setOriginalImg(res.data.data.image);
-    setProductImage('');
-    previousName.current = productName;
-    setUserChangedImageFile(false);
-    fileInputRef.current.value = '';
-    toast.success('Product updated');
+    try {
+      const res = await updateProduct({
+        id,
+        productName,
+        productDescription,
+        productPrice,
+        productSize,
+        productStock,
+        productImage,
+        previousName: previousName.current,
+        userChangedImageFile,
+      }).unwrap();
 
-    //handle errors
+      if (res.status === 'success') {
+        setOriginalImg(res.data.data.image);
+        setProductImage('');
+        previousName.current = productName;
+        setUserChangedImageFile(false);
+        fileInputRef.current.value = '';
+        toast.success('Product updated');
+        setError(null);
+      } else {
+        setError(res.message);
+        toast.error(res.message);
+      }
+    } catch (error) {
+      setError(error.data.message);
+      toast.error(error.data.message);
+    }
   }
 
   useEffect(() => {
@@ -150,6 +154,12 @@ export default function AdminProductScreen({
 
   async function handleDeleteProduct(e) {
     e.preventDefault();
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this item?'
+    );
+    if (!confirmed) return;
+    setProductImage(() => '');
+
     try {
       await deleteProduct({ id });
       navigate('/admin-products');

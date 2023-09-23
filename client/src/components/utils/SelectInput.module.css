@@ -1,0 +1,55 @@
+.selectInputContainer {
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  min-width: 75px;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+}
+
+.currentOptionWindow {
+  display: inline-block;
+  padding: 0.1rem 0.25rem;
+  margin: 0 auto;
+  /* border: 1px solid black; */
+  margin-right: 25%;
+}
+
+.dropDownWindow {
+  position: absolute;
+  background: white;
+  max-height: 200px;
+  min-width: 75px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 1000;
+  top: 30px;
+}
+
+.selectBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  padding: 0.5rem 0.75rem;
+}
+
+.dropdownIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.selectInputContainer:hover {
+  cursor: pointer;
+}
+.option:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.labelInputWrap {
+  display: inline-block;
+}

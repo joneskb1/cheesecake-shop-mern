@@ -3,14 +3,18 @@ import CartHeader from './CartHeader';
 import OrderCard from './OrderCard';
 import MiniCartFooter from './MiniCartFooter';
 
+import { selectCartState } from '../../slices/cartSlice';
+import { useSelector } from 'react-redux';
+
 // parent should be position relative and overflow hidden
 // open button and state are kept in parent
-
 export default function MiniCart({
   isMiniCartOpen,
   setIsMiniCartOpen,
   setIsLoginModalOpen,
 }) {
+  const cartItems = useSelector(selectCartState);
+
   const closeMiniCart = function () {
     setIsMiniCartOpen(false);
   };
@@ -20,13 +24,17 @@ export default function MiniCart({
       <div className={styles.miniCart} open={isMiniCartOpen}>
         <CartHeader />
         <div className={styles.orderCardContainer}>
-          <OrderCard />
-          <OrderCard />
-          <OrderCard />
-          <OrderCard />
-          <OrderCard />
-          <OrderCard />
-          <OrderCard />
+          {cartItems &&
+            cartItems.map((item, index) => {
+              return (
+                <OrderCard
+                  key={index}
+                  cake={item}
+                  setIsMiniCartOpen={setIsMiniCartOpen}
+                  isMiniCartOpen={isMiniCartOpen}
+                />
+              );
+            })}
         </div>
 
         <MiniCartFooter

@@ -23,6 +23,10 @@ export default function VariantPreview({
   }
 
   async function handleDeleteVariant() {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this variant?'
+    );
+    if (!confirmed) return;
     try {
       const res = await deleteVariant({ id, variantId: variant._id });
       toast.success('Variant deleted');
