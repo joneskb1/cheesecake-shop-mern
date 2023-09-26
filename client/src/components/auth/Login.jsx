@@ -79,6 +79,11 @@ export default function Login() {
         />
       </div>
       {error && <p className={styles.error}>{error}</p>}
+
+      <button className={styles.loginBtn}>Login</button>
+      <Link className={styles.forgotPassword} to='/auth/forgot-password'>
+        Forgot password?
+      </Link>
       <p className={styles.signUpText}>New customer?</p>
       <Link
         to={`/auth/create-account?redirect=${redirect}`}
@@ -86,7 +91,6 @@ export default function Login() {
       >
         Sign Up
       </Link>
-      <button className={styles.loginBtn}>Login</button>
     </form>
   );
 }

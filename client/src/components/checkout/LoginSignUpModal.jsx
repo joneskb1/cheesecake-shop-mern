@@ -17,14 +17,14 @@ export default function LoginSignUpModal({ setIsLoginModalOpen }) {
         <p>
           Please{' '}
           <Link
-            to={'/auth/login?redirect=/checkout'}
+            to={'/auth/login?redirect=/cart'}
             onClick={() => setIsLoginModalOpen(false)}
           >
             login
           </Link>{' '}
           or{' '}
           <Link
-            to={'/auth/create-account?redirect=/checkout'}
+            to={'/auth/create-account?redirect=/cart'}
             onClick={() => setIsLoginModalOpen(false)}
           >
             sign up

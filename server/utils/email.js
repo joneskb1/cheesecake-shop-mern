@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-export default async (email, url) => {
+export default async (email, html, subject) => {
   let transporter;
 
   if (process.env.NODE_ENV === 'development') {
@@ -26,12 +26,10 @@ export default async (email, url) => {
     });
   }
 
-  let html = `<p>Please use this link to reset your password <a href=${url}>Reset Password</a> </p>`;
-
   const mailOptions = {
     from: process.env.EMAIL_FROM,
     to: email,
-    subject: 'Reset Password',
+    subject,
     html,
   };
 

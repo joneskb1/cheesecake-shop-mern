@@ -16,8 +16,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 // To DO
-//  emails for forgotten pw's/orders
-//  payment processing w/ stripe
-//  usps api for shipping
-//  admin mutate users rtk & ui
-//  spin cake, you may like flicker, contact form, carousel links
+//  process not found stripe
+//  fancy emails?
+//  you may like flicker

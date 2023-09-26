@@ -6,13 +6,66 @@ import SummaryCart from '../components/cart/SummaryCart';
 import CartHeader from '../components/mini-cart/CartHeader';
 import OrderCard from '../components/mini-cart/OrderCard';
 import cakeLarge from '../assets/images/desktop/cart-cake-802w.png';
-
+import { useEffect, useState } from 'react';
 import LoginSignUpModal from '../components/checkout/LoginSignUpModal';
 import { selectCartState } from '../slices/cartSlice';
 import { useSelector } from 'react-redux';
+import { useCreateSessionMutation } from '../slices/stripeSlice';
+import { loadStripe } from '@stripe/stripe-js';
+import { STRIPE_PUB_KEY } from '../utils/constants';
+import { useGetUserQuery } from '../slices/userApiSlice';
+import { toast } from 'react-toastify';
+import calcShipping from '../custom-hooks/calcShipping.js';
+import useCalcCart from '../custom-hooks/useCalcCart.js';
 
 export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
+  const [createSession] = useCreateSessionMutation();
+  const [zipCode, setZipCode] = useState('');
+  const [shipRate, setShipRate] = useState('');
+
+  const { data } = useGetUserQuery();
   const cartItems = useSelector(selectCartState);
+  const { weightLb, weightOz } = useCalcCart();
+
+  async function handleShippingCal(e) {
+    e.preventDefault();
+    const rate = await calcShipping(zipCode, weightLb, weightOz);
+    setShipRate(rate);
+  }
+
+  //reset shippping if they edit cart
+  useEffect(() => {
+    setZipCode('');
+    setShipRate('');
+  }, [cartItems]);
+
+  async function handlePlaceOrder(e) {
+    e.preventDefault();
+
+    if (!shipRate) return toast.error('Please enter zipcode');
+
+    try {
+      const orderDetails = {
+        cartItems: JSON.stringify(cartItems),
+        user: data.data.user._id,
+        shipRate,
+      };
+
+      const session = await createSession({
+        cart: cartItems,
+        metadata: orderDetails,
+      }).unwrap();
+
+      const stripe = await loadStripe(STRIPE_PUB_KEY);
+
+      await stripe.redirectToCheckout({
+        sessionId: session.session.id,
+      });
+    } catch (error) {
+      console.log(error);
+      toast.error(error.data.message);
+    }
+  }
 
   return (
     <div className={styles.cartScreen}>
@@ -34,11 +87,29 @@ export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
       )}
       {cartItems.length > 0 && (
         <div className={styles.summaryOrderContainer}>
-          <SummaryCart
-            isLoginModalOpen={isLoginModalOpen}
-            setIsLoginModalOpen={setIsLoginModalOpen}
-          />
-          <div className={styles.OrdersContainer}>
+          <div className={styles.summaryContainer}>
+            <SummaryCart
+              shipRate={shipRate}
+              onClick={handlePlaceOrder}
+              isLoginModalOpen={isLoginModalOpen}
+              setIsLoginModalOpen={setIsLoginModalOpen}
+            />
+            <form className={styles.zipWrap} onSubmit={handleShippingCal}>
+              <label htmlFor='zip-code' className={styles.checkoutTextLabel}>
+                Enter zip code for shipping rate
+              </label>
+              <input
+                required
+                type='text'
+                id='zip-code'
+                value={zipCode}
+                className={styles.checkoutTextInput}
+                onChange={(e) => setZipCode(e.target.value)}
+              />
+              <button className={styles.zipBtn}>Submit</button>
+            </form>
+          </div>
+          <div className={styles.ordersContainer}>
             <CartHeader />
             {cartItems.map((item, index) => {
               return <OrderCard key={index} cake={item} />;

@@ -7,6 +7,7 @@ import BendyHeader from '../components/home/BendyHeader';
 import SpinnyCake from '../components/home/SpinnyCake';
 
 export default function HomeScreen() {
+
   return (
     <div className={styles.homeScreenWrap}>
       <div className={styles.heroContainer}>
@@ -16,7 +17,7 @@ export default function HomeScreen() {
       <Carousel />
       <About />
       <BendyHeader />
-      <SpinnyCake />
+      <SpinnyCake  />
     </div>
   );
 }

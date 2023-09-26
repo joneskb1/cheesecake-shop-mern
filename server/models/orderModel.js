@@ -30,9 +30,6 @@ const orderSchema = mongoose.Schema(
 
     shippingAddress: {
       name: String,
-      customerPhoneNumber: {
-        type: String,
-      },
 
       address: {
         type: String,
@@ -52,32 +49,6 @@ const orderSchema = mongoose.Schema(
       state: {
         type: String,
         required: [true, 'Customer shipping address state required'],
-      },
-    },
-    billingAddress: {
-      name: String,
-      billingPhoneNumber: {
-        type: String,
-      },
-
-      address: {
-        type: String,
-        required: [true, 'Customer billing address required'],
-      },
-      addressSecond: {
-        type: String,
-      },
-      city: {
-        type: String,
-        required: [true, 'Customer billing address city required'],
-      },
-      postalCode: {
-        type: String,
-        required: [true, 'Customer billing address postal code required'],
-      },
-      state: {
-        type: String,
-        required: [true, 'Customer billing address state required'],
       },
     },
     itemsPrice: {
@@ -104,34 +75,8 @@ const orderSchema = mongoose.Schema(
       type: Number,
       required: [true, 'Order total required'],
     },
-    paymentMethod: {
-      type: String,
-      // required: [true, 'Payment method required'],
-    },
     paymentResult: {
       id: String,
-      status: String,
-      update_time: String,
-      email_address: String,
-    },
-    isPaid: {
-      type: Boolean,
-      // required: [true, 'isPaid field required'],
-      default: false,
-    },
-    paidAt: {
-      type: Date,
-    },
-    isDelivered: {
-      type: Boolean,
-      // required: [true, 'isDelivered field required'],
-      default: false,
-    },
-    deliveredAt: {
-      type: Date,
-    },
-    tracking: {
-      type: Number,
     },
   },
   {

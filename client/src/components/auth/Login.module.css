@@ -2,7 +2,7 @@
   font-family: var(--header-title-font-regular);
   width: 75%;
   max-width: 575px;
-  margin: 4rem auto 2rem;
+  margin: 1rem auto 2rem;
   background: var(--light-purple);
   border-radius: 5px;
   padding: 2rem 1rem;
@@ -35,9 +35,10 @@
   margin-bottom: 0.5rem;
 }
 
-.signUpLink {
-  display: inline-block;
-  margin-bottom: 1rem;
+.signUpLink,
+.forgotPassword {
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .loginBtn {
@@ -47,7 +48,7 @@
   color: white;
   width: 150px;
   height: 40px;
-  margin: 0 auto;
+  margin: 1rem auto;
   background: var(--purple);
 }
 

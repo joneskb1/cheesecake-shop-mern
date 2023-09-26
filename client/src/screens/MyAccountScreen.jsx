@@ -4,16 +4,19 @@ import { useGetUserOrdersQuery } from '../slices/orderApiSlice';
 import backgroundCake1 from '../assets/images/mobile/my-account-cheesecake-mobile-199w.png';
 import backgroundCakeLarge from '../assets/images/tablet/account-cake-443w.png';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
-import { clearCart } from '../slices/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart, selectCartState } from '../slices/cartSlice';
 import backgroundCake2 from '../assets/images/mobile/cart-cake.png';
 import OrderPreview from '../components/admin/OrderPreview';
 import { useLocation } from 'react-router-dom';
 import PageLoader from '../components/PageLoader.jsx';
+import { useEffect } from 'react';
 export default function MyAccountScreen() {
   const dispatch = useDispatch();
   const { search } = useLocation();
   const orderComplete = search.split('=')[1];
+
+  const cart = useSelector(selectCartState);
 
   const { data: orders, isLoading } = useGetUserOrdersQuery();
   let reversedOrders;
@@ -21,10 +24,13 @@ export default function MyAccountScreen() {
   if (orders?.data?.data) {
     reversedOrders = orders.data.data.slice().reverse();
   }
-  if (orders && orderComplete) {
-    toast.success(`Order Complete!`);
-    dispatch(clearCart());
-  }
+
+  useEffect(() => {
+    if (orderComplete && orders?.data?.data && cart.length > 1) {
+      toast.success(`Order Complete!`);
+      dispatch(clearCart());
+    }
+  }, [dispatch, orderComplete, orders?.data?.data, cart]);
 
   if (isLoading) {
     return <PageLoader />;
@@ -44,10 +50,16 @@ export default function MyAccountScreen() {
 
       <h1 className={styles.accountHeader}>My Account</h1>
 
-      <div className={styles.flexWrap}>
+      <div
+        className={
+          orders.data.data.length !== 0 ? styles.flexWrap : styles.centerInfo
+        }
+      >
         <MyAccountForm />
         <div>
-          <h2 className={styles.orderHeader}>My Orders</h2>
+          {orders.data.data.length !== 0 && (
+            <h2 className={styles.orderHeader}>My Orders</h2>
+          )}{' '}
           {reversedOrders &&
             reversedOrders.map((order) => {
               return <OrderPreview order={order} key={order._id} />;

@@ -6,16 +6,15 @@ export default function CarouselTextCard({
   description,
   tabIndex,
   onFocus,
+  id,
 }) {
-  const path = name.toLowerCase().replace(' ', '-');
-
   return (
     <div className={styles.carouselTextContainer}>
       <h3 className={styles.carouselHeading}>{name}</h3>
       <p className={styles.carouselDescription}> {description}</p>
       <Link
         tabIndex={tabIndex}
-        to={`cheesecake/${path}`}
+        to={`cheesecake/${id}`}
         className={styles.carouselCartBtn}
         onFocus={onFocus}
       >

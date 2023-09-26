@@ -1,6 +1,7 @@
 .spinnyCake {
   display: block;
   margin: -30px auto 3rem;
+  transition: transform 1s ease;
 }
 
 @media screen and (min-width: 744px) {

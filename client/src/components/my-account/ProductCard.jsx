@@ -1,6 +1,9 @@
 import styles from './ProductCard.module.css';
 
 export default function ProductCard({ item }) {
+  const totalPrice =
+    Number.parseFloat(item.price, 10) * Number.parseInt(item.quantity, 10);
+
   return (
     <>
       <div className={`${styles.orderContainer}`}>
@@ -14,7 +17,7 @@ export default function ProductCard({ item }) {
         <p className={styles.text}>{item.size}&quot;</p>
 
         <p className={styles.header}>Price:</p>
-        <p className={styles.text}>${item.price}</p>
+        <p className={styles.text}>${totalPrice.toFixed(2)}</p>
       </div>
       <hr className={styles.line} />
     </>

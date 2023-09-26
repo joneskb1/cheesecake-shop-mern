@@ -5,10 +5,6 @@ let initialState = {
   cartItems: secureLocalStorage.getItem('cartItems')
     ? JSON.parse(secureLocalStorage.getItem('cartItems'))
     : [],
-
-  shipping: secureLocalStorage.getItem('shipping')
-    ? JSON.parse(secureLocalStorage.getItem('shipping'))
-    : {},
 };
 
 const cartSlice = createSlice({
@@ -94,25 +90,14 @@ const cartSlice = createSlice({
 
       secureLocalStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },
-    updateShipping(state, action) {
-      state.shipping = {
-        cost: action.payload.cost,
-        type: action.payload.type,
-      };
 
-      secureLocalStorage.setItem('shipping', JSON.stringify(state.shipping));
-    },
-    clearCart(state, action) {
-      state.shipping = {};
+    clearCart(state) {
       state.cartItems = [];
       secureLocalStorage.removeItem('cartItems');
-      secureLocalStorage.removeItem('shipping');
     },
   },
 });
 
-export const { addItem, updateQty, removeItem, updateShipping, clearCart } =
-  cartSlice.actions;
+export const { addItem, updateQty, removeItem, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
 export const selectCartState = (state) => state.cart.cartItems;
-export const selectShipping = (state) => state.cart.shipping;

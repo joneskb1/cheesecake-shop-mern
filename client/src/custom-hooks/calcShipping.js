@@ -1,11 +1,11 @@
-import xmlbuilder2 from 'xmlbuilder2';
+import * as xmlbuilder2 from 'xmlbuilder2';
 import axios from 'axios';
 
-async function calcShippingRate(
-  zipOrigin,
+export default async function calcShipping(
   zipDest,
   weightLb,
   weightOz,
+  zipOrigin = '72753',
   container = '',
   service = 'Priority'
 ) {
@@ -48,5 +48,3 @@ async function calcShippingRate(
 
   return rate;
 }
-
-export { calcShippingRate };

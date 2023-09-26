@@ -11,6 +11,7 @@ import NavDropdown from './NavDropdown';
 
 import accountIcon from '../../assets/icons/account-27w.svg';
 import cartIcon from '../../assets/icons/cart-33w.svg';
+import { clearCart } from '../../slices/cartSlice';
 
 export default function Navigation() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function Navigation() {
       if (res.status === 'success') {
         dispatch(logoutGlobalState());
         // navigate to home
+        dispatch(clearCart());
       }
     } catch (error) {
       console.log(error);

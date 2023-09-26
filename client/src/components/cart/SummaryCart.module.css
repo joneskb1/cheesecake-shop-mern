@@ -1,7 +1,7 @@
 .summaryContainer {
   background-color: var(--cream);
   width: 335px;
-  height: 275px;
+  min-height: 225px;
   margin: 1rem auto;
   border-radius: 5px;
   padding: 2rem;
@@ -27,22 +27,16 @@
 }
 
 @media screen and (min-width: 744px) {
-  .summaryContainer {
-    width: 500px;
-    height: 310px;
-  }
-
   .summaryHeading {
     font-size: 26px;
+  }
+
+  .summaryContainer {
+    width: 500px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .summaryContainer {
-    width: 500px;
-    height: 320px;
-  }
-
   .summaryHeading {
     font-size: 32px;
   }

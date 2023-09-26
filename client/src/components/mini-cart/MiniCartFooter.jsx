@@ -10,7 +10,9 @@ export default function MiniCartFooter({ closeMiniCart, setIsLoginModalOpen }) {
         {' '}
         Checkout{' '}
       </CheckoutBtn>
-      <p className={styles.shipping}>Shipping calculated at checkout.</p>
+      <p className={styles.shipping}>
+        Shipping and tax calculated at checkout.
+      </p>
       <button className={styles.closeBtn} onClick={closeMiniCart}>
         Close Cart
       </button>

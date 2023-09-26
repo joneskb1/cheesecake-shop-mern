@@ -13,8 +13,9 @@ export default function MyAccountOrdersInfo({ orderInfo }) {
         <div className={styles.orderInfo}>
           <p className={styles.orderInfoP}>Order number: {orderInfo.id}</p>
           <p className={styles.orderInfoP}>Date: {formattedDate}</p>
-          {/* <p className={styles.orderInfoP}>Tracking: 98746512356456</p> */}
-          <p className={styles.orderInfoP}>Total: ${orderInfo.total}</p>
+          <p className={styles.orderInfoP}>
+            Total: ${orderInfo.total.toFixed(2)}
+          </p>
         </div>
       </div>
     </>

@@ -13,6 +13,7 @@ import uploadRouter from './routes/uploadRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
 import cloneRouter from './routes/cloneRoutes.js';
 import stripeRoute from './routes/stripeRoutes.js';
+import emailRoute from './routes/emailRoutes.js';
 
 dotenv.config({ path: './config.env' });
 
@@ -44,6 +45,7 @@ app.use('/api/v1/upload', uploadRouter);
 app.use('/api/v1/clone', cloneRouter);
 app.use('/api/v1/order', orderRouter);
 app.use('/api/v1/checkout', stripeRoute);
+app.use('/api/v1/email', emailRoute);
 
 app.use(errorController);
 

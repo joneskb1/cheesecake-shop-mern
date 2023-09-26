@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-
 import styles from './Carousel.module.css';
 import CarouselImg from './CarouselImg';
 import CarouselTextCard from './CarouselTextCard';
@@ -21,6 +20,7 @@ const carouselCards = [
     imgLarge: redVelvetLarge,
     imgXL: redVelvetXL,
     name: 'Red Velvet',
+    id: '64f8ff2f6c4edd65c886f743',
     description:
       'This red velvet cheesecake showcases a sumptuous, cocoa-infused crimson base, topped with a silky smooth cream cheese layer',
   },
@@ -28,6 +28,7 @@ const carouselCards = [
     img: cherry,
     imgLarge: cherryLarge,
     imgXL: cherryXL,
+    id: '64f8fec16c4edd65c886f6fd',
     name: 'Cherry',
     description:
       'This luscious cherry cheesecake tantalized taste buds with its creamy texture, crowned with a vibrant layer of ruby-red cherry compote.',
@@ -36,6 +37,7 @@ const carouselCards = [
     img: chocolate,
     imgLarge: chocolateLarge,
     imgXL: chocolateXL,
+    id: '64f8fed86c4edd65c886f70d',
     name: 'Chocolate Oreo',
     description:
       'This decadent dessert combines the rich, velvety texture of classic cheesecake with the irresistible crunch and indulgent flavor of Oreo cookies.',
@@ -44,6 +46,7 @@ const carouselCards = [
     img: redVelvet,
     imgLarge: redVelvetLarge,
     imgXL: redVelvetXL,
+    id: '64f8ff2f6c4edd65c886f743',
     name: 'Red Velvet',
     description:
       'This red velvet cheesecake showcases a sumptuous, cocoa-infused crimson base, topped with a silky smooth cream cheese layer',
@@ -52,6 +55,7 @@ const carouselCards = [
     img: cherry,
     imgLarge: cherryLarge,
     imgXL: cherryXL,
+    id: '64f8fec16c4edd65c886f6fd',
     name: 'Cherry',
     description:
       'This luscious cherry cheesecake tantalized taste buds with its creamy texture, crowned with a vibrant layer of ruby-red cherry compote.',
@@ -74,8 +78,6 @@ export default function Carousel({
   const trackRef = useRef(null);
 
   const totalSlides = numSlides + 2;
-
-  console.log(currentSlide);
 
   const pushRef = (slide) => {
     if (slide && slidesRef.current.length < totalSlides) {
@@ -243,6 +245,7 @@ export default function Carousel({
                 />
                 <CarouselTextCard
                   name={card.name}
+                  id={card.id}
                   description={card.description}
                   tabIndex={inMotion || index !== currentSlide ? -1 : 0}
                   onFocus={handleAutoOff}

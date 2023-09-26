@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutGlobalState } from '../../slices/authSlice';
 import { useLogoutMutation } from '../../slices/userApiSlice';
+import { clearCart } from '../../slices/cartSlice';
 import styles from './NavDialog.module.css';
 import closeX from '../../assets/icons/close-x.svg';
 
@@ -19,6 +20,7 @@ export default function NavDialog({ dialogRef }) {
       const res = await logout().unwrap();
       if (res.status === 'success') {
         dispatch(logoutGlobalState());
+        dispatch(clearCart());
         // navigate to home
       }
     } catch (error) {

@@ -10,7 +10,6 @@ import CheckoutSectionHeader from '../components/checkout/CheckoutSectionHeader'
 import CheckoutHeader from '../components/checkout/CheckoutHeader';
 import CheckoutAddressInputs from '../components/checkout/CheckoutAddressInputs';
 import CheckoutBillingInputs from '../components/checkout/CheckoutBillingInputs';
-import CheckoutShipping from '../components/checkout/CheckoutShipping';
 import OrderCard from '../components/mini-cart/OrderCard';
 import SummaryPlaceOrder from '../components/checkout/SummaryPlaceOrder';
 import cakeImg from '../assets/images/desktop/checkout-cake-936w.png';
@@ -33,7 +32,7 @@ export default function CheckoutScreen() {
   const [state, setState] = useState('');
   const [zipCode, setZipCode] = useState('');
 
-  const { subtotal, tax, orderTotal } = useCalcCart();
+  // const { subtotal, tax, orderTotal } = useCalcCart();
 
   const [createSession] = useCreateSessionMutation();
   const { data } = useGetUserQuery();
@@ -96,12 +95,9 @@ export default function CheckoutScreen() {
 
     try {
       const orderDetails = {
-        orderState: JSON.stringify(orderState),
-        subtotal,
-        tax,
-        orderTotal,
         cartItems: JSON.stringify(cartItems),
         user: data.data.user._id,
+        zipCode,
       };
 
       const session = await createSession({
