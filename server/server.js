@@ -1,12 +1,9 @@
-import dotenv from 'dotenv';
-dotenv.config({ path: './config.env' });
-
+import 'dotenv/config';
 import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import connectDB from './db/db.js';
 import cors from 'cors';
-
 import errorController from './controllers/errorController.js';
 import stripeRoute from './routes/stripeRoutes.js';
 import { handleOrder } from './controllers/stripeController.js';
