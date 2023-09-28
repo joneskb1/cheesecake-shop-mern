@@ -11,9 +11,9 @@ export default function SpinnyCake() {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > refDef.current) {
-        setDeg((prev) => prev + 3);
+        setDeg((prev) => prev + 1);
       } else {
-        setDeg((prev) => prev - 3);
+        setDeg((prev) => prev - 1);
       }
       refDef.current = window.scrollY;
     };

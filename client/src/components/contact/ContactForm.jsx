@@ -19,6 +19,10 @@ export default function ContactForm() {
 
       if (res.data.status === 'success') {
         toast.success(`message sent!`);
+        setName('');
+        setEmail('');
+        setPhone('');
+        setMessage('');
       } else {
         toast.error(res.message);
       }

@@ -1,21 +1,21 @@
+import dotenv from 'dotenv';
+dotenv.config({ path: './config.env' });
+
 import path from 'path';
 import express from 'express';
-import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectDB from './db/db.js';
 import cors from 'cors';
 
 import errorController from './controllers/errorController.js';
+import stripeRoute from './routes/stripeRoutes.js';
 import { handleOrder } from './controllers/stripeController.js';
 import userRouter from './routes/userRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import uploadRouter from './routes/uploadRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
 import cloneRouter from './routes/cloneRoutes.js';
-import stripeRoute from './routes/stripeRoutes.js';
 import emailRoute from './routes/emailRoutes.js';
-
-dotenv.config({ path: './config.env' });
 
 const port = process.env.PORT || 3000;
 
@@ -44,8 +44,8 @@ app.use('/api/v1/products', productRouter);
 app.use('/api/v1/upload', uploadRouter);
 app.use('/api/v1/clone', cloneRouter);
 app.use('/api/v1/order', orderRouter);
-app.use('/api/v1/checkout', stripeRoute);
 app.use('/api/v1/email', emailRoute);
+app.use('/api/v1/checkout', stripeRoute);
 
 app.use(errorController);
 

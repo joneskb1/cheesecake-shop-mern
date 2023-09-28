@@ -42,6 +42,14 @@ export const orderApiSlice = apiSlice.injectEndpoints({
         credentials: 'include',
       }),
     }),
+
+    getShippingRate: builder.mutation({
+      query: (data) => ({
+        url: `${ORDER_URL}/shipping-rate`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -51,4 +59,5 @@ export const {
   useGetAllOrdersAdminQuery,
   useGetOrderAdminQuery,
   useGetUserOrderQuery,
+  useGetShippingRateMutation,
 } = orderApiSlice;

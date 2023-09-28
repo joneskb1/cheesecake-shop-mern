@@ -3,13 +3,13 @@ import downArrow from '../../assets/icons/drop-down.svg';
 import styles from './SelectInput.module.css';
 
 // path prop should only be passed in if we need our select options to be selected from object property
-
 export default function SelectInput({
   options = null,
   setter = null,
   path = null,
   style = null,
   startingOption = null,
+  className = null,
   children,
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -39,6 +39,11 @@ export default function SelectInput({
     // if no path set initial option to first option
     initialOption = optionsArr[0];
   }
+
+  // update currentoption when startingOption changes
+  useEffect(() => {
+    setCurrentOption(startingOption);
+  }, [startingOption]);
 
   function handleSelectOption(e) {
     e.preventDefault();
@@ -73,7 +78,11 @@ export default function SelectInput({
       onClick={() => setDropdownOpen((prevState) => !prevState)}
     >
       {/* children are label if provided */}
-      {children && <label htmlFor='dropdown'>{children}</label>}
+      {children && (
+        <label htmlFor='dropdown' className={className}>
+          {children}
+        </label>
+      )}
       <div
         ref={dropdownRef}
         id='dropdown'

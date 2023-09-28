@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 
 import MiniCakeCard from './MiniCakeCard';
 import Qty from './Qty';
-// import Size from './Size';
 
 export default function OrderCard({ cake, isMiniCartOpen, setIsMiniCartOpen }) {
   let location = useLocation();
@@ -21,7 +20,6 @@ export default function OrderCard({ cake, isMiniCartOpen, setIsMiniCartOpen }) {
           isMiniCartOpen={isMiniCartOpen}
           setIsMiniCartOpen={setIsMiniCartOpen}
         />
-        {/* <Size size={cake.size} /> */}
         <p
           className={`${styles.paragraph} ${
             onCheckout ? styles.largeText : ''

@@ -1,5 +1,4 @@
 import styles from './Qty.module.css';
-import { useLocation } from 'react-router-dom';
 import { updateQty, removeItem } from '../../slices/cartSlice';
 import { useDispatch } from 'react-redux';
 import secureLocalStorage from 'react-secure-storage';
@@ -48,9 +47,6 @@ export default function Qty({
     );
   }
 
-  let location = useLocation();
-  const onCheckout = location.pathname === '/checkout';
-
   if (qty > cakeStock) {
     qty = cakeStock;
   }
@@ -58,30 +54,12 @@ export default function Qty({
   return (
     <>
       <div className={styles.qtyContainer}>
-        {/* <p className={`${styles.label} ${onCheckout ? styles.largeText : ''}`}>
-          Qty:
-        </p> */}
-        {/* <select
-          onChange={handleQtyChange}
-          value={qty}
-          className={`${styles.qtySelect} ${
-            onCheckout ? styles.largeText : ''
-          }`}
-        >
-          {options.map((option, index) => {
-            return (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            );
-          })}
-          <option value='delete'>Delete</option>
-        </select>{' '} */}
         <SelectInput
           options={options}
           setter={handleQtyChange}
-          startingOption={cake.quantity}
+          startingOption={qty}
           key={cake.id + cake.size}
+          className={styles.label}
         >
           Qty:
         </SelectInput>

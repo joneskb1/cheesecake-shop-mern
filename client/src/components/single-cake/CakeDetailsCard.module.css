@@ -24,11 +24,6 @@
   margin-bottom: 0.5rem;
 }
 
-.label {
-  font-size: 14px;
-  font-weight: 500;
-}
-
 .select {
   width: 54px;
   height: 30px;
@@ -63,7 +58,7 @@
   .cakeDetailsCardHeader {
     font-size: 26px;
   }
-  .label,
+
   .price {
     font-size: 16px;
   }

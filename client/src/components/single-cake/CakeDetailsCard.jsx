@@ -66,20 +66,26 @@ export default function CakeDetailsCard({ cake, setIsMiniCartOpen }) {
     <div className={styles.cakeDetailsCard}>
       <h3 className={styles.cakeDetailsCardHeader}>{cake.name}</h3>
       <p className={styles.description}>{cake.description}</p>
-      <p className={styles.price}>Price: ${price}</p>
+      <p className={styles.price}>Price ${price}</p>
 
       <SelectInput
         options={sortedArray}
         setter={handleSizeChange}
         path={'size'}
         style={{ marginBottom: '.5rem' }}
+        className={styles.label}
       >
         Size
       </SelectInput>
 
       <br />
 
-      <SelectInput options={stock} setter={handleQtyChange} key={size}>
+      <SelectInput
+        options={stock}
+        className={styles.label}
+        setter={handleQtyChange}
+        key={size}
+      >
         Qty
       </SelectInput>
 

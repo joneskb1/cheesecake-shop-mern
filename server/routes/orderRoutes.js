@@ -4,10 +4,13 @@ import {
   getOneOrder,
   getUserOrder,
   getAllOrders,
+  createShippingRate,
 } from '../controllers/orderController.js';
 import { protect, admin } from '../controllers/userController.js';
 
 const router = express.Router();
+
+router.route('/shipping-rate').post(createShippingRate);
 
 router.use(protect);
 router.route('/').get(getUserOrders);

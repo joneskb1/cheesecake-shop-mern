@@ -14,7 +14,6 @@
     "@stripe/stripe-js": "^2.1.5",
     "axios": "^1.5.0",
     "eslint-config-react-app": "^7.0.1",
-    "framer-motion": "^10.16.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.0",

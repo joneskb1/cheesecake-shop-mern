@@ -16,6 +16,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 // To DO
-//  process not found stripe
-//  fancy emails?
-//  you may like flicker
+// you may like flicker
+// delete unused code
+
+// extra credit
+// fancy emails
+// shipping/tracking
+// admin mutate users rtk & ui
+// dynamic carousel cards

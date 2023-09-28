@@ -15,8 +15,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import { STRIPE_PUB_KEY } from '../utils/constants';
 import { useGetUserQuery } from '../slices/userApiSlice';
 import { toast } from 'react-toastify';
-import calcShipping from '../custom-hooks/calcShipping.js';
 import useCalcCart from '../custom-hooks/useCalcCart.js';
+import { useGetShippingRateMutation } from '../slices/orderApiSlice';
 
 export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
   const [createSession] = useCreateSessionMutation();
@@ -27,10 +27,27 @@ export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
   const cartItems = useSelector(selectCartState);
   const { weightLb, weightOz } = useCalcCart();
 
+  const [getShippingRate] = useGetShippingRateMutation();
+
   async function handleShippingCal(e) {
     e.preventDefault();
-    const rate = await calcShipping(zipCode, weightLb, weightOz);
-    setShipRate(rate);
+
+    try {
+      const res = await getShippingRate({
+        zipDest: zipCode,
+        weightLb,
+        weightOz,
+      });
+
+      if (res.data?.status === 'success') {
+        setShipRate(res.data.data.rate);
+        toast.success('Shipping calculated!');
+      } else {
+        toast.error('Invalid Zip');
+      }
+    } catch (err) {
+      toast.error(err.data.message);
+    }
   }
 
   //reset shippping if they edit cart

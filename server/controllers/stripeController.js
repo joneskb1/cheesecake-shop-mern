@@ -4,11 +4,9 @@ import Order from '../models/orderModel.js';
 import Stripe from 'stripe';
 import sendMail from '../utils/email.js';
 
-const stripe = new Stripe(
-  'sk_test_51NrWHSAIpneYbxMTWzYUvm5ewLDpvDIdSDQ2a6YFknY3LBzKiy0t195WgYMEE2Ob8WpGE1ipa4dgzuY4ww7Yc3ET00XDNPFYJQ'
-);
-
 const handleOrder = catchAsync(async (req, res, next) => {
+  const stripe = new Stripe(process.env.STRIPE_TEST_KEY);
+
   const endpointSecret =
     'whsec_47c24fcaf3f206f76eb25b453b01af15f5f9ac79a39454b485963c7a9ba29b25';
 
@@ -78,6 +76,8 @@ const handleOrder = catchAsync(async (req, res, next) => {
 });
 
 const createCheckoutSession = catchAsync(async (req, res, next) => {
+  const stripe = new Stripe(process.env.STRIPE_TEST_KEY);
+
   const order = req.body.cart.map((item) => {
     return {
       quantity: item.quantity,
