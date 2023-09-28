@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   margin-right: 1rem;
+  position: relative;
 }
 
 .cartIcon {
@@ -29,6 +30,23 @@
 
 .active {
   text-decoration: underline;
+}
+
+.numCart {
+  position: absolute;
+  bottom: 65%;
+  left: 98%;
+  border-radius: 100%;
+  background-color: var(--error);
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+}
+
+.numCart p {
+  line-height: 20px;
 }
 
 @media screen and (max-width: 790px) {

@@ -3,8 +3,6 @@ import { toast } from 'react-toastify';
 import { useLocation } from 'react-router-dom';
 import styles from './BaseProductFormInputs.module.css';
 
-// import uploadIcon from '../../assets/icons/upload.svg';
-
 export default function BaseProductFormInputs({
   setUserChangedImageFile,
   userChangedImageFile,
@@ -174,14 +172,6 @@ export default function BaseProductFormInputs({
         onChange={handleImageUpload}
         ref={fileInputRef}
       />
-
-      {/* <div id='image' className={styles.upLoadImageBtn}>
-        <img
-          src={uploadIcon}
-          className={styles.uploadIcon}
-          alt='upload image icon'
-        />
-      </div> */}
       {error && <p className={styles.error}>{error}</p>}
     </>
   );

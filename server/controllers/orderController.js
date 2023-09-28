@@ -27,7 +27,6 @@ const getUserOrders = catchAsync(async (req, res, next) => {
 // @route GET api/v1/order/:id
 // @access public
 const getUserOrder = catchAsync(async (req, res, next) => {
-  // const order = await Order.findById(req.params.id);
   const user = await User.findById(req.user).populate('orders');
   const order = user.orders.find((order) => {
     return order._id.toString() === req.params.id;

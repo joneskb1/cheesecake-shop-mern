@@ -16,10 +16,6 @@ export default function CakeIconsMarquee() {
       style={{
         background: 'var(--light-purple)',
         height: '75px',
-        // display: 'flex',
-        // flexDirection: 'column',
-        // justifyContent: 'center',
-        // alignItems: 'center',
         marginBottom: '3rem',
       }}
     >

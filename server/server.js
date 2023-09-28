@@ -4,6 +4,11 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import connectDB from './db/db.js';
 import cors from 'cors';
+import hpp from 'hpp';
+import helmet from 'helmet';
+import mongoSanitize from 'express-mongo-sanitize';
+import compression from 'compression';
+import AppError from './utils/appError.js';
 import errorController from './controllers/errorController.js';
 import stripeRoute from './routes/stripeRoutes.js';
 import { handleOrder } from './controllers/stripeController.js';
@@ -16,10 +21,20 @@ import emailRoute from './routes/emailRoutes.js';
 
 const port = process.env.PORT || 3000;
 
+// handle sync errors
+process.on('uncaughtException', (err) => {
+  console.log('uncaught exception, shutting down!');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
 connectDB();
 
 const app = express();
-app.use(cookieParser());
+
+// serve static files
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/client/dist')));
 
 const corsOptions = {
   origin: ['http://localhost:5173'],
@@ -27,14 +42,18 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(helmet());
+app.use(express.json());
+app.use(compression());
+app.use(hpp());
+app.use(mongoSanitize());
+app.use(cookieParser());
 
 app.post(
   '/api/v1/webhook',
   express.raw({ type: 'application/json' }),
   handleOrder
 );
-
-app.use(express.json());
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productRouter);
@@ -44,8 +63,30 @@ app.use('/api/v1/order', orderRouter);
 app.use('/api/v1/email', emailRoute);
 app.use('/api/v1/checkout', stripeRoute);
 
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl}`, 404));
+});
+
 app.use(errorController);
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
+});
+
+process.on('unhandledRejection', (err) => {
+  console.log(err.name, err.message);
+  console.log('unhandled rejection, shutting down!');
+  // handle req then shut down
+  server.close(() => {
+    // 0 = success 1 = uncaught excpetion
+    process.exit(1);
+  });
+});
+
+// allows pending req to finish before shutting down
+process.on('SIGTERM', () => {
+  console.log('Gracefully shutting down');
+  server.close(() => {
+    console.log('process terminated');
+  });
 });

@@ -41,7 +41,6 @@
 .myAccountFormBtn {
   font-family: var(--header-title-font-medium);
   display: block;
-  /* margin: 0 auto; */
   padding: 0.5rem 1rem;
   background: var(--purple);
   color: white;

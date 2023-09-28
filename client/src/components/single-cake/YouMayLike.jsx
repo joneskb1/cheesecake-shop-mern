@@ -3,11 +3,10 @@ import styles from './YouMayLike.module.css';
 import ShopCakeCard from '../shop/ShopCakeCard';
 import { useEffect, useCallback, useState } from 'react';
 import { useGetAllProductsQuery } from '../../slices/productsSlice.js';
-import PageLoader from '../PageLoader';
 
 export default function YouMayLike({ cake, refetch }) {
   const [theRandomCakes, setTheRandomCakes] = useState([]);
-  const { data, isLoading } = useGetAllProductsQuery();
+  const { data } = useGetAllProductsQuery();
 
   let cakes;
 
@@ -43,10 +42,6 @@ export default function YouMayLike({ cake, refetch }) {
       setTheRandomCakes(findRandomCakes(3));
     }
   }, [cake, data, findRandomCakes]);
-
-  // if (isLoading) {
-  //   return <PageLoader />;
-  // }
 
   return (
     <>

@@ -1,4 +1,3 @@
-/* changed to medium weight from design's regular for readability */
 .checkoutTextLabel {
   font-family: var(--header-title-font-medium);
   display: block;

@@ -27,8 +27,7 @@ export default function ContactForm() {
         toast.error(res.message);
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.data.message);
+      toast.error(error.data.message || 'Error sending message');
     }
   }
 

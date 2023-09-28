@@ -15,7 +15,6 @@ export default function OrderPreview({ order }) {
     id: order._id,
     date: order.createdAt,
     total: order.total,
-    // tracking missing
   };
 
   return (

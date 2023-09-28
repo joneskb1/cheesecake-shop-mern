@@ -92,7 +92,6 @@ export default function AdminProductScreen({
         const res = await cloneImage({ productImage, productName }).unwrap();
 
         if (res.status === 'success') {
-          console.log('CLONE');
           toast.success('Images Created', {
             hideProgressBar: false,
             progress: undefined,
@@ -161,14 +160,15 @@ export default function AdminProductScreen({
     setProductImage(() => '');
 
     try {
-      await deleteProduct({ id });
-      navigate('/admin-products');
+      const res = await deleteProduct({ id });
+      if (res.data === null) {
+        navigate('/admin-products');
+      } else {
+        toast.error(res.message);
+      }
     } catch (error) {
       setError(error.data.message);
-      toast.error(error.data.message, {
-        hideProgressBar: false,
-        progress: undefined,
-      });
+      toast.error(error.data.message);
     }
   }
 

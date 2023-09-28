@@ -5,7 +5,6 @@ import {
   CLONE_IMAGE_URL,
 } from '../utils/constants.js';
 
-// need to change file name
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     createProduct: builder.mutation({

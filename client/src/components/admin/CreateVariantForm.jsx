@@ -37,8 +37,12 @@ export default function CreateVariantForm({ setCreateVariant }) {
           stock: variantStock,
         },
       }).unwrap();
-      toast.success('Variant Created');
-      setCreateVariant(false);
+      if (res.status === 'success') {
+        toast.success('Variant Created');
+        setCreateVariant(false);
+      } else {
+        toast.error(res.message);
+      }
     } catch (error) {
       toast.error(error.data.message || 'Variant could not be created');
     }

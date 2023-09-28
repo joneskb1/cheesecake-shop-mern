@@ -2,7 +2,6 @@
   width: 220px;
   height: 142px;
   margin: 8rem auto 12rem;
-  /* background: var(--transparent-blue); */
   background: rgba(32, 26, 99, 0.548)
     linear-gradient(
       43deg,
@@ -29,15 +28,6 @@
   border: none;
   margin: 0.4rem auto 0;
   border-radius: 12px;
-  /* background-image: linear-gradient(
-    to right,
-    #b87bc5,
-    #c598d6,
-    #d3b5e5,
-    #e3d1f3,
-    #f5edff
-  ); */
-  /* color: var(--blue); */
   background: var(--transparent-blue);
   color: white;
   width: 98px;

@@ -24,8 +24,6 @@ export default function AppLayout() {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // isLoggedIn required in useEffect dependency???
-  // const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
   useEffect(() => {
     async function checkLogin() {
       try {

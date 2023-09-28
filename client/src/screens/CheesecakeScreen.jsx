@@ -1,8 +1,6 @@
+import styles from './CheesecakeScreen.module.css';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-
-import styles from './CheesecakeScreen.module.css';
-
 import PreviousPageArrowLink from '../components/single-cake/PreviousPageArrowLink';
 import SingleCakeHeader from '../components/single-cake/SingleCakeHeader';
 import SingleCakeImg from '../components/single-cake/SingleCakeImg';
@@ -22,8 +20,7 @@ export default function CheesecakeScreen({
   const { id } = useParams();
   let cake;
 
-  const { data, isLoading, error } = useGetProductQuery(id);
-  if (error) console.log(error);
+  const { data, isLoading } = useGetProductQuery(id);
 
   if (isLoading) return <PageLoader />;
 
@@ -55,14 +52,6 @@ export default function CheesecakeScreen({
           setIsMiniCartOpen={setIsMiniCartOpen}
           setIsLoginModalOpen={setIsLoginModalOpen}
         />
-        {/* 
-        {isMiniCartOpen && (
-          <MiniCart
-            isMiniCartOpen={isMiniCartOpen}
-            setIsMiniCartOpen={setIsMiniCartOpen}
-            setIsLoginModalOpen={setIsLoginModalOpen}
-          />
-        )} */}
 
         {isLoginModalOpen && (
           <LoginSignUpModal

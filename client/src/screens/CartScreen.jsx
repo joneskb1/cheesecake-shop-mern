@@ -79,7 +79,6 @@ export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
         sessionId: session.session.id,
       });
     } catch (error) {
-      console.log(error);
       toast.error(error.data.message);
     }
   }

@@ -29,7 +29,11 @@ export default function VariantPreview({
     if (!confirmed) return;
     try {
       const res = await deleteVariant({ id, variantId: variant._id });
-      toast.success('Variant deleted');
+      if (res.data === null) {
+        toast.success('Variant deleted');
+      } else {
+        toast.error(res.message || 'deletion error');
+      }
     } catch (error) {
       toast.error(error.data.message || 'Variant not deleted');
     }

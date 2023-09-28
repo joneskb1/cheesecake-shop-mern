@@ -20,13 +20,6 @@
   }
 }
 
-/* @media screen and (min-width: 1440px) {
-  .socialIcons {
-    position: absolute;
-    top: 65%;
-    right: 15rem;
-  }
-} */
 @media screen and (min-width: 1440px) {
   .socialIcons {
     grid-column: 3/-1;

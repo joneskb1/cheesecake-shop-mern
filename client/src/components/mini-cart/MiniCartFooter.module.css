@@ -22,10 +22,6 @@
   text-decoration: underline;
 }
 
-/* .closeBtn:hover {
-  text-decoration: underline;
-} */
-
 @media screen and (min-width: 744px) {
   .footerContainer {
     padding: 3rem 3.25rem;

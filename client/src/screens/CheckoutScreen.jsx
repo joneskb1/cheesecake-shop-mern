@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCartState } from '../slices/cartSlice';
-import useCalcCart from '../custom-hooks/useCalcCart';
+// import useCalcCart from '../custom-hooks/useCalcCart';
 
 import styles from './CheckoutScreen.module.css';
 import { toast } from 'react-toastify';

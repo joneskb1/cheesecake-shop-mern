@@ -5,6 +5,7 @@ import { useLogoutMutation } from '../../slices/userApiSlice';
 import { clearCart } from '../../slices/cartSlice';
 import styles from './NavDialog.module.css';
 import closeX from '../../assets/icons/close-x.svg';
+import { toast } from 'react-toastify';
 
 export default function NavDialog({ dialogRef }) {
   const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
@@ -21,10 +22,11 @@ export default function NavDialog({ dialogRef }) {
       if (res.status === 'success') {
         dispatch(logoutGlobalState());
         dispatch(clearCart());
-        // navigate to home
+      } else {
+        toast.error(res.message || 'error logging out');
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.data.message || 'error logging out');
     }
     handleCloseDialog();
   }
@@ -54,7 +56,6 @@ export default function NavDialog({ dialogRef }) {
               }
               onClick={handleCloseDialog}
             >
-              {/* <ChefIcon /> */}
               Home
             </NavLink>
           </li>

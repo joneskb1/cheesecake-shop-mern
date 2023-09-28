@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styles from './CheckoutTextInputs.module.css';
 
 export default function CheckoutAddressInputs({ propStyles = {}, formState }) {

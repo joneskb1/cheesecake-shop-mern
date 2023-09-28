@@ -10,7 +10,6 @@ export default function SearchInput({
 }) {
   const searchSubmitExp = function (e) {
     e.preventDefault();
-    console.log(searchInput);
     if (searchInput === '') {
       return setCakes(data.data.products);
     }

@@ -15,11 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-// To DO
-// you may like flicker
-// delete unused code
-
-// extra credit
+// Potential features
 // fancy emails
 // shipping/tracking
 // admin mutate users rtk & ui

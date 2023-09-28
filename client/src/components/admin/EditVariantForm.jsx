@@ -46,8 +46,13 @@ export default function EditVariantForm({
           id: editingVariantId,
         },
       }).unwrap();
-      toast.success('Variant edited');
-      setEditVariant(false);
+
+      if (res.status === 'success') {
+        toast.success('Variant edited');
+        setEditVariant(false);
+      } else {
+        toast.error(res.message);
+      }
     } catch (error) {
       toast.error(error.data.message || 'Variant could not be edited');
     }

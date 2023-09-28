@@ -6,13 +6,12 @@ import {
 import { useSelector } from 'react-redux';
 
 import AppLayout from './components/AppLayout';
-import TestScreen from './screens/TestScreen';
 import './App.css';
 
 import ShopCheesecakesScreen from './screens/ShopCheesecakesScreen';
 import CheesecakeScreen from './screens/CheesecakeScreen';
 import CartScreen from './screens/CartScreen';
-import CheckoutScreen from './screens/CheckoutScreen';
+// import CheckoutScreen from './screens/CheckoutScreen';
 import ContactScreen from './screens/ContactScreen';
 import MyAccountScreen from './screens/MyAccountScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -40,11 +39,6 @@ function App() {
       path: '/',
       element: <AppLayout />,
       children: [
-        { path: 'testy', element: <TestScreen /> },
-        {
-          path: 'cheesecakes',
-          element: <ShopCheesecakesScreen />,
-        },
         { path: '', element: <HomeScreen /> },
         {
           path: 'cheesecakes',
@@ -68,10 +62,10 @@ function App() {
             />
           ),
         },
-        {
-          path: 'checkout',
-          element: <CheckoutScreen />,
-        },
+        // {
+        //   path: 'checkout',
+        //   element: <CheckoutScreen />,
+        // },
         {
           path: 'contact',
           element: <ContactScreen />,

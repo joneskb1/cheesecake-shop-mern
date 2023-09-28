@@ -1,7 +1,6 @@
 import { apiSlice } from './apiSlice.js';
 import { USER_URL } from '../utils/constants.js';
 
-// change to plural: users
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     registerUser: builder.mutation({

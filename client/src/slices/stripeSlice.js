@@ -1,7 +1,6 @@
 import { apiSlice } from './apiSlice.js';
 import { STRIPE_URL } from '../utils/constants.js';
 
-// change to plural: users
 export const stripeApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     createSession: builder.mutation({

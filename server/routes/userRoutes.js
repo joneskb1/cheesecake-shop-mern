@@ -37,7 +37,7 @@ router.route('/').get(getUser).patch(updateUser).delete(deleteUser);
 
 router.use(admin);
 
-// need UI for admin to perform these
+// No UI for admin to perform these
 router.route('/admin-all-users').get(adminGetAllUsers);
 router.route('/admin-get-user/:id').get(adminGetUser);
 router.route('/admin-update-user-pw/:id').patch(adminUpdateUserPassword);

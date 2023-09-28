@@ -3,12 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutGlobalState } from '../../slices/authSlice';
 import { useLogoutMutation } from '../../slices/userApiSlice';
 import styles from './Navigation.module.css';
-
-// client/src/assets/icons/account-27w.svg
-// client\src\assets\icons\cart-33w.svg
-
 import NavDropdown from './NavDropdown';
-
+import { toast } from 'react-toastify';
 import accountIcon from '../../assets/icons/account-27w.svg';
 import cartIcon from '../../assets/icons/cart-33w.svg';
 import { clearCart } from '../../slices/cartSlice';
@@ -16,18 +12,24 @@ import { clearCart } from '../../slices/cartSlice';
 export default function Navigation() {
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
   const [logout] = useLogoutMutation();
+
+  const numItemsInCart = cartItems.reduce((acc, cur) => {
+    return acc + cur.quantity;
+  }, 0);
 
   async function handleLogout() {
     try {
       const res = await logout().unwrap();
       if (res.status === 'success') {
         dispatch(logoutGlobalState());
-        // navigate to home
         dispatch(clearCart());
+      } else {
+        toast.error(res.message || 'error logging out');
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.data.message || 'error logging out');
     }
   }
 
@@ -90,6 +92,11 @@ export default function Navigation() {
             <img src={cartIcon} alt='cart button' className={styles.cartIcon} />
           </NavLink>
         </li>
+        {numItemsInCart && (
+          <div className={styles.numCart}>
+            <p>{numItemsInCart}</p>
+          </div>
+        )}
       </ul>
     </div>
   );
