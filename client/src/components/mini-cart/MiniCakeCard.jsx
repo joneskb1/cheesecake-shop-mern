@@ -14,12 +14,19 @@ export default function MiniCakeCard({ cakeId }) {
   if (data) {
     let image = data.data.product.image;
 
-    cakeSrcXSmall = `/src/assets/uploads/clones/x-small/${
-      image.split('.')[0]
-    }-75w.${image.split('.')[1]}`;
-    cakeSrcXXSmall = `/src/assets/uploads/clones/xx-small/${
-      image.split('.')[0]
-    }-38w.${image.split('.')[1]}`;
+    // cakeSrcXSmall = `/src/assets/uploads/clones/x-small/${
+    //   image.split('.')[0]
+    // }-75w.${image.split('.')[1]}`;
+    // cakeSrcXXSmall = `/src/assets/uploads/clones/xx-small/${
+    //   image.split('.')[0]
+    // }-38w.${image.split('.')[1]}`;
+
+    cakeSrcXSmall = `/uploads/clones/x-small/${image.split('.')[0]}-75w.${
+      image.split('.')[1]
+    }`;
+    cakeSrcXXSmall = `/uploads/clones/xx-small/${image.split('.')[0]}-38w.${
+      image.split('.')[1]
+    }`;
   }
 
   let location = useLocation();

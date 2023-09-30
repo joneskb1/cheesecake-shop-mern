@@ -17,22 +17,31 @@ export default function ShopCakeCard({ children, cake }) {
         <picture>
           <source
             media='(min-width: 1200px)'
-            srcSet={`/src/assets/uploads/clones/large/${
-              cake.image.split('.')[0]
-            }-354w.${cake.image.split('.')[1]}`}
+            // srcSet={`/src/assets/uploads/clones/large/${
+            //   cake.image.split('.')[0]
+            // }-354w.${cake.image.split('.')[1]}`}
+            srcSet={`/uploads/clones/large/${cake.image.split('.')[0]}-354w.${
+              cake.image.split('.')[1]
+            }`}
           />
           {youMayLike && (
             <source
               media='(min-width: 744px)'
-              srcSet={`/src/assets/uploads/clones/large/${
-                cake.image.split('.')[0]
-              }-354w.${cake.image.split('.')[1]}`}
+              // srcSet={`/src/assets/uploads/clones/large/${
+              //   cake.image.split('.')[0]
+              // }-354w.${cake.image.split('.')[1]}`}
+              srcSet={`/uploads/clones/large/${cake.image.split('.')[0]}-354w.${
+                cake.image.split('.')[1]
+              }`}
             />
           )}
           <img
-            src={`/src/assets/uploads/clones/medium/${
-              cake.image.split('.')[0]
-            }-265w.${cake.image.split('.')[1]}`}
+            // src={`/src/assets/uploads/clones/medium/${
+            //   cake.image.split('.')[0]
+            // }-265w.${cake.image.split('.')[1]}`}
+            src={`/uploads/clones/medium/${cake.image.split('.')[0]}-265w.${
+              cake.image.split('.')[1]
+            }`}
             alt={`${children} cake`}
             className={`${styles.cake} ${
               youMayLike ? styles.youMayLikeCard : ''

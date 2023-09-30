@@ -127,7 +127,8 @@ export default function BaseProductFormInputs({
       </label>
       {onCreatePage && productImage && (
         <img
-          src={`/src/assets/uploads/original/${productImage}`}
+          // src={`/src/assets/uploads/original/${productImage}`}
+          src={`/uploads/original/${productImage}`}
           className={styles.img}
           alt={productName || 'image'}
         />
@@ -135,9 +136,13 @@ export default function BaseProductFormInputs({
 
       {!onCreatePage && (
         <img
-          src={`/src/assets/uploads/clones/small/${
-            originalImg.split('.')[0]
-          }-170w.${originalImg.split('.')[1]}?timestamp=${Date.now()}`}
+          // src={`/src/assets/uploads/clones/small/${
+          //   originalImg.split('.')[0]
+          // }-170w.${originalImg.split('.')[1]}?timestamp=${Date.now()}`}
+
+          src={`/uploads/clones/small/${originalImg.split('.')[0]}-170w.${
+            originalImg.split('.')[1]
+          }?timestamp=${Date.now()}`}
           className={styles.img}
           alt={productName || 'image'}
         />
@@ -157,7 +162,8 @@ export default function BaseProductFormInputs({
 
       {!onCreatePage && userChangedImageFile && productImage !== null && (
         <img
-          src={`/src/assets/uploads/original/${productImage}`}
+          // src={`/src/assets/uploads/original/${productImage}`}
+          src={`/uploads/original/${productImage}`}
           className={styles.img}
           alt={productName || 'image'}
         />

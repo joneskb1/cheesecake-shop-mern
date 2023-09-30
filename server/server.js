@@ -22,19 +22,18 @@ import emailRoute from './routes/emailRoutes.js';
 const port = process.env.PORT || 3000;
 
 // handle sync errors
-process.on('uncaughtException', (err) => {
-  console.log('uncaught exception, shutting down!');
-  console.log(err.name, err.message);
-  process.exit(1);
-});
+// process.on('uncaughtException', (err) => {
+//   console.log('uncaught exception, shutting down!');
+//   console.log(err.name, err.message);
+//   process.exit(1);
+// });
 
 connectDB();
 
 const app = express();
 
 const corsOptions = {
-  // origin: ['http://localhost:5173'],
-  origin: ['https://take-the-cake.onrender.com'],
+  origin: ['https://take-the-cake.onrender.com', 'http://localhost:5173'],
   credentials: true,
 };
 
@@ -60,17 +59,18 @@ app.use('/api/v1/order', orderRouter);
 app.use('/api/v1/email', emailRoute);
 app.use('/api/v1/checkout', stripeRoute);
 
-app.use(errorController);
-
 // serve static files
 const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/client/dist')));
-  // app.get('*', (req, res) =>
-  //   res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
-  // );
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
+  );
 }
+
+app.use(errorController);
 
 const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);

@@ -5,7 +5,9 @@ import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 import Product from '../models/productModel.js';
 
-const outputPathBase = '/client/src/assets/uploads/clones';
+// const outputPathBase = '/client/src/assets/uploads/clones';
+const outputPathBase = '/uploads/clones';
+
 const __dirname = path.resolve();
 const clones = [
   { path: `${outputPathBase}/xx-large`, size: [732, 484] },
@@ -27,7 +29,9 @@ function deleteClones(name, path, ext, size) {
 }
 
 function deleteOriginals() {
-  const folderPath = `${__dirname}/client/src/assets/uploads/original`;
+  // const folderPath = `${__dirname}/client/src/assets/uploads/original`;
+  const folderPath = `${__dirname}/uploads/original`;
+
   fs.readdir(folderPath, (err, files) => {
     if (err) new AppError('issue reading directory to delete originals', 404);
     files.forEach(async (file) => {
