@@ -33,7 +33,8 @@ connectDB();
 const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:5173'],
+  // origin: ['http://localhost:5173'],
+  origin: ['https://take-the-cake.onrender.com'],
   credentials: true,
 };
 
