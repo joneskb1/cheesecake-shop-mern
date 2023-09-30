@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@stripe/stripe-js": "^2.1.5",
     "axios": "^1.5.0",
+    "cheesecake-shop-mern": "file:..",
     "eslint-config-react-app": "^7.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

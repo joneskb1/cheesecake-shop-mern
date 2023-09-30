@@ -32,15 +32,6 @@ connectDB();
 
 const app = express();
 
-// serve static files
-const __dirname = path.resolve();
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'))
-  );
-}
-
 const corsOptions = {
   origin: ['http://localhost:5173'],
   credentials: true,
@@ -68,9 +59,18 @@ app.use('/api/v1/order', orderRouter);
 app.use('/api/v1/email', emailRoute);
 app.use('/api/v1/checkout', stripeRoute);
 
-app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl}`, 404));
-});
+// serve static files
+const __dirname = path.resolve();
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'))
+  );
+}
+
+// app.all('*', (req, res, next) => {
+//   next(new AppError(`Can't find ${req.originalUrl}`, 404));
+// });
 
 app.use(errorController);
 
