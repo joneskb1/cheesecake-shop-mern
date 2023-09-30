@@ -254,8 +254,11 @@ const forgotPassword = catchAsync(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   // send email with non hashed reset token
-  // for development only - change back to req.get("host") for production
-  const resetUrl = `${req.protocol}://localhost:${process.env.CLIENT_PORT}/auth/reset-password/${resetPasswordToken}`;
+  // const resetUrl = `${req.protocol}://localhost:${process.env.CLIENT_PORT}/auth/reset-password/${resetPasswordToken}`;
+  const resetUrl = `${req.protocol}://${req.get(
+    'host'
+  )}/auth/reset-password/${resetPasswordToken}`;
+
   const html = `<p>Please use this link to reset your password <a href=${resetUrl}>Reset Password</a> </p>`;
 
   await sendMail(user.email, html, 'Reset Password');

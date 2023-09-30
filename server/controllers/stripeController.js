@@ -95,8 +95,10 @@ const createCheckoutSession = catchAsync(async (req, res, next) => {
     metadata: req.body.metadata,
     payment_method_types: ['card'],
     mode: 'payment',
-    success_url: `http://localhost:5173/my-account?success=true`,
-    cancel_url: `http://localhost:5173/cart`,
+    // success_url: `http://localhost:5173/my-account?success=true`,
+    // cancel_url: `http://localhost:5173/cart`,
+    success_url: `https://take-the-cake.onrender.com/my-account?success=true`,
+    cancel_url: `https://take-the-cake.onrender.com/cart`,
     client_reference_id: req.body.metadata.user,
     line_items: order,
     automatic_tax: {

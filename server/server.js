@@ -22,11 +22,11 @@ import emailRoute from './routes/emailRoutes.js';
 const port = process.env.PORT || 3000;
 
 // handle sync errors
-// process.on('uncaughtException', (err) => {
-//   console.log('uncaught exception, shutting down!');
-//   console.log(err.name, err.message);
-//   process.exit(1);
-// });
+process.on('uncaughtException', (err) => {
+  console.log('uncaught exception, shutting down!');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
 
 connectDB();
 
