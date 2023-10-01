@@ -16,8 +16,6 @@ export default function MyAccountScreen() {
   const { search } = useLocation();
   const orderComplete = search.split('=')[1];
 
-  console.log(search, orderComplete);
-
   const cart = useSelector(selectCartState);
 
   const { data: orders, isLoading } = useGetUserOrdersQuery();
@@ -33,7 +31,7 @@ export default function MyAccountScreen() {
       dispatch(clearCart());
     }
 
-    console.log('effect', orderComplete, orders.data.data, cart);
+    console.log('effect', orderComplete, orders?.data?.data, cart);
   }, [dispatch, orderComplete, orders?.data?.data, cart]);
 
   if (isLoading) {

@@ -16,11 +16,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 //TO DO
-// need to move img uploads out of client folder
-// update stripe success and cancel url
-// add stripe to cors?
-// update forgot password url
-// add render i.p to atlas instead of all i.p
+// error with img uploads
+// add render i.p to atlas instead of all i.p?
 
 // Potential features
 // fancy emails
