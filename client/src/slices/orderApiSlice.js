@@ -18,7 +18,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
         method: 'GET',
         credentials: 'include',
       }),
-      providesTags: ['Order'],
+      providesTags: ['Order', 'User'],
     }),
     getUserOrder: builder.query({
       query: (data) => ({
@@ -26,6 +26,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
         method: 'GET',
         credentials: 'include',
       }),
+      providesTags: ['User'],
     }),
     getAllOrdersAdmin: builder.query({
       query: () => ({
