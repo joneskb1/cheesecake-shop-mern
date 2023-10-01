@@ -46,7 +46,7 @@ export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
         toast.error('Invalid Zip');
       }
     } catch (err) {
-      toast.error(err.data.message);
+      toast.error(err.data.message || 'stripe checkout error');
     }
   }
 
