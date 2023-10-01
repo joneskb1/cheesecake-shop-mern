@@ -121,12 +121,15 @@ const createShippingRate = catchAsync(async (req, res, next) => {
   // converting to JSON object
   const data = xmlbuilder2.convert(response.data, { format: 'object' });
 
-  if (data.RateV4Response.Package.Error) {
+  // access postage cost
+  let rate = data.RateV4Response.Package?.Postage?.Rate;
+
+  if (!rate && data.RateV4Response.Package.Error.Number == '-2147219499') {
+    // charge 100 if over 70lbs
+    rate = 100;
+  } else if (data.RateV4Response.Package.Error) {
     return next(new AppError('Shipping Rate Error', 404));
   }
-
-  // access postage cost
-  const rate = data.RateV4Response.Package.Postage.Rate;
 
   res.status(200).json({
     status: 'success',
