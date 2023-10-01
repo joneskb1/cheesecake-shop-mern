@@ -28,6 +28,7 @@ export default function AppLayout() {
     async function checkLogin() {
       try {
         const res = await verifyLoggedIn().unwrap();
+        console.log(res);
         if (res.status === 'success') {
           dispatch(loginGlobalState(res.currentUser.isAdmin));
         } else {

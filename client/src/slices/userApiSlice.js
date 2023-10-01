@@ -25,7 +25,6 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         credentials: 'include',
       }),
-      invalidatesTags: ['User'],
     }),
     verifyLoggedIn: builder.mutation({
       query: () => ({
@@ -56,7 +55,6 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: 'GET',
         credentials: 'include',
       }),
-      providesTags: ['User'],
     }),
     forgotPassword: builder.mutation({
       query: (data) => ({
