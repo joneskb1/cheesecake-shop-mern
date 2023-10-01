@@ -33,11 +33,7 @@ connectDB();
 const app = express();
 
 const corsOptions = {
-  origin: [
-    'https://take-the-cake.onrender.com',
-    'http://localhost:5173',
-    'https://js.stripe.com/v3/',
-  ],
+  origin: ['https://take-the-cake.onrender.com', 'http://localhost:5173'],
   credentials: true,
 };
 
