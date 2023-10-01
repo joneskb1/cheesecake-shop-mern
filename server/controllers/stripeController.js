@@ -7,8 +7,8 @@ import sendMail from '../utils/email.js';
 const handleOrder = catchAsync(async (req, res, next) => {
   const stripe = new Stripe(process.env.STRIPE_TEST_KEY);
 
-  const endpointSecret =
-    'whsec_47c24fcaf3f206f76eb25b453b01af15f5f9ac79a39454b485963c7a9ba29b25';
+  // const endpointSecret = process.env.STRIPE_DEV_HOOK_KEY;
+  const endpointSecret = process.env.STRIPE_PROD_HOOK_KEY;
 
   const sig = req.headers['stripe-signature'];
 
