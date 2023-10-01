@@ -4,9 +4,18 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
+    <!-- <meta
       http-equiv="Content-Security-Policy"
       content="script-src 'self' https://js.stripe.com/v3; script-src-elem 'self' https://js.stripe.com/v3"
+    /> -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+    connect-src https://checkout.stripe.com; 
+    frame-src https://checkout.stripe.com;
+    script-src https://checkout.stripe.com; 
+    img-src https://*.stripe.com
+"
     />
 
     <title>Take The Cake</title>
