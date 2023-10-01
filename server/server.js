@@ -38,7 +38,15 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        'script-src': ["'self'", 'https://js.stripe.com/v3'],
+      },
+    },
+  })
+);
 app.use(express.json());
 app.use(compression());
 app.use(hpp());
