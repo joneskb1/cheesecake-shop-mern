@@ -13,13 +13,13 @@
     style-src * 'unsafe-inline';
 "
     /> -->
-    <meta
+    <!-- <meta
       http-equiv="Content-Security-Policy"
-      content="
+      content="vscode-file://vscode-app/c:/Users/kayla/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html
       default-src 'self';
   script-src 'self' *.js.stripe.com *.checkout.stripe.com;
 "
-    />
+    /> -->
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -27,6 +27,7 @@
   </head>
   <body>
     <div id="root"></div>
+    <script src="https://js.stripe.com/v3"></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
