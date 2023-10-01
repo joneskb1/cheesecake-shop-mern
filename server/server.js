@@ -44,22 +44,21 @@ app.use(
       directives: {
         'script-src': ["'self'", 'https://js.stripe.com/v3'],
         'frame-src': ["'self'", 'https://js.stripe.com/'],
-        'connect-src': ["'self'", 'https://js.stripe.com/'],
       },
     },
   })
 );
-app.use(express.json());
-app.use(compression());
-app.use(hpp());
-app.use(mongoSanitize());
-app.use(cookieParser());
 
 app.post(
   '/api/v1/webhook',
   express.raw({ type: 'application/json' }),
   handleOrder
 );
+app.use(express.json());
+app.use(compression());
+app.use(hpp());
+app.use(mongoSanitize());
+app.use(cookieParser());
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productRouter);
