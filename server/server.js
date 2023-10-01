@@ -43,8 +43,8 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         'script-src': ["'self'", 'https://js.stripe.com/v3'],
-        'frame-src': ["'self'", 'https://js.stripe.com/v3'],
-        'connect-src': ["'self'", 'https://js.stripe.com/v3'],
+        'frame-src': ["'self'", 'https://js.stripe.com/'],
+        'connect-src': ["'self'", 'https://js.stripe.com/'],
       },
     },
   })
