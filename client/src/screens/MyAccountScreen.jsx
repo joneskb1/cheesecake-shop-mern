@@ -26,12 +26,10 @@ export default function MyAccountScreen() {
   }
 
   useEffect(() => {
-    if (orderComplete && orders?.data?.data && cart.length > 1) {
+    if (orderComplete && orders?.data?.data && cart.length > 0) {
       toast.success(`Order Complete!`);
       dispatch(clearCart());
     }
-
-    console.log('effect', orderComplete, orders?.data?.data, cart);
   }, [dispatch, orderComplete, orders?.data?.data, cart]);
 
   if (isLoading) {

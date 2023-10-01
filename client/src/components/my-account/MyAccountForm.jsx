@@ -23,6 +23,8 @@ export default function MyAccountForm() {
 
   useEffect(() => {
     if (data) {
+      console.log(data);
+
       setName(data.data.user.name);
       setEmail(data.data.user.email);
     }
