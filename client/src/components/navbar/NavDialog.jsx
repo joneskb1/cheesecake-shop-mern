@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutGlobalState } from '../../slices/authSlice';
-import { useLogoutMutation } from '../../slices/userApiSlice';
+import { useLogoutMutation, userApiSlice } from '../../slices/userApiSlice';
 import { clearCart } from '../../slices/cartSlice';
 import styles from './NavDialog.module.css';
 import closeX from '../../assets/icons/close-x.svg';
@@ -22,6 +22,8 @@ export default function NavDialog({ dialogRef }) {
       if (res.status === 'success') {
         dispatch(logoutGlobalState());
         dispatch(clearCart());
+        // clear user account cache
+        dispatch(userApiSlice.util.resetApiState());
       } else {
         toast.error(res.message || 'error logging out');
       }

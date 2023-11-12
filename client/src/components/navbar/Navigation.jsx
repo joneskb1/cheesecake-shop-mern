@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutGlobalState } from '../../slices/authSlice';
-import { useLogoutMutation } from '../../slices/userApiSlice';
+import { useLogoutMutation, userApiSlice } from '../../slices/userApiSlice';
 import styles from './Navigation.module.css';
 import NavDropdown from './NavDropdown';
 import { toast } from 'react-toastify';
@@ -25,6 +25,8 @@ export default function Navigation() {
       if (res.status === 'success') {
         dispatch(logoutGlobalState());
         dispatch(clearCart());
+        // clear user account cache
+        dispatch(userApiSlice.util.resetApiState());
       } else {
         toast.error(res.message || 'error logging out');
       }
