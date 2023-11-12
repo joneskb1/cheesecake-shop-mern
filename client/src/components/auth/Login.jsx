@@ -29,11 +29,11 @@ export default function Login() {
         dispatch(loginGlobalState(res.data.user.isAdmin));
         setError(null);
       } else {
-        setError(res.message);
+        setError(res.message || 'Problem logging in');
         dispatch(logoutGlobalState());
       }
     } catch (error) {
-      setError(error.data.message);
+      setError(error.data.message || 'Problem logging in');
       dispatch(logoutGlobalState());
     }
   }

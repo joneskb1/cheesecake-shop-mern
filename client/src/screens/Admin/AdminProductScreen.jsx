@@ -98,12 +98,12 @@ export default function AdminProductScreen({
           });
           setError(null);
         } else {
-          setError(res.message);
-          toast.error(res.message);
+          setError(res.message || 'problem cloning img');
+          toast.error(res.message || 'problem cloning img');
         }
       } catch (error) {
-        setError(error.data.message);
-        toast.error(error.data.message);
+        setError(error.data.message || 'problem cloning img');
+        toast.error(error.data.message || 'problem cloning img');
       }
     }
 
@@ -129,12 +129,12 @@ export default function AdminProductScreen({
         toast.success('Product updated');
         setError(null);
       } else {
-        setError(res.message);
-        toast.error(res.message);
+        setError(res.message || 'update failed');
+        toast.error(res.message || 'update failed');
       }
     } catch (error) {
-      setError(error.data.message);
-      toast.error(error.data.message);
+      setError(error.data.message || 'update failed');
+      toast.error(error.data.message || 'update failed');
     }
   }
 
@@ -167,8 +167,8 @@ export default function AdminProductScreen({
         toast.error(res.message);
       }
     } catch (error) {
-      setError(error.data.message);
-      toast.error(error.data.message);
+      setError(error.data.message || 'delete failed');
+      toast.error(error.data.message || 'delete failed');
     }
   }
 

@@ -17,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 //TO DO
 // error with img uploads
+// put login guard on nav cart
 // check mobile
 // add render i.p to atlas instead of all i.p?
 

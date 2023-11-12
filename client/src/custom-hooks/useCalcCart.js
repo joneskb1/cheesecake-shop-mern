@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 export default function useCalcCart() {
   const cartItems = useSelector(selectCartState);
 
+  if (!cartItems) return;
+
   const subtotal = cartItems.reduce((total, current) => {
     return current.price * current.quantity + total;
   }, 0);

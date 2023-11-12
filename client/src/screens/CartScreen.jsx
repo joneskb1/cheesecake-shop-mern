@@ -46,7 +46,7 @@ export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
         toast.error('Invalid Zip');
       }
     } catch (err) {
-      toast.error(err.data.message || 'stripe checkout error');
+      toast.error(err.data.message || 'Can not calculate shipping rate');
     }
   }
 
@@ -79,7 +79,7 @@ export default function CartScreen({ isLoginModalOpen, setIsLoginModalOpen }) {
         sessionId: session.session.id,
       });
     } catch (error) {
-      toast.error(error.data.message);
+      toast.error(error.data.message || 'Stripe checkout error');
     }
   }
 
