@@ -1,7 +1,19 @@
 .auth {
-  min-height: 80vh;
+  /* min-height: 80vh; */
+  /* 100% minus nav & footer */
+  min-height: calc(100vh - 454px);
   background: url('../assets/images/mobile/auth-cake-723w.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 3rem;
+  padding: 1rem;
+}
+
+@media screen and (min-width: 744px) {
+  .auth {
+    /* 100% minus nav & footer */
+    min-height: calc(100vh - 324px);
+    background: url('../assets/images/desktop/auth-cake-2000w.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

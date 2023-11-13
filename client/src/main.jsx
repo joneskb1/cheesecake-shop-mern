@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 //TO DO
-// error with img uploads
+// error with img uploads, would need disk on render to store
 // put login guard on nav cart
 // check mobile
 // add render i.p to atlas instead of all i.p?
