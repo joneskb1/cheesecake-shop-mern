@@ -57,7 +57,10 @@ export default function SearchDialog({
             className={styles.searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <button className={styles.submitSearchBtn}>
+          <button
+            className={styles.submitSearchBtn}
+            onTouchStart={searchSubmitExp}
+          >
             <img
               src={searchIcon}
               alt='submit button'
