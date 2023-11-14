@@ -11,6 +11,7 @@
 .previousPageArrowText {
   font-size: 12px;
   margin-left: 5px;
+  color: var(--black);
 }
 
 @media screen and (min-width: 744px) {

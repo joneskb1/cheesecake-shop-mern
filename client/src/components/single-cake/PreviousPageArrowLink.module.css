@@ -11,6 +11,7 @@
   right: 22px;
   display: inline-block;
   margin-left: 15px;
+  color: var(--black);
 }
 
 .link,
