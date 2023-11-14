@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './Login.module.css';
 
 export default function Login() {
-  const [email, setEmail] = useState('');
+  let [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
@@ -19,6 +19,8 @@ export default function Login() {
 
   async function handleLogin(e) {
     e.preventDefault();
+
+    email = email.toLowerCase();
 
     try {
       const res = await login({

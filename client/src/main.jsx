@@ -17,8 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 //TO DO
 // error with img uploads, would need disk on render to store
-// put login guard on nav cart
-// check mobile
+// put login guard on both nav cart & footer cart
+// sign up overflow at top
+// check mobile - search not working & admin mobile nav height incorrect
 // add render i.p to atlas instead of all i.p?
 
 // Potential features

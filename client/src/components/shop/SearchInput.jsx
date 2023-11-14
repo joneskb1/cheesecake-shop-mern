@@ -16,7 +16,7 @@ export default function SearchInput({
 
     let results = [];
 
-    const searchTerms = searchInput.split(' ');
+    const searchTerms = searchInput.toLowerCase().split(' ');
 
     const hits = searchTerms.filter((term) => searchMap.has(term));
 
