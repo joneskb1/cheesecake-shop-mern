@@ -12,23 +12,23 @@ export default function CheckoutBtn({
   const location = useLocation();
   const onCartPage = location.pathname === '/cart';
 
-  if (!isLoggedIn && !onCartPage)
+  if (!onCartPage)
     return (
       <>
-        <button
-          className={`${styles.checkoutLink}`}
-          onClick={() => setIsLoginModalOpen(true)}
-        >
-          Checkout
-        </button>
+        <Link to={'/cart'} className={`${styles.checkoutLink}`}>
+          {children}
+        </Link>
       </>
     );
 
-  if (isLoggedIn && !onCartPage) {
+  if (!isLoggedIn && onCartPage) {
     return (
-      <Link to={'/cart'} className={`${styles.checkoutLink}`}>
+      <button
+        className={`${styles.checkoutLink}`}
+        onClick={() => setIsLoginModalOpen(true)}
+      >
         {children}
-      </Link>
+      </button>
     );
   }
 

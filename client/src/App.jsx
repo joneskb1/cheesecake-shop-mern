@@ -46,12 +46,7 @@ function App() {
         },
         {
           path: 'cheesecake/:id',
-          element: (
-            <CheesecakeScreen
-              isLoginModalOpen={isLoginModalOpen}
-              setIsLoginModalOpen={setIsLoginModalOpen}
-            />
-          ),
+          element: <CheesecakeScreen />,
         },
         {
           path: 'cart',

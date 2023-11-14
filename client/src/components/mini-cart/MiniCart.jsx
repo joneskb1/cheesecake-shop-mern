@@ -8,11 +8,7 @@ import { useSelector } from 'react-redux';
 
 // parent should be position relative and overflow hidden
 // open button and state are kept in parent
-export default function MiniCart({
-  isMiniCartOpen,
-  setIsMiniCartOpen,
-  setIsLoginModalOpen,
-}) {
+export default function MiniCart({ isMiniCartOpen, setIsMiniCartOpen }) {
   const cartItems = useSelector(selectCartState);
 
   const closeMiniCart = function () {
@@ -37,10 +33,7 @@ export default function MiniCart({
             })}
         </div>
 
-        <MiniCartFooter
-          closeMiniCart={closeMiniCart}
-          setIsLoginModalOpen={setIsLoginModalOpen}
-        />
+        <MiniCartFooter closeMiniCart={closeMiniCart} />
       </div>
 
       {isMiniCartOpen && (

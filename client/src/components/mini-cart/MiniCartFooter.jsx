@@ -2,14 +2,11 @@ import styles from './MiniCartFooter.module.css';
 import MiniCartDetails from './MiniCartDetails';
 import CheckoutBtn from './CheckoutBtn';
 
-export default function MiniCartFooter({ closeMiniCart, setIsLoginModalOpen }) {
+export default function MiniCartFooter({ closeMiniCart }) {
   return (
     <div className={styles.footerContainer}>
       <MiniCartDetails />
-      <CheckoutBtn setIsLoginModalOpen={setIsLoginModalOpen}>
-        {' '}
-        Checkout{' '}
-      </CheckoutBtn>
+      <CheckoutBtn> Checkout </CheckoutBtn>
       <p className={styles.shipping}>
         Shipping and tax calculated at checkout.
       </p>
