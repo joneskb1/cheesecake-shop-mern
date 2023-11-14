@@ -1,6 +1,7 @@
 .aboutContainer {
   width: 345px;
   margin: 0 auto;
+  height: auto;
   background: var(--light-pink-cream-gradient);
   border-radius: 5px;
   margin-top: 2rem;
