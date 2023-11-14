@@ -16,6 +16,7 @@ export default function SearchDialog({
 
   const searchSubmitExp = function (e) {
     e.preventDefault();
+    console.log(searchInput);
 
     if (!searchInput) {
       setCakes(data.data.products);
@@ -57,10 +58,7 @@ export default function SearchDialog({
             className={styles.searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <button
-            className={styles.submitSearchBtn}
-            onTouchStart={searchSubmitExp}
-          >
+          <button className={styles.submitSearchBtn}>
             <img
               src={searchIcon}
               alt='submit button'

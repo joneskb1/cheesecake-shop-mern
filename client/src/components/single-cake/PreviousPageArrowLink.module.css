@@ -1,6 +1,6 @@
 .previousPageArrowWrap {
   position: relative;
-  width: 150px;
+  width: 160px;
   height: 20px;
 }
 
@@ -10,6 +10,7 @@
   top: 2px;
   right: 22px;
   display: inline-block;
+  margin-left: 15px;
 }
 
 .link,
