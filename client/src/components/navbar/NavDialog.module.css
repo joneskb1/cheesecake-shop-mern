@@ -1,5 +1,6 @@
 .dialog {
   width: 300px;
+  min-height: 268px;
   margin: 25vh auto;
   border: none;
   border-radius: 5px;
