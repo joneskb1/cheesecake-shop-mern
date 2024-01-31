@@ -13,6 +13,9 @@ Admin Panel Features:
 Product Management: Add, update, or delete cheesecakes.
 Order Tracking: Monitor customer orders efficiently.
 
+Live Link:
+https://take-the-cake.onrender.com/
+
 
 ![Capture](https://github.com/joneskb1/cheesecake-shop-mern/assets/74384950/15227cfb-6d32-4c94-a793-b8165bbcee02)
 ![Capture2](https://github.com/joneskb1/cheesecake-shop-mern/assets/74384950/4e5d1b87-6364-410b-8b34-fee35166ea6a)
