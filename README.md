@@ -1,5 +1,5 @@
 Cheesecake Shop
-Welcome to our Cheesecake Shop, a MERN (Vite) application featuring Stripe for seamless transactions, Redux for state management, Nodemailer for communication, and a secure authentication system. It follows the MVC pattern and incorporates custom hooks for enhanced functionality.
+Welcome to our Cheesecake Shop, a MERN application featuring Stripe for seamless transactions, RTK Query for state management, Nodemailer for communication, and a secure authentication system. It follows the MVC pattern and incorporates custom hooks for enhanced functionality.
 
 Key Features:
 Shop & Search: Browse and search for delightful cheesecakes.
