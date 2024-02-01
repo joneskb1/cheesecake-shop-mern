@@ -1,20 +1,19 @@
-Cheesecake Shop
+# Take The Cake Cheesecake Shop
 Welcome to our Cheesecake Shop, a MERN application featuring Stripe for seamless transactions, RTK Query for state management, Nodemailer for communication, and a secure authentication system. It follows the MVC pattern and incorporates custom hooks for enhanced functionality.
 
 Key Features:
-Shop & Search: Browse and search for delightful cheesecakes.
-User Accounts: Easily login or sign up to access personalized features.
-Effortless Checkout: Use Stripe for secure and smooth transactions.
-Order History: View a detailed list of past orders.
-Account Management: Update name, email, and change passwords effortlessly.
-Contact Us: Reach out through our convenient contact form for any inquiries.
+- Shop & Search: Browse and search for delightful cheesecakes.
+- User Accounts: Easily login or sign up to access personalized features.
+- Effortless Checkout: Use Stripe for secure and smooth transactions.
+- Order History: View a detailed list of past orders.
+- Account Management: Update name, email, and change passwords effortlessly.
+- Contact Us: Reach out through our convenient contact form for any inquiries.
 
 Admin Panel Features:
-Product Management: Add, update, or delete cheesecakes.
-Order Tracking: Monitor customer orders efficiently.
+- Product Management: Add, update, or delete cheesecakes.
+- Order Tracking: Monitor customer orders efficiently.
 
-Live Link:
-https://take-the-cake.onrender.com/
+[Live Link](https://take-the-cake.onrender.com/)
 
 
 ![Capture](https://github.com/joneskb1/cheesecake-shop-mern/assets/74384950/15227cfb-6d32-4c94-a793-b8165bbcee02)
