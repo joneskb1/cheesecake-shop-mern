@@ -22,3 +22,5 @@ Admin Panel Features:
 ![Capture4](https://github.com/joneskb1/cheesecake-shop-mern/assets/74384950/e890cbbf-ba7c-4d85-b37a-6ee497a36460)
 ![cart](https://github.com/joneskb1/cheesecake-shop-mern/assets/74384950/8f432f8c-a6a4-4b57-8158-b237fd7655f4)
 ![admin](https://github.com/joneskb1/cheesecake-shop-mern/assets/74384950/bb9d87b0-2f84-4275-9485-fe713df88de0)
+![Capture--1](https://github.com/joneskb1/cheesecake-shop-mern/assets/74384950/bcc80105-180d-4917-ba54-01085ed68111)
+![Capture2---2](https://github.com/joneskb1/cheesecake-shop-mern/assets/74384950/29e06cc5-3d54-4df4-b737-0ece4f3e1971)
