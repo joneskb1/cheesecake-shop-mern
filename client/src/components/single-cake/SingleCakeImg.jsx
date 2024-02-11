@@ -11,9 +11,6 @@ export default function SingleCakeImg({ cake }) {
     <picture>
       <source
         media='(min-width: 1440px)'
-        // srcSet={`/src/assets/uploads/clones/xx-large/${
-        //   cake.image.split('.')[0]
-        // }-732w.${cake.image.split('.')[1]}`}
         srcSet={
           img
             ? img +
@@ -28,10 +25,6 @@ export default function SingleCakeImg({ cake }) {
 
       <source
         media='(min-width: 744px)'
-        // srcSet={`/src/assets/uploads/clones/x-large/${
-        //   cake.image.split('.')[0]
-        // }-436w.${cake.image.split('.')[1]}`}
-
         srcSet={
           img
             ? img +
@@ -44,9 +37,6 @@ export default function SingleCakeImg({ cake }) {
         }
       />
       <img
-        // src={`/src/assets/uploads/clones/medium/${
-        //   cake.image.split('.')[0]
-        // }-265w.${cake.image.split('.')[1]}`}
         src={
           img
             ? img +

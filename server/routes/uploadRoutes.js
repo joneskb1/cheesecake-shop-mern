@@ -7,7 +7,6 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    // cb(null, 'client/src/assets/uploads/original');
     if (process.env.NODE_ENV === 'development') {
       cb(null, 'client/src/assets/uploads/original');
     } else {

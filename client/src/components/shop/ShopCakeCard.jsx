@@ -23,9 +23,6 @@ export default function ShopCakeCard({ children, cake }) {
         <picture>
           <source
             media='(min-width: 1200px)'
-            // srcSet={`/src/assets/uploads/clones/large/${
-            //   cake.image.split('.')[0]
-            // }-354w.${cake.image.split('.')[1]}`}
             srcSet={
               img
                 ? img +
@@ -40,9 +37,6 @@ export default function ShopCakeCard({ children, cake }) {
           {youMayLike && (
             <source
               media='(min-width: 744px)'
-              // srcSet={`/src/assets/uploads/clones/large/${
-              //   cake.image.split('.')[0]
-              // }-354w.${cake.image.split('.')[1]}`}
               srcSet={
                 img
                   ? img +
@@ -56,9 +50,6 @@ export default function ShopCakeCard({ children, cake }) {
             />
           )}
           <img
-            // src={`/src/assets/uploads/clones/medium/${
-            //   cake.image.split('.')[0]
-            // }-265w.${cake.image.split('.')[1]}`}
             src={
               img
                 ? img +

@@ -6,9 +6,6 @@ import AppError from '../utils/appError.js';
 
 const router = express.Router();
 
-// const outputPathBase = '/client/src/assets/uploads/clones';
-// const outputPathBase = '/uploads/clones';
-
 let outputPathBase;
 if (process.env.NODE_ENV === 'development') {
   outputPathBase = '/client/src/assets/uploads/clones';
@@ -37,13 +34,7 @@ router.post('/', (req, res, next) => {
           : 'uploads/original/';
 
       const image = await fs.promises.readFile(
-        path.join(
-          __dirname,
-          // 'client/src/assets/uploads/original/',
-          // 'uploads/original/',
-          pathToClone,
-          req.body.productImage
-        )
+        path.join(__dirname, pathToClone, req.body.productImage)
       );
 
       clones.forEach(async (clone) => {
