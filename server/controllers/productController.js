@@ -6,7 +6,14 @@ import AppError from '../utils/appError.js';
 import Product from '../models/productModel.js';
 
 // const outputPathBase = '/client/src/assets/uploads/clones';
-const outputPathBase = '/uploads/clones';
+// const outputPathBase = '/uploads/clones';
+
+let outputPathBase;
+if (process.env.NODE_ENV === 'development') {
+  outputPathBase = '/client/src/assets/uploads/clones';
+} else {
+  outputPathBase = '/uploads/clones';
+}
 
 const __dirname = path.resolve();
 const clones = [
@@ -30,7 +37,12 @@ function deleteClones(name, path, ext, size) {
 
 function deleteOriginals() {
   // const folderPath = `${__dirname}/client/src/assets/uploads/original`;
-  const folderPath = `${__dirname}/uploads/original`;
+  // const folderPath = `${__dirname}/uploads/original`;
+
+  const folderPath =
+    process.env.NODE_ENV === 'development'
+      ? `${__dirname}/client/src/assets/uploads/original`
+      : `${__dirname}/uploads/original`;
 
   fs.readdir(folderPath, (err, files) => {
     if (err) new AppError('issue reading directory to delete originals', 404);

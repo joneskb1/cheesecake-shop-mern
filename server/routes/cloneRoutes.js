@@ -7,7 +7,14 @@ import AppError from '../utils/appError.js';
 const router = express.Router();
 
 // const outputPathBase = '/client/src/assets/uploads/clones';
-const outputPathBase = '/uploads/clones';
+// const outputPathBase = '/uploads/clones';
+
+let outputPathBase;
+if (process.env.NODE_ENV === 'development') {
+  outputPathBase = '/client/src/assets/uploads/clones';
+} else {
+  outputPathBase = '/uploads/clones';
+}
 
 const clones = [
   { path: `${outputPathBase}/xx-large`, size: [732, 484] },
@@ -24,11 +31,17 @@ router.post('/', (req, res, next) => {
 
   async function cloneImage() {
     try {
+      const pathToClone =
+        process.env.NODE_ENV === 'development'
+          ? 'client/src/assets/uploads/original/'
+          : 'uploads/original/';
+
       const image = await fs.promises.readFile(
         path.join(
           __dirname,
           // 'client/src/assets/uploads/original/',
-          'uploads/original/',
+          // 'uploads/original/',
+          pathToClone,
           req.body.productImage
         )
       );

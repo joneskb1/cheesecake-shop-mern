@@ -27,6 +27,7 @@ export default function Login() {
         email,
         password,
       }).unwrap();
+
       if (res.status === 'success') {
         dispatch(loginGlobalState(res.data.user.isAdmin));
         setError(null);

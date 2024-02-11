@@ -60,6 +60,11 @@ export default function BaseProductFormInputs({
     }
   }
 
+  let img;
+  if (import.meta.env.MODE === 'development') {
+    img = `/src/assets`;
+  }
+
   return (
     <>
       <label htmlFor='product-name' className={styles.textInputLabel}>
@@ -128,7 +133,11 @@ export default function BaseProductFormInputs({
       {onCreatePage && productImage && (
         <img
           // src={`/src/assets/uploads/original/${productImage}`}
-          src={`/uploads/original/${productImage}`}
+          src={
+            img
+              ? img + `/uploads/original/${productImage}`
+              : `/uploads/original/${productImage}`
+          }
           className={styles.img}
           alt={productName || 'image'}
         />
@@ -140,9 +149,16 @@ export default function BaseProductFormInputs({
           //   originalImg.split('.')[0]
           // }-170w.${originalImg.split('.')[1]}?timestamp=${Date.now()}`}
 
-          src={`/uploads/clones/small/${originalImg.split('.')[0]}-170w.${
-            originalImg.split('.')[1]
-          }?timestamp=${Date.now()}`}
+          src={
+            img
+              ? img +
+                `/uploads/clones/small/${originalImg.split('.')[0]}-170w.${
+                  originalImg.split('.')[1]
+                }?timestamp=${Date.now()}`
+              : `/uploads/clones/small/${originalImg.split('.')[0]}-170w.${
+                  originalImg.split('.')[1]
+                }?timestamp=${Date.now()}`
+          }
           className={styles.img}
           alt={productName || 'image'}
         />
@@ -163,7 +179,11 @@ export default function BaseProductFormInputs({
       {!onCreatePage && userChangedImageFile && productImage !== null && (
         <img
           // src={`/src/assets/uploads/original/${productImage}`}
-          src={`/uploads/original/${productImage}`}
+          src={
+            img
+              ? img + `/uploads/original/${productImage}`
+              : `/uploads/original/${productImage}`
+          }
           className={styles.img}
           alt={productName || 'image'}
         />

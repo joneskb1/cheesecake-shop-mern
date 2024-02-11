@@ -7,6 +7,12 @@ export default function ShopCakeCard({ children, cake }) {
   // if on the single cake page in youmaylike use larger img for tablet
   const youMayLike = location.pathname.startsWith('/cheesecake/');
 
+  let img;
+
+  if (import.meta.env.MODE === 'development') {
+    img = `/src/assets`;
+  }
+
   return (
     <div
       className={`${styles.cakeWrap} ${
@@ -20,9 +26,16 @@ export default function ShopCakeCard({ children, cake }) {
             // srcSet={`/src/assets/uploads/clones/large/${
             //   cake.image.split('.')[0]
             // }-354w.${cake.image.split('.')[1]}`}
-            srcSet={`/uploads/clones/large/${cake.image.split('.')[0]}-354w.${
-              cake.image.split('.')[1]
-            }`}
+            srcSet={
+              img
+                ? img +
+                  `/uploads/clones/large/${cake.image.split('.')[0]}-354w.${
+                    cake.image.split('.')[1]
+                  }`
+                : `/uploads/clones/large/${cake.image.split('.')[0]}-354w.${
+                    cake.image.split('.')[1]
+                  }`
+            }
           />
           {youMayLike && (
             <source
@@ -30,18 +43,32 @@ export default function ShopCakeCard({ children, cake }) {
               // srcSet={`/src/assets/uploads/clones/large/${
               //   cake.image.split('.')[0]
               // }-354w.${cake.image.split('.')[1]}`}
-              srcSet={`/uploads/clones/large/${cake.image.split('.')[0]}-354w.${
-                cake.image.split('.')[1]
-              }`}
+              srcSet={
+                img
+                  ? img +
+                    `/uploads/clones/large/${cake.image.split('.')[0]}-354w.${
+                      cake.image.split('.')[1]
+                    }`
+                  : `/uploads/clones/large/${cake.image.split('.')[0]}-354w.${
+                      cake.image.split('.')[1]
+                    }`
+              }
             />
           )}
           <img
             // src={`/src/assets/uploads/clones/medium/${
             //   cake.image.split('.')[0]
             // }-265w.${cake.image.split('.')[1]}`}
-            src={`/uploads/clones/medium/${cake.image.split('.')[0]}-265w.${
-              cake.image.split('.')[1]
-            }`}
+            src={
+              img
+                ? img +
+                  `/uploads/clones/medium/${cake.image.split('.')[0]}-265w.${
+                    cake.image.split('.')[1]
+                  }`
+                : `/uploads/clones/medium/${cake.image.split('.')[0]}-265w.${
+                    cake.image.split('.')[1]
+                  }`
+            }
             alt={`${children} cake`}
             className={`${styles.cake} ${
               youMayLike ? styles.youMayLikeCard : ''

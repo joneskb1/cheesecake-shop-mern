@@ -21,12 +21,21 @@ export default function MiniCakeCard({ cakeId }) {
     //   image.split('.')[0]
     // }-38w.${image.split('.')[1]}`;
 
-    cakeSrcXSmall = `/uploads/clones/x-small/${image.split('.')[0]}-75w.${
-      image.split('.')[1]
-    }`;
-    cakeSrcXXSmall = `/uploads/clones/xx-small/${image.split('.')[0]}-38w.${
-      image.split('.')[1]
-    }`;
+    if (import.meta.env.MODE === 'development') {
+      cakeSrcXSmall = `/src/assets/uploads/clones/x-small/${
+        image.split('.')[0]
+      }-75w.${image.split('.')[1]}`;
+      cakeSrcXXSmall = `/src/assets/uploads/clones/xx-small/${
+        image.split('.')[0]
+      }-38w.${image.split('.')[1]}`;
+    } else {
+      cakeSrcXSmall = `/uploads/clones/x-small/${image.split('.')[0]}-75w.${
+        image.split('.')[1]
+      }`;
+      cakeSrcXXSmall = `/uploads/clones/xx-small/${image.split('.')[0]}-38w.${
+        image.split('.')[1]
+      }`;
+    }
   }
 
   let location = useLocation();

@@ -1,6 +1,12 @@
 import styles from './SingleCakeImg.module.css';
 
 export default function SingleCakeImg({ cake }) {
+  let img;
+
+  if (import.meta.env.MODE === 'development') {
+    img = `/src/assets`;
+  }
+
   return (
     <picture>
       <source
@@ -8,9 +14,16 @@ export default function SingleCakeImg({ cake }) {
         // srcSet={`/src/assets/uploads/clones/xx-large/${
         //   cake.image.split('.')[0]
         // }-732w.${cake.image.split('.')[1]}`}
-        srcSet={`/uploads/clones/xx-large/${cake.image.split('.')[0]}-732w.${
-          cake.image.split('.')[1]
-        }`}
+        srcSet={
+          img
+            ? img +
+              `/uploads/clones/xx-large/${cake.image.split('.')[0]}-732w.${
+                cake.image.split('.')[1]
+              }`
+            : `/uploads/clones/xx-large/${cake.image.split('.')[0]}-732w.${
+                cake.image.split('.')[1]
+              }`
+        }
       />
 
       <source
@@ -18,17 +31,32 @@ export default function SingleCakeImg({ cake }) {
         // srcSet={`/src/assets/uploads/clones/x-large/${
         //   cake.image.split('.')[0]
         // }-436w.${cake.image.split('.')[1]}`}
-        srcSet={`/uploads/clones/x-large/${cake.image.split('.')[0]}-436w.${
-          cake.image.split('.')[1]
-        }`}
+
+        srcSet={
+          img
+            ? img +
+              `/uploads/clones/x-large/${cake.image.split('.')[0]}-436w.${
+                cake.image.split('.')[1]
+              }`
+            : `/uploads/clones/x-large/${cake.image.split('.')[0]}-436w.${
+                cake.image.split('.')[1]
+              }`
+        }
       />
       <img
         // src={`/src/assets/uploads/clones/medium/${
         //   cake.image.split('.')[0]
         // }-265w.${cake.image.split('.')[1]}`}
-        src={`/uploads/clones/medium/${cake.image.split('.')[0]}-265w.${
-          cake.image.split('.')[1]
-        }`}
+        src={
+          img
+            ? img +
+              `/uploads/clones/medium/${cake.image.split('.')[0]}-265w.${
+                cake.image.split('.')[1]
+              }`
+            : `/uploads/clones/medium/${cake.image.split('.')[0]}-265w.${
+                cake.image.split('.')[1]
+              }`
+        }
         alt={`${cake.name} cake image`}
         className={styles.cakeImage}
       />

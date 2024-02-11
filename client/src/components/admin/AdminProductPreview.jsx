@@ -23,6 +23,10 @@ export default function AdminProductPreview({ product }) {
     }
   }
 
+  let img;
+  if (import.meta.env.MODE === 'development') {
+    img = `src/assets`;
+  }
   return (
     <>
       <div className={styles.container}>
@@ -30,9 +34,16 @@ export default function AdminProductPreview({ product }) {
           // src={`src/assets/uploads/clones/x-small/${
           //   product.image.split('.')[0]
           // }-75w.${product.image.split('.')[1]}`}
-          src={`/uploads/clones/x-small/${product.image.split('.')[0]}-75w.${
-            product.image.split('.')[1]
-          }`}
+          src={
+            img
+              ? img +
+                `/uploads/clones/x-small/${product.image.split('.')[0]}-75w.${
+                  product.image.split('.')[1]
+                }`
+              : `/uploads/clones/x-small/${product.image.split('.')[0]}-75w.${
+                  product.image.split('.')[1]
+                }`
+          }
           name={product.name}
         />
         <p className={`${styles.name} ${styles.hide}`}>{product.name}</p>
